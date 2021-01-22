@@ -3,6 +3,7 @@ width: 100%;
 max-width: 1180px;
 padding: 0 30px;
 margin: 32px auto;
+
 }
 
 .profile-container header {
@@ -36,71 +37,85 @@ margin-left: 24px;
 .profile-container header Link:hover {
     border-color: #999;
 }
-
-.profile-container h1 {
-    margin-top: 80px;
-    margin-bottom: 24px;
-}
-.profile-container ul {
+.profile-container body {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    grid-gap: 24px;
-    list-style: none;
+    grid-template-columns: 2fr 1fr;
+    margin-top: 28px;
 }
-.profile-container ul li {
-    position: relative;
-    background:#fff;
-    padding: 24px;
+.profile-container .history {
+    align-items: center;
+    text-align: center;
+}
+.profile-container .history .carousel {
+    display: flex;
+}
+
+.profile-container .history .carousel .images {
+    width: 100%;
+}
+.profile-container .history h1 {
+    margin-top: 30px;
+}
+.profile-container .history .carousel .images img {
+    width: 100px;
+    margin: 0px 20px;
+    margin-top: 20px;
+    opacity: 0.5;
+    border-radius: 8px;
+
+}
+
+.profile-container .history .carousel .images button {
+    margin-bottom: 20px;
+
+}
+.profile-container .history .carousel .images h1 {
+    text-decoration: none;
+    font-size: 18px;
+    display: inline;
+    margin:0px 30px;
+}
+
+.profile-container .history .carousel .images .middletxt {
+    font-size: 25px;
+    margin: 0px 75px;
+    display: inline;
+}
+.profile-container .history .carousel .images .middleimg {
+    width: 200px;
+    opacity: 1;
+
+}
+.profile-container .configuration {
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    background-color: rgb(0,0,0,0.2);
+    padding: 15px;
     border-radius: 8px;
 }
-
-.profile-container ul li Link {
-    position: absolute;
-    right: 24px;
-    top: 24px;
-    border: 0;
+.profile-container .configuration h1 {
+    margin-top: 20px;
 }
-
-.profile-container ul li Link   :hover {
-    opacity: 80%;
-}
-
-.profile-container ul li strong {
-    display: block;
-    margin-bottom: 16px;
-    color: #41414d;
+.profile-container .configuration .headers {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 15px;
+    margin: 0 40px;
 
 }
-
-.profile-container ul li p + strong {
-    margin-top: 32px;
+.profile-container .configuration .headers h1 {
+    font-size: 20px;
+}
+.profile-container .configuration .toggle{
+    margin-top: 25px;
 }
 
-.profile-container ul li p {
-    color: #737380;
-    line-height: 21px;
-    font-size: 16px;
-}
-
-
-.gallery {
-    background: #EEE;
-  }
-  
-  .gallery-cell {
-    width: 66%;
-    height: 200px;
-    margin-right: 10px;
-    background: #8C8;
-    counter-increment: gallery-cell;
-  }
-  
-  /* cell number */
-  .gallery-cell:before {
-    display: block;
+.profile-container .configuration input{
+    margin-top: 10px;
+    border-radius: 8px;
+    height: 30px;
+    font-size: 12px;
     text-align: center;
-    content: counter(gallery-cell);
-    line-height: 200px;
-    font-size: 80px;
-    color: white;
-  }
+    margin:2px 10px;
+}
