@@ -1,0 +1,6 @@
+function getAllStreamersInDataBase(req, res) {
+    Streamers.find({}, function (err, streamers) {
+        if (err) return res.status(500).send("There was a problem finding the users.");
+        res.status(200).send(streamers);
+    });
+}
