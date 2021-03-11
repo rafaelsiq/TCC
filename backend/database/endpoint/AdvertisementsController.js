@@ -3,11 +3,11 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
-const GetAllAdvertisementsInDataBase = require('../external/advertisement/GetAllAdvertisementsInDataBase');
-const GetAdvertisementByIdInDataBase = require('../external/advertisement/GetAdvertisementByIdInDataBase');
-const DeleteAdvertisementByIdInDataBase = require('../external/advertisement/DeleteAdvertisementByIdInDataBase');
-const UpdateAdvertisementByIdInDataBase = require('../external/advertisement/UpdateAdvertisementByIdInDataBase');
-const InsertAdvertisementInDataBase = require("../external/advertisement/InsertAdvertisementInDataBase");
+const GetAllAdvertisementsInDataBase = require('../external/advertisements/GetAllAdvertisementsInDataBase');
+const GetAdvertisementByIdInDataBase = require('../external/advertisements/GetAdvertisementByIdInDataBase');
+const DeleteAdvertisementByIdInDataBase = require('../external/advertisements/DeleteAdvertisementByIdInDataBase');
+const UpdateAdvertisementByIdInDataBase = require('../external/advertisements/UpdateAdvertisementByIdInDataBase');
+const InsertAdvertisementInDataBase = require("../external/advertisements/InsertAdvertisementInDataBase");
 
 
 router.post('/', function (req, res, err) { new InsertAdvertisementInDataBase().insertAdvertisement(req,res,err)});

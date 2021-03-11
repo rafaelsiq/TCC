@@ -3,11 +3,11 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
-const GetAllContractsInDataBase = require('../external/contract/GetAllContractsInDataBase');
-const GetContractByIdInDataBase = require('../external/contract/GetContractByIdInDataBase');
-const DeleteContractByIdInDataBase = require('../external/contract/DeleteContractByIdInDataBase');
-const UpdateContractByIdInDataBase = require('../external/contract/UpdateContractByIdInDataBase');
-const InsertContractInDataBase = require("../external/contract/InsertContractInDataBase");
+const GetAllContractsInDataBase = require('../external/contracts/GetAllContractsInDataBase');
+const GetContractByIdInDataBase = require('../external/contracts/GetContractByIdInDataBase');
+const DeleteContractByIdInDataBase = require('../external/contracts/DeleteContractByIdInDataBase');
+const UpdateContractByIdInDataBase = require('../external/contracts/UpdateContractByIdInDataBase');
+const InsertContractInDataBase = require("../external/contracts/InsertContractInDataBase");
 
 
 router.post('/', function (req, res, err) { new InsertContractInDataBase().insertContract(req,res,err)});

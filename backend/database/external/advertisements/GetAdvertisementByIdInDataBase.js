@@ -1,4 +1,4 @@
-var Advertisements = require('../entity/Advertisements');
+var Advertisements = require('../../entity/Advertisement');
 
 module.exports = class GetAdvertisementByNameInDataBase {
   getAdvertisementById(req, res, err) {

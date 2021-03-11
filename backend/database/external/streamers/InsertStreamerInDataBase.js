@@ -1,4 +1,4 @@
-var Streamers = require('../entity/Streamers');
+var Streamers = require('../../entity/Streamers');
 
 module.exports = class UpdateStreamerByNameInDataBase {
   insertStreamer(req, res, err) {

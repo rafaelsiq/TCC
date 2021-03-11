@@ -1,4 +1,4 @@
-var Contracts = require('../entity/Contracts');
+var Contracts = require('../../entity/Contracts');
 
 module.exports = class GetContractByNameInDataBase {
   getContractById(req, res, err) {

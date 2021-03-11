@@ -1,4 +1,4 @@
-var Sponsors = require('../entity/Sponsors');
+var Sponsors = require('../../entity/Sponsors');
 
 module.exports = class UpdateSponsorByNameInDataBase {
   insertSponsor(req, res, err) {

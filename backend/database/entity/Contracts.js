@@ -8,7 +8,7 @@ var UserSchema = new mongoose.Schema({
   contract_file : String
 });
 
-mongoose.model('Sponsors', UserSchema);
+mongoose.model('Contracts', UserSchema);
 
-module.exports = mongoose.model('Sponsors');
+module.exports = mongoose.model('Contracts');
 
