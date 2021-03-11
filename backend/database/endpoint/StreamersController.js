@@ -3,12 +3,11 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
-var Streamers = require('../entity/Streamers');
-const GetAllStreamersInDataBase = require('../external/GetAllStreamersInDataBase');
-const GetStreamerByIdInDataBase = require('../external/GetStreamerByIdInDataBase');
-const DeleteStreamerByIdInDataBase = require('../external/DeleteStreamerByIdInDataBase');
-const UpdateStreamerByIdInDataBase = require('../external/UpdateStreamerByIdInDataBase');
-const InsertStreamerInDataBase = require("../external/InsertStreamerInDataBase");
+const GetAllStreamersInDataBase = require('../external/streamers/GetAllStreamersInDataBase');
+const GetStreamerByIdInDataBase = require('../external/streamers/GetStreamerByIdInDataBase');
+const DeleteStreamerByIdInDataBase = require('../external/streamers/DeleteStreamerByIdInDataBase');
+const UpdateStreamerByIdInDataBase = require('../external/streamers/UpdateStreamerByIdInDataBase');
+const InsertStreamerInDataBase = require("../external/streamers/InsertStreamerInDataBase");
 
 
 router.post('/', function (req, res, err) { new InsertStreamerInDataBase().insertStreamer(req,res,err)});
