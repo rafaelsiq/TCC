@@ -2,8 +2,8 @@ var mongoose = require('mongoose');
 
 var UserSchema = new mongoose.Schema({  
   streamer_id: Number,
-  streamer_name : Number,
-  streamer_url :Number,
+  streamer_name : String,
+  streamer_url :String,
   streamer_cpf: String,
   streamer_cnpj: String,
   streamer_email :String,
