@@ -11,6 +11,5 @@ var UserSchema = new mongoose.Schema({
 });
 
 mongoose.model('Advertisements', UserSchema);
-
 module.exports = mongoose.model('Advertisements');
 

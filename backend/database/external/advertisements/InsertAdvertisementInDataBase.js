@@ -9,7 +9,8 @@ module.exports = class UpdateAdvertisementByNameInDataBase {
       ad_total_time : req.body.ad_total_time,
       ad_content_image : req.body.ad_content_image,
       ad_content_video : req.body.ad_content_video,
-      ad_content_gif : req.body.ad_content_gif
+      ad_content_gif : req.body.ad_content_gif,
+      _id : req.body._id
     },
       function (err, advertisements) {
         if (err) return res.status(500).send("There was a problem adding the information to the database.");
