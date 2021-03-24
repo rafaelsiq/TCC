@@ -1,9 +1,8 @@
 var mongoose = require('mongoose');  
 
 var UserSchema = new mongoose.Schema({  
-  contract_id: Number,
-  sponsor_id : Number,
-  streamer_id : Number,
+  sponsor_id : { type: mongoose.Schema.Types.ObjectId, ref: 'Sponsors' },
+  streamer_id : { type: mongoose.Schema.Types.ObjectId, ref: 'Streamers' },
   contract_date : Date,
   contract_file : String
 });

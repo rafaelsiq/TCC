@@ -1,13 +1,12 @@
 var mongoose = require('mongoose');  
 
 var UserSchema = new mongoose.Schema({  
-  sponsors_id: Number,
   sponsor_name: String,
   sponsor_cpf : String,
   sponsor_cnpj: String,
   sponsor_email: String,
   sponsor_password: String,
-  ad_id : Number
+  ad_id : { type: mongoose.Schema.Types.ObjectId, ref: 'Advertisement' }
 });
 
 mongoose.model('Sponsors', UserSchema);
