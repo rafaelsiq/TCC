@@ -4,7 +4,7 @@
   "main": "app.js",
   "scripts": {
     "start": "node server.js",
-    "test": "concurrently --kill-others \"node ./node_modules/mocha/bin/mocha\" \"node ./test/EntityContracts.test.js | tap-spec\""
+    "test": "node ./node_modules/mocha/bin/mocha"
   },
   "author": "",
   "license": "ISC",
