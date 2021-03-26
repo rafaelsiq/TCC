@@ -3,18 +3,21 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { SubmenuIndexComponent } from './components/submenu-index/submenu-index.component';
-
+import { SignupPageComponent } from './pages/signup-page/signup-page.component';
+import { SignupMenuComponent } from './components/signup-menu/signup-menu.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 @NgModule({
   declarations: [
     AppComponent,
-    HomeComponent,
-    SubmenuIndexComponent
+    SignupPageComponent,
+    SignupMenuComponent
+
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
