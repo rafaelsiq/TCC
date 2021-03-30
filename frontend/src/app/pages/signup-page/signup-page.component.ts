@@ -12,4 +12,6 @@ export class SignupPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  imageSrc = 'assets/images/back-home-2.png'  
+  imageAlt = 'background'
 }
