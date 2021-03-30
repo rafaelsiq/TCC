@@ -46,3 +46,27 @@
 # System Files
 /frontend/.DS_Store
 /frontend/Thumbs.db
+
+
+
+# dependencies
+/backend/database/node_modules
+/backend/database/.pnp
+/backend/database/.pnp.js
+
+# testing
+/backend/database//coverage
+
+# production
+/backend/database//build
+
+# misc
+/backend/database/.DS_Store
+/backend/database/.env.local
+/backend/database/.env.development.local
+/backend/database/.env.test.local
+/backend/database/.env.production.local
+
+/backend/database/npm-debug.log*
+/backend/database/yarn-debug.log*
+/backend/database/yarn-error.log*
