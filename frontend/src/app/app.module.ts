@@ -6,11 +6,15 @@ import { AppComponent } from './app.component';
 import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { SignupMenuComponent } from './components/signup-menu/signup-menu.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { StreamerDashboardPageComponent } from './pages/dashboard/streamer-dashboard-page/streamer-dashboard-page.component';
+import { StreamerCabecalhoComponentComponent } from './components/streamer-cabecalho-component/streamer-cabecalho-component.component';
 @NgModule({
   declarations: [
     AppComponent,
     SignupPageComponent,
-    SignupMenuComponent
+    SignupMenuComponent,
+    StreamerDashboardPageComponent,
+    StreamerCabecalhoComponentComponent
 
   ],
   imports: [
