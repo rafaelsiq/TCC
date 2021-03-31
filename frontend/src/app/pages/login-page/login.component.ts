@@ -5,11 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginPageComponent implements OnInit {
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  imageSrc = 'assets/images/back-home-2.png'  
+  imageAlt = 'background'
 }
