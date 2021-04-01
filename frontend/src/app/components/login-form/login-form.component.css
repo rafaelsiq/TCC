@@ -115,7 +115,7 @@
     display: flex;
     justify-content: center;
     padding-top: 15px;
-    margin-top: 30px;
+    margin-top: 15%;
     width: 80%;
     height: 60px;
     top: 752px;
@@ -137,10 +137,11 @@
 
 .login-form #forgot_password{
     display: flex;
+    justify-content: center;
     font-family: Roboto;
     color: rgba(255, 255, 255, 0.55);
     padding-top: 2%;
-    margin-left: 32%;
+    
 }
 
 .login-form #forgot_password:hover{
