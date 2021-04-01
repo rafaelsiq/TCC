@@ -8,13 +8,16 @@ import { SignupMenuComponent } from './components/signup-menu/signup-menu.compon
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StreamerDashboardPageComponent } from './pages/dashboard/streamer-dashboard-page/streamer-dashboard-page.component';
 import { StreamerCabecalhoComponentComponent } from './components/streamer-cabecalho-component/streamer-cabecalho-component.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     SignupPageComponent,
     SignupMenuComponent,
     StreamerDashboardPageComponent,
-    StreamerCabecalhoComponentComponent
+    StreamerCabecalhoComponentComponent,
+    LoginFormComponent
 
   ],
   imports: [

@@ -5,7 +5,7 @@ import {StreamerDashboardPageComponent} from './pages/dashboard/streamer-dashboa
 
 const routes: Routes = [
   {path:'streamers-dashboard', component:StreamerDashboardPageComponent},
-  {path:'signup', component:SignupPageComponent},
+  {path:'signup', component:SignupPageComponent}
 ];
 
 @NgModule({

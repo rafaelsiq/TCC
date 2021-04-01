@@ -1,0 +1,150 @@
+.main{
+    position: absolute;
+    width:  40%;
+    height: 70%;
+    left: 30%;
+    top: 119px;
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+.header {
+    margin-top: 35px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 70px;
+}
+
+.header a{
+    text-decoration: none;
+
+    padding-left: 15px;
+    padding-right: 15px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 41px;
+    color: rgba(255, 255, 255, 0.6);
+    padding-left: 40px;
+}
+
+.header a:nth-child(1){
+    padding-right: 50px;
+    border-right: 1px solid rgba(255, 255, 255, 0.9);
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: 2px underline;
+}
+
+.header a:nth-child(2):hover{
+    color: rgba(255, 255, 255, 0.9);
+    text-decoration: 2px underline;
+}
+
+.login-form {
+    position: relative;
+    width: 80%;
+    left: 10%;
+}
+
+.login-form p {
+    margin:0;
+    margin-top: 2 5px;
+    font-family: Roboto;
+    font-style: normal;
+    margin-left: 5%;
+}
+
+.login-form p {
+    margin-bottom: 5px;
+    text-decoration: none;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 18px;
+    line-height: 29px;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.login-form input {
+    width: 75%;
+    margin-bottom: 20px;
+    padding: 5px;
+    padding-right: 2%;
+    background-color: transparent;
+    text-decoration: none;
+    margin-left: 10%;
+    border: none;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+    text-decoration-color: gray;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 29px;
+    color: rgba(255, 255, 255, 0.8);
+}
+::placeholder { 
+    color: rgba(255, 255, 255, 0.5);
+    opacity: 1; 
+  }
+
+  .main .login-remember input {
+    margin: 0;  
+    margin-top: 8px;  
+    margin-left: 10%;
+    padding: 0;
+    width: auto;
+    height: auto;
+  }
+
+.main .login-remember p {
+    margin: none;
+    margin-right: 1px;  
+    width: auto;
+    height: auto;
+  }
+.main .login-remember {
+    display: flex;
+}
+
+.login-confirmation{
+    display: flex;
+    justify-content: center;
+}
+
+.login-confirmation button{
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
+    margin-top: 15%;
+    width: 80%;
+    height: 60px;
+    top: 752px;
+    color: rgba(255, 255, 255, 0.8);
+    border: 0;
+    background: linear-gradient(180deg, rgba(28, 106, 224, 0.77) 21.92%, rgba(162, 33, 223, 0.69) 129.03%), linear-gradient(0deg, #3E43CD, #3E43CD), #FFFFFF;
+    border-radius: 18px;
+    font-family: Roboto;
+    font-style: normal;
+    font-size: 20px;
+    line-height: 29px;
+}
+
+.login-confirmation button:hover {
+    cursor: pointer;
+    text-decoration: 1px underline;
+    background: linear-gradient(180deg, rgba(28, 106, 224, 0.47) 21.92%, rgba(162, 33, 223, 0.49) 129.03%), linear-gradient(0deg, #3E43CD, #3E43CD), #FFFFFF;
+}
+
+.login-form #forgot_password{
+    display: flex;
+    justify-content: center;
+    font-family: Roboto;
+    color: rgba(255, 255, 255, 0.55);
+    padding-top: 2%;
+    
+}
+
+.login-form #forgot_password:hover{
+    color: rgba(255, 255, 255, 0.8);
+    
+}
