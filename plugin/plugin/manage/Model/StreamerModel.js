@@ -1,4 +1,5 @@
 var StreamerModel = {
+ development
     streamer_id,
     streamer_name,
     streamer_url,
@@ -52,6 +53,3 @@ var StreamerModel = {
     }
 }
 
-//to use
-//import '../Model/StreamerModel'
-//var Streamer = new StreamerModel();
