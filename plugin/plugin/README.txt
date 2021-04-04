@@ -1,0 +1,1 @@
+electron-packager ./ main.js --platform=win32 --arch=x64
