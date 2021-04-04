@@ -1,4 +1,5 @@
-var Streamer = {
+var StreamerModel = {
+ development
     streamer_id,
     streamer_name,
     streamer_url,
@@ -51,5 +52,4 @@ var Streamer = {
          this.ad_id = _ad_id;
     }
 }
-
 
