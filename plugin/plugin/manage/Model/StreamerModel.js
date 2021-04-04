@@ -1,13 +1,12 @@
+import './AdModel'
 var StreamerModel = {
- development
     streamer_id,
     streamer_name,
     streamer_url,
     streamer_cpf,
     streamer_cnpj,
     streamer_email,
-    ad_id,
-
+    ad = new AdModel(),
 
     get_id: function () {
         return this.streamer_id;
@@ -27,8 +26,8 @@ var StreamerModel = {
     get_email: function () {
         return this.streamer_email;
     },
-    get_ad_id: function () {
-        return this.ad_id;
+    get_ad: function () {
+        return this.ad;
     },
     set_id: function (_streamer_id) {
         this.streamer_id = _streamer_id;
@@ -48,8 +47,8 @@ var StreamerModel = {
     set_email: function (_streamer_email) {
          this.streamer_email = _streamer_email;
     },
-    set_ad_id: function (_ad_id) {
-         this.ad_id = _ad_id;
+    set_ad_id: function (_ad) {
+         this.ad = _ad;
     }
 }
 

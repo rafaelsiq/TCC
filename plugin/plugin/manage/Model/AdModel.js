@@ -32,22 +32,22 @@ var AdModel = {
     set_id: function (_advertisements_id) {
         this.advertisements_id = _advertisements_id;
     },
-    set_name: function (_sponsor_id) {
+    set_sponsor: function (_sponsor_id) {
          this.sponsor_id =_sponsor_id;
     },
-    set_url: function (_ad_title) {
+    set_title: function (_ad_title) {
          this.ad_title = _ad_title;
     },
-    set_cpf: function (_ad_total_time) {
+    set_total_time: function (_ad_total_time) {
          this.ad_total_time = _ad_total_time;
     },
-    set_cnpj: function (_ad_content_image) {
+    set_content_image: function (_ad_content_image) {
          this.ad_content_image = _ad_content_image;
     },
-    set_email: function (_ad_content_video) {
+    set_content_video: function (_ad_content_video) {
          this.ad_content_video = _ad_content_video;
     },
-    set_ad_id: function (_ad_content_gif) {
+    set_content_gif: function (_ad_content_gif) {
          this.ad_content_gif = _ad_content_gif;
     }
 }
