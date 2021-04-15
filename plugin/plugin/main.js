@@ -1,20 +1,23 @@
 const { app, BrowserWindow } = require('electron')
 
-let win
+const OBSConnect = require('./OBS Pack/main'); 
 
-function createWindow () {
+let win
+let connection = new OBSConnect();
+async function createWindow () {
   win = new BrowserWindow({
     width: 800,
     height: 600,
     webPreferences: {
       nodeIntegration: true
     }
-  })
-
+  }) 
+  let teste = await connection.GetSceneList();
+  console.log(teste)
+  
   win.loadFile('./interfaces/pages/index/index.html')
-
   win.on('closed', () => {
-    win = null
+    win = nullD
   })
 }
 
