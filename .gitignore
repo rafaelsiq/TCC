@@ -3,7 +3,7 @@
 # Arquivos artigo tcc
 TCC_1___FORMATADO.pdf
 template_pesquisa_desenvolvimento.docx
-
+/node_modules
 # compiled output
 /frontend/dist
 /frontend/tmp
