@@ -1,0 +1,12 @@
+{
+    "loginLabel":"Login",
+    "singUpLabel":"Sing Up",
+    "userNameLabel":"UserName",
+    "nameExampleTextBox":"Name Example",
+    "passwordLabel":"Password",
+    "passwordExempleTextBox": "**********",
+    "rememberMeLabel":"Remember me",
+    "loginButtonLabel":"Login",
+    "forgotMyPasswordLink":"Forgot my Password",
+    "userNotFoundMessageText":"User not found"
+}

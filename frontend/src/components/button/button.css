@@ -1,0 +1,16 @@
+.Button{
+    text-decoration: none;
+    padding:5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 150px;
+    height: 42px;
+    background: linear-gradient(180deg, rgba(28, 106, 224, 0.77) 21.92%, rgba(162, 33, 223, 0.69) 129.03%), linear-gradient(0deg, #3E43CD, #3E43CD), #FFFFFF;
+    border-radius: 6px;
+    font-style: normal;
+    font-family: 'roboto';
+    font-weight: 250;
+    font-size: 20px;
+    line-height: 30px;
+    color: #FFFFFF;
+}
