@@ -1,0 +1,8 @@
+{
+    "acessButtonText": "Acesse",
+    "aboutButtonText": "Saiba Mais",
+    "topText": "O encontro de Streamers e Patrocinadores de uma maneira fácil!",
+    "bottomText": "A XXX é uma plataforma que busca gerenciar e estreitar a relação de patrocinadores com streamers, especialmente para aqueles com publico médio e baixo, com a intenção de contribuir de uma maneira positiva para a carreira de streamers novos e veteranos! Contamos com uma plataforma web de gerenciamento de patrocínios e um app desktop, para que possamos distribuir da melhor forma anúncios de diversos patrocinadores para vários streamers simultaneamente.",
+    "imagePathHomeBackground":"../files/home-background.jpg",
+    "imagePathGeralBackground":"../files/geral-background.jpg"
+}

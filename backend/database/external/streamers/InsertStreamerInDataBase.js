@@ -10,6 +10,7 @@ module.exports = class UpdateStreamerByNameInDataBase {
       streamer_email: req.body.streamer_email,
       streamer_id: req.body.streamer_id,
       ad_id: req.body.ad_id,
+      _id : req.body._id
     },
       function (err, streamers) {
         if (err) return res.status(500).send("There was a problem adding the information to the database.");

@@ -9,7 +9,8 @@ module.exports = class UpdateSponsorByNameInDataBase {
       sponsor_cnpj: req.body.sponsor_cnpj,
       sponsor_email: req.body.sponsor_email,
       sponsor_password: req.body.sponsor_password,
-      ad_id : req.body.ad_id
+      ad_id : req.body.ad_id,
+      _id : req.body._id
     },
       function (err, sponsors) {
         if (err) return res.status(500).send("There was a problem adding the information to the database.");

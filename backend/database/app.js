@@ -7,9 +7,10 @@ var ContractsController = require('../database/endpoint/ContractsController');
 var AdvertisementsController = require('../database/endpoint/AdvertisementsController');
 var StreamersController = require('../database/endpoint/StreamersController');
 
-app.use('/streamer', StreamersController);
+app.use('/streamers', StreamersController);
 app.use('/sponsors', SponsorsController);
-app.use('/ad', AdvertisementsController);
-app.use('/contract', ContractsController);
+app.use('/ads', AdvertisementsController);
+app.use('/contracts', ContractsController);
+
 
 module.exports = app;

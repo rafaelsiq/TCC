@@ -1,0 +1,78 @@
+# See http://help.github.com/ignore-files/ for more about ignoring files.
+
+# Arquivos artigo tcc
+TCC_1___FORMATADO.pdf
+template_pesquisa_desenvolvimento.docx
+/node_modules
+/oldfrontend
+# compiled output
+/frontend/dist
+/frontend/tmp
+/frontend/out-tsc
+# Only exists if Bazel was run
+/frontend/bazel-out
+
+# dependencies
+/frontend/node_modules/
+/plugin/node_modules
+/plugin/Node-OBSosc/node_modules
+
+# profiling files
+/frontend/chrome-profiler-events*.json
+/frontend/speed-measure-plugin*.json
+
+# IDEs and editors
+/frontend/.idea
+/frontend/.project
+/frontend/.classpath
+/frontend/.c9/
+/frontend/*.launch
+/frontend/.settings/
+/frontend/*.sublime-workspace
+
+# IDE - VSCode
+/frontend/.vscode/*
+/frontend/!.vscode/settings.json
+/frontend/!.vscode/tasks.json
+/frontend/!.vscode/launch.json
+/frontend/!.vscode/extensions.json
+/frontend/.history/*
+
+# misc
+/frontend/.sass-cache
+/frontend/connect.lock
+/frontend/coverage
+/frontend/libpeerconnection.log
+/frontend/npm-debug.log
+/frontend/yarn-error.log
+/frontend/testem.log
+/frontend/typings
+
+# System Files
+/frontend/.DS_Store
+/frontend/Thumbs.db
+
+
+
+# dependencies
+/backend/database/node_modules/
+/backend/node_modules/
+/backend/database/.pnp
+/backend/database/.pnp.js
+
+# testing
+/backend/database//coverage
+
+# production
+/backend/database//build
+
+# misc
+/backend/database/.DS_Store
+/backend/database/.env.local
+/backend/database/.env.development.local
+/backend/database/.env.test.local
+/backend/database/.env.production.local
+
+/backend/database/npm-debug.log*
+/backend/database/yarn-debug.log*
+/backend/database/yarn-error.log*
