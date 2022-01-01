@@ -1,5 +1,7 @@
-module.exports = Users = {
-    username:String,
-    password:String,
-    name: String
+module.exports = Users = () => {
+    return {
+        username: String,
+        userid: String,
+        password: String,
+    }
 }

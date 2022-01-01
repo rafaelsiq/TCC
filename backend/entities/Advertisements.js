@@ -1,8 +1,8 @@
 var mongoose = require('mongoose');  
-const { default: Advertisements } = require('./Classes/Advertisements');
+const Advertisements = require('./Classes/Advertisements');
 
-var UserSchema = new mongoose.Schema(Advertisements);
+var AdvertisementsSchema = new mongoose.Schema(Advertisements());
 
-mongoose.model('Advertisements', UserSchema);
+mongoose.model('Advertisements', AdvertisementsSchema);
 module.exports = mongoose.model('Advertisements');
 

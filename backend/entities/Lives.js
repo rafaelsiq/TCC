@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');  
-const { default: Lives } = require('./Classes/Lives');
+const  Lives = require('./Classes/Lives');
 
-var UserSchema = new mongoose.Schema(Lives);
+var LivesSchema = new mongoose.Schema(Lives());
 
-mongoose.model('Lives', UserSchema);
+mongoose.model('Lives', LivesSchema);
 
 module.exports = mongoose.model('Lives');
 

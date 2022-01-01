@@ -14,10 +14,10 @@ const UpdateElementByIdInDataBase = require('../endpoints/UpdateElementByIdInDat
 const InsertElementInDataBase = require("../endpoints/InsertElementInDataBase");
 
 
-router.post('/', function (req, res, err) { new InsertElementInDataBase().insertAdvertisement(Sponsors,req,res,err)});
-router.get('/', function(req, res, err) {new GetAllElementsInDataBase().getAllAdvertisements(Sponsors,req, res, err)});
-router.get('/:id', function(req,res,err) { new GetElementByIdInDataBase().getAdvertisementById(Sponsors,req, res, err)});
-router.delete('/:id',function(req,res,err) { new DeleteElementByIdInDataBase().deleteAdvertisementById(Sponsors,req, res, err)});
-router.put('/:id',function(req,res,err) { new UpdateElementByIdInDataBase().updateAdvertisementById(Sponsors,req, res, err)});
+router.post('/', function (req, res, err) { new InsertElementInDataBase().insertElements(Sponsors,req,res,err)});
+router.get('/', function(req, res, err) {new GetAllElementsInDataBase().getAllElements(Sponsors,req, res, err)});
+router.get('/:id', function(req,res,err) { new GetElementByIdInDataBase().getElementById(Sponsors,req, res, err)});
+router.delete('/:id',function(req,res,err) { new DeleteElementByIdInDataBase().deleteById(Sponsors,req, res, err)});
+router.put('/:id',function(req,res,err) { new UpdateElementByIdInDataBase().updateElementById(Sponsors,req, res, err)});
 
 module.exports = router;

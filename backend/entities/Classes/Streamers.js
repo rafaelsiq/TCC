@@ -1,10 +1,12 @@
-const Payments = require( "./Payments")
-const Users = require( "./Users")
+const Users = require('./Users');
+const Payments = require('./Payments');
 
-module.exports =  Streamers =  {
-	paymentType: Payments,
-	linkAd : String,
-	cpf : String,
-	public: String,
-	...Users
+module.exports = Streamers = () => {
+	return {
+		paymentType: Payments(),
+		linkAd: String,
+		cpf: String,
+		public: String,
+		...Users()
+	}
 }

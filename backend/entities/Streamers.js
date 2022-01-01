@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');  
-const { default: Streamers } = require('./Classes/Streamers');
+const Streamers = require('./Classes/Streamers');
 
-var UserSchema = new mongoose.Schema(Streamers);
 
-mongoose.model('Streamers', UserSchema);
+var StreamerSchema = new mongoose.Schema(Streamers());
+
+mongoose.model('Streamers', StreamerSchema);
 
 module.exports = mongoose.model('Streamers');

@@ -1,9 +1,9 @@
 var mongoose = require('mongoose');  
-const { default: Sponsors } = require('./Classes/Sponsors');
+const Sponsors = require('./Classes/Sponsors');
 
-var UserSchema = new mongoose.Schema(Sponsors);
+var SponsorsSchema = new mongoose.Schema(Sponsors());
 
-mongoose.model('Sponsors', UserSchema);
+mongoose.model('Sponsors', SponsorsSchema);
 
 module.exports = mongoose.model('Sponsors');
 
