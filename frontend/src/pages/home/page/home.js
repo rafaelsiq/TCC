@@ -18,6 +18,7 @@ function Home() {
     >
       <Header content={homePageConstants} />
       <HomeBody content={homePageConstants}></HomeBody>
+      
     </div>
   );
 }
