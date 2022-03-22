@@ -8,7 +8,7 @@ var AdvertisementsController = require('./controllers/AdvertisementsController')
 var StreamersController = require('./controllers/StreamersController');
 var LoginController = require('./controllers/LoginController');
 
-app.use('/streamers', StreamersController);
+app.use('/streamers',  StreamersController);
 app.use('/sponsors', SponsorsController);
 app.use('/ads', AdvertisementsController);
 app.use('/lives', LivesController);

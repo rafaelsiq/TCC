@@ -1,13 +1,10 @@
 const Advertisements = require("../entities/Advertisements")
 const Lives = require("../entities/Lives")
 const Streamers = require("../entities/Streamers")
-
-
 var advertisement = require("../entities/Classes/Advertisements")
 var lives = require("../entities/Classes/Lives")
 var sponsors = require("../entities/Classes/Sponsors")
 var streamers = require("../entities/Classes/Streamers")
-
 module.exports = class InsertElementInDataBase {
   jsonElement = (req, err) => {
     switch (req.body.type) {
@@ -37,7 +34,6 @@ module.exports = class InsertElementInDataBase {
         sponsors.cpf = req.body.cpf;
         sponsors.password = req.body.password;
         sponsors.username = req.body.username;
-        sponsors.name = req.body.name;
         return sponsors;
       case ("streamers"):
         streamers.username = req.body.username;
@@ -51,12 +47,12 @@ module.exports = class InsertElementInDataBase {
     }
   }
   insertElements(element, req, res, err) {
-    element.create({
-      ...this.jsonElement(req,err),
-      _id : req.body._id
-    }, function (err, element) {
-      if (err) return res.status(500).send("There was a problem adding the information to the database.");
-      res.status(200).send(element + "\ncreated");
-    });
-  }
+      element.create({
+        ...this.jsonElement(req,err),
+        _id : req.body._id
+      }, function (err, element) {
+        if (err) return res.status(500).send("There was a problem adding the information to the database.");
+        res.status(200).send(element + "\ncreated");
+      });
+    }
 }
