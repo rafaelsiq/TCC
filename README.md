@@ -14,6 +14,7 @@ Esta sendo desenvolvido um sistema para fazer uma gestão completa de ads em liv
 <li><a href="docs/Diagrama da Arquitetura do Sistema.png">  Diagrama da Arquitetura do Sistema</a></li>
 <li><a href="docs/Diagrama de Caso de Uso.png"> Diagrama de Caso de Uso</a></li>
 <li><a href="docs/Diagrama de Implantação.png"> Diagrama de Implantação</a></li>
+<li><a href="docs/Cronograma das atividades.png"> Cronograma das atividades</a></li>
 </ol>
 
 ## Integrantes
