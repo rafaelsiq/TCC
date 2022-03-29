@@ -35,7 +35,6 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 |Sponsor   | Definir quando o anuncio será exibido | me conectar com novos patrocinadores |
 |Sponsor   | Filtrar streamers que exibirão os anuncios | me conectar com novos patrocinadores |
 
-
 ## Requisitos
 
 ### Requisitos Funcionais
@@ -44,3 +43,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 ### Requisitos não Funcionais
 
 ## Restrições
+|ID| Restrição                                             |
+|--|-------------------------------------------------------|
+|01| O projeto deverá ser entregue até o final do semestre |
+|02| Não deverá ser desenvolvido uma aplicação mobile        |
