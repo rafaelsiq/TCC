@@ -1,8 +1,8 @@
 import './about.css';
 import backgroundImage from '../../../constants/files/geral-background.png'
-import Header from '../../../components/homeHeader/home-header';
+import Header from '../../components/homeHeader/home-header';
 import AboutBody from '../blocks/aboutMidContent/aboutBody';
-const aboutPageConstants = require('../../../constants/aboutPage.json')
+const aboutPageConstants = require('../../constants/aboutPage.json')
 
 function About() {
   return (
