@@ -26,6 +26,6 @@ etiquetas:
 - `enhancement`: uma funcionalidade precisa ser melhorada
 - `feature`: uma nova funcionalidade precisa ser introduzida
 
-esta informação deve necessariamente ser inclusa nos commites entre chaves. Exemplo:
-`git commit -m "[bug] test/task/11 correção do bug"`
-`git commit -m "[feature] test/task/15 criação da nova funcionalidade"`
+esta informação deve necessariamente ser inclusa nos commites entre chaves, bem como o numero da task referente. Exemplo:
+`git commit -m "[bug] [#11] test/task/11 correção do bug"`
+`git commit -m "[feature] [#15] test/task/15 criação da nova funcionalidade"`
