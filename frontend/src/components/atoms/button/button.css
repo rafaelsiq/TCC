@@ -1,4 +1,4 @@
-.Button{
+#standard {
     text-decoration: none;
     padding:5px;
     padding-left: 20px;
@@ -10,7 +10,21 @@
     font-style: normal;
     font-family: 'roboto';
     font-weight: 250;
-    font-size: 20px;
     line-height: 30px;
     color: #FFFFFF;
+}
+
+#header {
+    text-decoration: none;
+    padding:5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    width: 150px;
+    height: 42px;
+    border-radius: 6px;
+    font-style: normal;
+    font-family: 'roboto';
+    font-weight: 250;
+    line-height: 30px;
+    color: #000;
 }

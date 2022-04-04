@@ -1,8 +1,7 @@
 {
-    "acessButtonText": "Acesse",
-    "aboutButtonText": "Saiba Mais",
-    "topText": "O encontro de streamers e Patrocinadores",
-    "bottomText": "Uma plataforma de patrocínio de streamers, especialmente para aqueles com publico médio e baixo",
+    "topText": "Bem-vind@ a rede de patrocínio do futuro",
+    "bottomText": "Aqui você monetiza sua rotina como streamer sem dificuldades! Nós encontramos os patrocinadores pra você, e gerenciamos todo o Ad em suas lives.",
     "imagePathHomeBackground":"../files/home-background.jpg",
-    "imagePathGeralBackground":"../files/geral-background.jpg"
+    "imagePathGeralBackground":"../files/geral-background.jpg",
+    "buttonAbout":"Saiba Mais..."
 }

@@ -1,0 +1,32 @@
+#buttonAbout
+{
+    margin-left: 80%;
+    overflow: initial;
+    display: flex;
+}
+#homecontent h1 {
+    display: flex;
+    width: 80%;
+    font-family: 'Roboto';
+    font-style: normal;
+    color: #000000;
+    padding-left: 10%;
+}
+
+#homecontent  #top {
+    height: 223px;
+    left: 133px;
+    top: 158px;
+    font-weight: 500;
+    font-size: 70px;
+    line-height: 82px;
+}
+
+ #homecontent #bottom {
+    height: 223px;
+    left: 133px;
+    top: 334px;
+    font-weight: 100;
+    font-size: 50px;
+    line-height: 59px;
+}

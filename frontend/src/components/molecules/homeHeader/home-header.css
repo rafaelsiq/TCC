@@ -1,6 +1,10 @@
 .home-header{
     width: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     padding-top: 1%;
+
+}
+#right {
+    display: flex;
 }
