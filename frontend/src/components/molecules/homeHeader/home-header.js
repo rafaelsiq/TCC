@@ -1,5 +1,6 @@
 import Button from '../../atoms/button/button';
 import './home-header.css';
+import routers from '../../../global/Routes.json'
 function homeHeader() {
   return (
     <div className="home-header">
@@ -10,7 +11,7 @@ function homeHeader() {
           style={{
             "font-size": "20px"
           }}
-          to='/Home'
+          to={routers.home}
         ></Button>
       </div>
       <div id='right'>
@@ -20,7 +21,7 @@ function homeHeader() {
           style={{
             "font-size": "20px"
           }}
-          to='/Downloads'
+          to={routers.download}
         ></Button>
         <Button
           label='Reports'
@@ -28,7 +29,7 @@ function homeHeader() {
           style={{
             "font-size": "20px"
           }}
-          to='/Reports'
+          to={routers.reports}
         ></Button>
         <Button
           label='Menu'
@@ -36,7 +37,7 @@ function homeHeader() {
           style={{
             "font-size": "20px"
           }}
-          to='/Menu'
+          to={routers.menu}
         ></Button>
         <Button
           label='Log Out'
@@ -44,7 +45,7 @@ function homeHeader() {
           style={{
             "font-size": "20px"
           }}
-          to='/Logout'
+          to={routers.logout}
         ></Button>
       </div>
     </div>

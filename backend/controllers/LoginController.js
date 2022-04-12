@@ -3,22 +3,27 @@ var router = express.Router();
 var bodyParser = require('body-parser');
 router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
-const jwt = require('jsonwebtoken')
-const login = require('../constants/loginConstants')
-
 var Streamers = require('../entities/Streamers');
 var Sponsors = require('../entities/Sponsors');
-function validateToken(req, res,next){
-    const token = req.headers['x-access-token'];
-    jwt.verify(token, login.SECRET, (err, decodded) =>{
-      if(err)  return res.status(401).end();
-      decodded = req.userid;
-      next();
-    })
-  }
-const GetUsernameInDataBase = require('../endpoints/GetUsernameInDatabase');
+var Administrator = require('../entities/Administrator');
 
-router.get('/streamers', function(req, res, err) {new GetUsernameInDataBase().getUserName(Streamers,req, res, err)});
-router.get('/sponsors', function(req, res, err) {new GetUsernameInDataBase().getUserName(Sponsors,req, res, err)});
+const DataBase = require('./Controllers');
+const Auth = require('../Signatures/auth');
+
+router.get('/', function(req, res, err) {
+    if(Auth.auth({
+        request:req,
+        profile:['login','get', 'all']
+    }))
+    if(req.body.type === 'streamer')
+        new DataBase.GetUsernameInDataBase().accessControl(Streamers,req, res, err)    
+    else if(req.body.type === 'sponsor')
+        new DataBase.GetUsernameInDataBase().accessControl(Sponsors,req, res, err)
+    else if(req.body.type === 'administrator')
+        new DataBase.GetUsernameInDataBase().accessControl(Administrator,req, res, err)
+    else
+        return res.status(404).send("select a type");
+
+});
 
 module.exports = router;

@@ -1,10 +1,17 @@
 import backImage from '../../../constants/files/geral-background.png'
 import './background.css'
 import React from 'react';
-
+import EmptyContent from '../../organisms/emptyContent/emptyContent';
 
 
 function Background({ Header, Content, Footer }) {
+  if(!Header)
+    Header = EmptyContent
+  if(!Content)
+    Content = EmptyContent
+  if(!Footer)
+    Footer = EmptyContent
+    
   return (
     <div id='background'
       style={{

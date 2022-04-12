@@ -1,11 +1,11 @@
 import './button.css';
 import { Link } from "react-router-dom";
 
-function Button({style, type, to, label}) {
+function Buttonss({style, type, to, label}) {
   if ('header'.includes(type))
     return (
       <div>
-        <Link id='header' style={style} to={to} className="Button">{label}</Link>
+       <Link id='header' style={style} to={to} className="Button">{label}</Link>
       </div>
     )
   if ('standard'.includes(type))
@@ -22,4 +22,4 @@ function Button({style, type, to, label}) {
     );
 }
 
-export default Button;
+export default Buttonss;

@@ -3,5 +3,6 @@ module.exports = Users = () => {
         username: String,
         userid: String,
         password: String,
+        type: String
     }
 }

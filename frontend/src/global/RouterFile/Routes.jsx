@@ -1,13 +1,14 @@
 import React from "react";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Home from "../../pages/home/home";
-import About from '../../pages/about/about';
+import Initial from '../../pages/initial/initial';
+import routers from '../Routes.json'
 const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path="/" element={ <Home/> }  />
-                <Route path="/about" element={<About/>}/>
+                <Route path={routers.home} element={<Home/>}  />
+                <Route path={routers.initial} element={<Initial/>}/>
             </Routes>
         </BrowserRouter>    
     )

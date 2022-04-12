@@ -1,0 +1,15 @@
+#initialContent{
+    width: 50%;
+    height: 70%;
+    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.834);
+    border-radius: 10px;
+    margin-right: 25%;
+    margin-left: 25%;
+    margin-top: 5%;
+    margin-bottom: 15%;
+}
+#login_input{
+    justify-content: center;
+    width: 100%;
+}

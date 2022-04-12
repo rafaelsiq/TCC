@@ -1,0 +1,12 @@
+{
+    "home":"/Home",
+    "initial": "/",
+    "about":"/About",
+    "download": "/Download",
+    "menu": "/Menu",
+    "reports": "/Reports",
+    "logout": "/Logout",
+    "login": "/Login",
+    "singup": "/singup"
+
+}
