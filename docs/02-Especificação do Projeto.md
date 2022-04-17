@@ -39,6 +39,7 @@ Com base na análise das personas forma identificadas as seguintes histórias de
 A partir das estórias dos usuarios, identificou-se os requisitos funcionais e não funcionais abaixo descritos.
 ### Requisitos Funcionais
 |ID| REQUISITO|PRIORIDADE|
+|----|-------------------------------------------------------|-------|
 | RF-01 |Permitir o CRUD de streamers |ALTA|
 | RF-02 |Permitir o CRUD de sponsors |ALTA|
 | RF-03 |Permitir o CRUD de administradores |ALTA|
@@ -52,7 +53,8 @@ A partir das estórias dos usuarios, identificou-se os requisitos funcionais e n
 
 
 ### Requisitos não Funcionais
-|ID| REQUISITO|PRIORIDADE|
+|ID   |   REQUISITO |   PRIORIDADE  |
+|--------|-------------------------------------------------------|-------|
 | RNF-01 |Deve processar requisições do usuário em no máximo 3s |MÉDIA|
 | RNF-02 |O sistema deve prover ao usuário as funcionalidades da maneira mais usual possível permitindo que sejam necessárias poucas interações para atingir o objetivo. |ALTA|
 | RNF-03 |O usuário deve ser capaz de acessar o sistema através das plataformas e navagadores compatíveis de acordo com informações disponibilizadas no site. |ALTA|
