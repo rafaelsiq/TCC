@@ -3,7 +3,7 @@ const Streamers = require("./Streamers")
 
 module.exports = Lives = () => {
     return {
-        streamer: Streamers(),
+        streamer: String,
         date: Date,
         viewersQuant: Number,
         receivedValue: Number,

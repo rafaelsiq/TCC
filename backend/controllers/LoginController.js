@@ -15,11 +15,11 @@ router.get('/', function(req, res, err) {
         request:req,
         profile:['login','get', 'all']
     }))
-    if(req.body.type === 'streamer')
+    if(req.body.type === 'Streamer')
         new DataBase.GetUsernameInDataBase().accessControl(Streamers,req, res, err)    
-    else if(req.body.type === 'sponsor')
+    else if(req.body.type === 'Sponsor')
         new DataBase.GetUsernameInDataBase().accessControl(Sponsors,req, res, err)
-    else if(req.body.type === 'administrator')
+    else if(req.body.type === 'Administrator')
         new DataBase.GetUsernameInDataBase().accessControl(Administrator,req, res, err)
     else
         return res.status(404).send("select a type");
