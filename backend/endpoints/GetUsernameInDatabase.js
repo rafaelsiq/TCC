@@ -11,13 +11,13 @@ module.exports = class GetUserNameInDataBase {
       if (err)
         return res.status(500).send("There was a problem to search");
       element.forEach(item => {
-        if (req.body.username === item.username) {
+        if (req.body.userid === item.userid) {
           if (req.body.password === item.password) {
             if (!returned) {
               returned = true
               return res.status(200).send({
                 id: item.id,
-                username: item.username,
+                userid: item.userid,
                 token,
                 auth: true
               });
