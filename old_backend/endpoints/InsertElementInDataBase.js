@@ -45,7 +45,6 @@ module.exports = class InsertElementInDataBase {
     }
   }
   insertElements(element, req, res, err) {
-    console.log(req.body.type)
     if (element.modelName != req.body.type)
       return res.status(500).send("You're not allowed to do that.");
     element.create({
