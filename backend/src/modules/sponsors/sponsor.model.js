@@ -1,8 +1,11 @@
 import mongoose, {Schema} from 'mongoose';
-import validator from 'validator';
-import {passwordReg} from './sponsor.validations';
 import jwt from 'jsonwebtoken';
+import validator from 'validator';
 import constants from '../../config/constants';
+
+import {passwordReg} from './sponsor.validations';
+import { hashSync, compareSync } from 'bcrypt-nodejs';
+
 
 const SponsorSchema = new Schema({
     type: {
@@ -84,14 +87,11 @@ SponsorSchema.pre('save', function(next) {
 });
 SponsorSchema.methods = {
     _hashPassword(password) {
-        return hashSync(password);
+      return hashSync(password);
     },
     authenticateUser(password) {
-        return compareSync(password, this.password);
+      return compareSync(password, this.password);
     },
-};
-SponsorSchema.methods   = {
-   
     createToken() {
       return jwt.sign(
         {
@@ -100,13 +100,19 @@ SponsorSchema.methods   = {
         constants.JWT_SECRET,
       );
     },
-    toJSON() {
+    toAuthJSON() {
       return {
         _id: this._id,
         userName: this.userName,
         token: `JWT ${this.createToken()}`,
       };
     },
-};
+    toJSON() {
+      return {
+        _id: this._id,
+        userName: this.userName,
+      };
+    }
+  };
 
 export default mongoose.model('Sponsor', SponsorSchema);

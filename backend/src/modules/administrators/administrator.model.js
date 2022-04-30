@@ -1,8 +1,9 @@
 import mongoose, { Schema } from 'mongoose';
 import validator from 'validator';
-import { passwordReg } from './administrator.validations';
 import jwt from 'jsonwebtoken';
+import { passwordReg } from './administrator.validations';
 import constants from '../../config/constants';
+import { compareSync, hashSync } from 'bcrypt-nodejs';
 
 const AdministratorSchema = new Schema({
     type: {
@@ -59,14 +60,6 @@ AdministratorSchema.pre('save', function (next) {
     return next();
 });
 AdministratorSchema.methods = {
-    _hashPassword(password) {
-        return hashSync(password);
-    },
-    authenticateUser(password) {
-        return compareSync(password, this.password);
-    },
-};
-AdministratorSchema.methods = {
 
     createToken() {
         return jwt.sign(
@@ -84,5 +77,33 @@ AdministratorSchema.methods = {
         };
     },
 };
-
+AdministratorSchema.methods = {
+    _hashPassword(password) {
+      return hashSync(password);
+    },
+    authenticateUser(password) {
+      return compareSync(password, this.password);
+    },
+    createToken() {
+      return jwt.sign(
+        {
+          _id: this._id,
+        },
+        constants.JWT_SECRET,
+      );
+    },
+    toAuthJSON() {
+      return {
+        _id: this._id,
+        userName: this.userName,
+        token: `JWT ${this.createToken()}`,
+      };
+    },
+    toJSON() {
+      return {
+        _id: this._id,
+        userName: this.userName,
+      };
+    }
+  };
 export default mongoose.model('Administrator', AdministratorSchema);

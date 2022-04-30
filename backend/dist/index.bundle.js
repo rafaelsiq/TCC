@@ -1,499 +1,1479 @@
-/*
- * ATTENTION: The "eval" devtool has been used (maybe by default in mode: "development").
- * This devtool is neither made for production nor for readable output files.
- * It uses "eval()" calls to create a separate source file in the browser devtools.
- * If you are trying to read the output file, select a different devtool (https://webpack.js.org/configuration/devtool/)
- * or disable the default devtool with "devtool: false".
- * If you are looking for production-ready output files, see mode: "production" (https://webpack.js.org/configuration/mode/).
- */
-/******/ (() => { // webpackBootstrap
-/******/ 	"use strict";
-/******/ 	var __webpack_modules__ = ({
+module.exports =
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// identity function for calling harmony imports with the correct context
+/******/ 	__webpack_require__.i = function(value) { return value; };
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, {
+/******/ 				configurable: false,
+/******/ 				enumerable: true,
+/******/ 				get: getter
+/******/ 			});
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "";
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 21);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ "./src/config/constants.js":
-/*!*********************************!*\
-  !*** ./src/config/constants.js ***!
-  \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+"use strict";
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ \"@babel/runtime/helpers/defineProperty\");\n/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);\n\n\nfunction ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }\n\nvar devConfig = {\n  MONGO_URL: 'mongodb://localhost:27017/tccdatabase-dev',\n  JWT_SECRET: 'dev_secret_key_%$$#8asd!44jn'\n};\nvar testConfig = {\n  MONGO_URL: 'mongodb://localhost:27017/tccdatabase-test',\n  JWT_SECRET: 'test_secret_key_%$$#8asd!44jn'\n};\nvar prodConfig = {\n  MONGO_URL: 'mongodb://localhost:27017/tccdatabase-prod',\n  JWT_SECRET: 'prod_secret_key_%$$#8asd!44jn'\n};\nvar defaultConfig = {\n  PORT: process.env.PORT || 3000\n};\n\nfunction envConfig(env) {\n  switch (env) {\n    case 'development':\n      return devConfig;\n\n    case 'test':\n      return testConfig;\n\n    default:\n      return prodConfig;\n  }\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_objectSpread(_objectSpread({}, defaultConfig), envConfig(\"development\")));\n\n//# sourceURL=webpack://backend/./src/config/constants.js?");
 
-/***/ }),
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+const devConfig = {
+  MONGO_URL: 'mongodb://localhost/tccdatabase-dev',
+  JWT_SECRET: 'jtw_secret_kn'
+};
+const testConfig = {
+  MONGO_URL: 'mongodb://localhost/tccdatabase-test'
+};
+const prodConfig = {
+  MONGO_URL: 'mongodb://localhost/tccdatabase-prod'
+};
 
-/***/ "./src/config/database.js":
-/*!********************************!*\
-  !*** ./src/config/database.js ***!
-  \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+const defaultConfig = {
+  PORT: process.env.PORT || 3000
+};
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./constants */ \"./src/config/constants.js\");\n\n\n(mongoose__WEBPACK_IMPORTED_MODULE_0___default().Promise) = global.Promise;\n\ntry {\n  mongoose__WEBPACK_IMPORTED_MODULE_0___default().connect(_constants__WEBPACK_IMPORTED_MODULE_1__[\"default\"].MONGO_URL);\n} catch (err) {\n  mongoose__WEBPACK_IMPORTED_MODULE_0___default().createConnection(_constants__WEBPACK_IMPORTED_MODULE_1__[\"default\"].MONGO_URL);\n}\n\nmongoose__WEBPACK_IMPORTED_MODULE_0___default().connection.once('open', function () {\n  return console.log('MongoDB Running');\n}).on('error', function (e) {\n  throw e;\n});\n\n//# sourceURL=webpack://backend/./src/config/database.js?");
+function envConfig(env) {
+  switch (env) {
+    case 'development':
+      return devConfig;
+    case 'test':
+      return testConfig;
+    default:
+      return prodConfig;
+  }
+}
 
-/***/ }),
-
-/***/ "./src/config/middleware.js":
-/*!**********************************!*\
-  !*** ./src/config/middleware.js ***!
-  \**********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var morgan__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! morgan */ \"morgan\");\n/* harmony import */ var morgan__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(morgan__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! body-parser */ \"body-parser\");\n/* harmony import */ var body_parser__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(body_parser__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! compression */ \"compression\");\n/* harmony import */ var compression__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(compression__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var helmet__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! helmet */ \"helmet\");\n/* harmony import */ var helmet__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(helmet__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _services_auth_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/auth.services */ \"./src/services/auth.services.js\");\n/* harmony import */ var _modules_streamers_streamer_routes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../modules/streamers/streamer.routes */ \"./src/modules/streamers/streamer.routes.js\");\n\n\n\n\n\n\n\nvar isDev = \"development\" === 'development';\nvar isProd = \"development\" === 'production';\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (app) {\n  if (isProd) {\n    app.use(compression__WEBPACK_IMPORTED_MODULE_2___default()());\n    app.use(helmet__WEBPACK_IMPORTED_MODULE_3___default()());\n  }\n\n  app.use(body_parser__WEBPACK_IMPORTED_MODULE_1___default().json());\n  app.use(body_parser__WEBPACK_IMPORTED_MODULE_1___default().urlencoded({\n    extended: true\n  }));\n  app.use('/api/v1/streamers', _modules_streamers_streamer_routes__WEBPACK_IMPORTED_MODULE_5__[\"default\"]);\n\n  if (isProd) {\n    app.use(_services_auth_services__WEBPACK_IMPORTED_MODULE_4__.authJwt.initialize());\n  }\n\n  if (isDev) {\n    app.use(morgan__WEBPACK_IMPORTED_MODULE_0___default()('dev'));\n  }\n});\n\n//# sourceURL=webpack://backend/./src/config/middleware.js?");
-
-/***/ }),
-
-/***/ "./src/index.js":
-/*!**********************!*\
-  !*** ./src/index.js ***!
-  \**********************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _config_constants__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config/constants */ \"./src/config/constants.js\");\n/* harmony import */ var _config_database__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./config/database */ \"./src/config/database.js\");\n/* harmony import */ var _config_middleware__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config/middleware */ \"./src/config/middleware.js\");\n/* harmony import */ var _modules__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modules */ \"./src/modules/index.js\");\n\n\n\n\n\nvar app = express__WEBPACK_IMPORTED_MODULE_0___default()();\n(0,_config_middleware__WEBPACK_IMPORTED_MODULE_3__[\"default\"])(app);\n(0,_modules__WEBPACK_IMPORTED_MODULE_4__[\"default\"])(app);\napp.listen(_config_constants__WEBPACK_IMPORTED_MODULE_1__[\"default\"].PORT, function (err) {\n  if (err) throw err;else console.log(\"Server running on port: \" + _config_constants__WEBPACK_IMPORTED_MODULE_1__[\"default\"].PORT);\n});\n\n//# sourceURL=webpack://backend/./src/index.js?");
-
-/***/ }),
-
-/***/ "./src/modules/administrators/administrator.controller.js":
-/*!****************************************************************!*\
-  !*** ./src/modules/administrators/administrator.controller.js ***!
-  \****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"login\": () => (/* binding */ login),\n/* harmony export */   \"signUp\": () => (/* binding */ signUp)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\");\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _administrator_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./administrator.model */ \"./src/modules/administrators/administrator.model.js\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! http-status */ \"http-status\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(http_status__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nfunction signUp(_x, _x2) {\n  return _signUp.apply(this, arguments);\n}\n\nfunction _signUp() {\n  _signUp = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(req, res) {\n    var user;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.prev = 0;\n            _context.next = 3;\n            return _administrator_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].create(req.body);\n\n          case 3:\n            user = _context.sent;\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().CREATED)).json(user));\n\n          case 7:\n            _context.prev = 7;\n            _context.t0 = _context[\"catch\"](0);\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context.t0));\n\n          case 10:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, null, [[0, 7]]);\n  }));\n  return _signUp.apply(this, arguments);\n}\n\nfunction login(req, res, next) {\n  res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().OK)).json(req.user);\n  return next();\n}\n\n//# sourceURL=webpack://backend/./src/modules/administrators/administrator.controller.js?");
-
-/***/ }),
-
-/***/ "./src/modules/administrators/administrator.model.js":
-/*!***********************************************************!*\
-  !*** ./src/modules/administrators/administrator.model.js ***!
-  \***********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! validator */ \"validator\");\n/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _administrator_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./administrator.validations */ \"./src/modules/administrators/administrator.validations.js\");\n/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jsonwebtoken */ \"jsonwebtoken\");\n/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _config_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/constants */ \"./src/config/constants.js\");\n\n\n\n\n\nvar AdministratorSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0__.Schema({\n  type: {\n    type: String,\n    required: [true, 'Type is required!'],\n    trim: true,\n    unique: false\n  },\n  email: {\n    type: String,\n    unique: true,\n    required: [true, 'Email is required!'],\n    trim: true,\n    validate: {\n      validator: function validator(email) {\n        return validator__WEBPACK_IMPORTED_MODULE_1___default().isEmail(email);\n      },\n      message: '{VALUE} is not a valid email!'\n    }\n  },\n  firstName: {\n    type: String,\n    required: [true, 'FirstName is required!'],\n    trim: true\n  },\n  lastName: {\n    type: String,\n    required: [true, 'LastName is required!'],\n    trim: true\n  },\n  userName: {\n    type: String,\n    required: [true, 'UserName is required!'],\n    trim: true,\n    unique: true\n  },\n  password: {\n    type: String,\n    required: [true, 'Password is required!'],\n    trim: true,\n    minlength: [8, 'Password need to be longer!'],\n    validate: {\n      validator: function validator(password) {\n        return _administrator_validations__WEBPACK_IMPORTED_MODULE_2__.passwordReg.test(password);\n      },\n      message: '{VALUE} is not a valid password!'\n    }\n  }\n});\nAdministratorSchema.pre('save', function (next) {\n  if (this.isModified('password')) {\n    this.password = this._hashPassword(this.password);\n  }\n\n  return next();\n});\nAdministratorSchema.methods = {\n  _hashPassword: function _hashPassword(password) {\n    return hashSync(password);\n  },\n  authenticateUser: function authenticateUser(password) {\n    return compareSync(password, this.password);\n  }\n};\nAdministratorSchema.methods = {\n  createToken: function createToken() {\n    return jsonwebtoken__WEBPACK_IMPORTED_MODULE_3___default().sign({\n      _id: this._id\n    }, _config_constants__WEBPACK_IMPORTED_MODULE_4__[\"default\"].JWT_SECRET);\n  },\n  toJSON: function toJSON() {\n    return {\n      _id: this._id,\n      userName: this.userName,\n      token: \"JWT \".concat(this.createToken())\n    };\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mongoose__WEBPACK_IMPORTED_MODULE_0___default().model('Administrator', AdministratorSchema));\n\n//# sourceURL=webpack://backend/./src/modules/administrators/administrator.model.js?");
-
-/***/ }),
-
-/***/ "./src/modules/administrators/administrator.routes.js":
-/*!************************************************************!*\
-  !*** ./src/modules/administrators/administrator.routes.js ***!
-  \************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _administrator_controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./administrator.controller */ \"./src/modules/administrators/administrator.controller.js\");\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! express-validation */ \"express-validation\");\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express_validation__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _administrator_validations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./administrator.validations */ \"./src/modules/administrators/administrator.validations.js\");\n\n\n\n\nvar routes = new express__WEBPACK_IMPORTED_MODULE_0__.Router();\nroutes.post('/signup', express_validation__WEBPACK_IMPORTED_MODULE_2___default()(_administrator_validations__WEBPACK_IMPORTED_MODULE_3__[\"default\"].signup), _administrator_controller__WEBPACK_IMPORTED_MODULE_1__.signUp);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);\n\n//# sourceURL=webpack://backend/./src/modules/administrators/administrator.routes.js?");
-
-/***/ }),
-
-/***/ "./src/modules/administrators/administrator.validations.js":
-/*!*****************************************************************!*\
-  !*** ./src/modules/administrators/administrator.validations.js ***!
-  \*****************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"passwordReg\": () => (/* binding */ passwordReg)\n/* harmony export */ });\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! joi */ \"joi\");\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(joi__WEBPACK_IMPORTED_MODULE_0__);\n\nvar passwordReg = /(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  signup: {\n    type: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    email: joi__WEBPACK_IMPORTED_MODULE_0___default().string().email().required(),\n    password: joi__WEBPACK_IMPORTED_MODULE_0___default().string().regex(passwordReg).required(),\n    firstName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    lastName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    userName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required()\n  }\n});\n\n//# sourceURL=webpack://backend/./src/modules/administrators/administrator.validations.js?");
-
-/***/ }),
-
-/***/ "./src/modules/advertsements/advertsement.controller.js":
-/*!**************************************************************!*\
-  !*** ./src/modules/advertsements/advertsement.controller.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"createAds\": () => (/* binding */ createAds),\n/* harmony export */   \"deleteAd\": () => (/* binding */ deleteAd),\n/* harmony export */   \"getAdById\": () => (/* binding */ getAdById),\n/* harmony export */   \"getAdsList\": () => (/* binding */ getAdsList),\n/* harmony export */   \"updateAd\": () => (/* binding */ updateAd)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\");\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _advertsement_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./advertsement.model */ \"./src/modules/advertsements/advertsement.model.js\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! http-status */ \"http-status\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(http_status__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nfunction createAds(_x, _x2) {\n  return _createAds.apply(this, arguments);\n}\n\nfunction _createAds() {\n  _createAds = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(req, res) {\n    var Ad;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.prev = 0;\n            _context.next = 3;\n            return _advertsement_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].createAds(req.body, req.user._id);\n\n          case 3:\n            Ad = _context.sent;\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().CREATED)).json(Ad));\n\n          case 7:\n            _context.prev = 7;\n            _context.t0 = _context[\"catch\"](0);\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context.t0));\n\n          case 10:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, null, [[0, 7]]);\n  }));\n  return _createAds.apply(this, arguments);\n}\n\nfunction getAdById(_x3, _x4) {\n  return _getAdById.apply(this, arguments);\n}\n\nfunction _getAdById() {\n  _getAdById = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee2(req, res) {\n    var Ad;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee2$(_context2) {\n      while (1) {\n        switch (_context2.prev = _context2.next) {\n          case 0:\n            _context2.prev = 0;\n            _context2.next = 3;\n            return _advertsement_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].findById(req.params.id);\n\n          case 3:\n            Ad = _context2.sent;\n            return _context2.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().OK)).json(Ad));\n\n          case 7:\n            _context2.prev = 7;\n            _context2.t0 = _context2[\"catch\"](0);\n            return _context2.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context2.t0));\n\n          case 10:\n          case \"end\":\n            return _context2.stop();\n        }\n      }\n    }, _callee2, null, [[0, 7]]);\n  }));\n  return _getAdById.apply(this, arguments);\n}\n\nfunction getAdsList(_x5, _x6) {\n  return _getAdsList.apply(this, arguments);\n}\n\nfunction _getAdsList() {\n  _getAdsList = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee3(req, res) {\n    var limit, skip, Ads;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee3$(_context3) {\n      while (1) {\n        switch (_context3.prev = _context3.next) {\n          case 0:\n            limit = parseInt(req.query.limit, 0);\n            skip = parseInt(req.query.skip, 0);\n            _context3.prev = 2;\n            _context3.next = 5;\n            return _advertsement_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].list({\n              limit: limit,\n              skip: skip\n            });\n\n          case 5:\n            Ads = _context3.sent;\n            return _context3.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().OK)).json(Ads));\n\n          case 9:\n            _context3.prev = 9;\n            _context3.t0 = _context3[\"catch\"](2);\n            return _context3.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context3.t0));\n\n          case 12:\n          case \"end\":\n            return _context3.stop();\n        }\n      }\n    }, _callee3, null, [[2, 9]]);\n  }));\n  return _getAdsList.apply(this, arguments);\n}\n\nfunction updateAd(_x7, _x8) {\n  return _updateAd.apply(this, arguments);\n}\n\nfunction _updateAd() {\n  _updateAd = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee4(req, res) {\n    var Ad;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee4$(_context4) {\n      while (1) {\n        switch (_context4.prev = _context4.next) {\n          case 0:\n            _context4.prev = 0;\n            _context4.next = 3;\n            return _advertsement_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].findById(req.params.id);\n\n          case 3:\n            Ad = _context4.sent;\n\n            if (Ad.user.equals(req.user._id)) {\n              _context4.next = 6;\n              break;\n            }\n\n            return _context4.abrupt(\"return\", res.sendStatus((http_status__WEBPACK_IMPORTED_MODULE_3___default().UNAUTHORIZED)));\n\n          case 6:\n            Object.keys(req.body).forEach(function (key) {\n              Ad[key] = req.body[key];\n            });\n            _context4.t0 = res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().OK));\n            _context4.next = 10;\n            return Ad.save();\n\n          case 10:\n            _context4.t1 = _context4.sent;\n            return _context4.abrupt(\"return\", _context4.t0.json.call(_context4.t0, _context4.t1));\n\n          case 14:\n            _context4.prev = 14;\n            _context4.t2 = _context4[\"catch\"](0);\n            return _context4.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context4.t2));\n\n          case 17:\n          case \"end\":\n            return _context4.stop();\n        }\n      }\n    }, _callee4, null, [[0, 14]]);\n  }));\n  return _updateAd.apply(this, arguments);\n}\n\nfunction deleteAd(_x9, _x10) {\n  return _deleteAd.apply(this, arguments);\n}\n\nfunction _deleteAd() {\n  _deleteAd = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee5(req, res) {\n    var Ad;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee5$(_context5) {\n      while (1) {\n        switch (_context5.prev = _context5.next) {\n          case 0:\n            _context5.prev = 0;\n            _context5.next = 3;\n            return _advertsement_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].findById(req.params.id);\n\n          case 3:\n            Ad = _context5.sent;\n\n            if (Ad.user.equals(req.user._id)) {\n              _context5.next = 6;\n              break;\n            }\n\n            return _context5.abrupt(\"return\", res.sendStatus((http_status__WEBPACK_IMPORTED_MODULE_3___default().UNAUTHORIZED)));\n\n          case 6:\n            _context5.next = 8;\n            return Ad.remove();\n\n          case 8:\n            return _context5.abrupt(\"return\", res.sendStatus((http_status__WEBPACK_IMPORTED_MODULE_3___default().OK)));\n\n          case 11:\n            _context5.prev = 11;\n            _context5.t0 = _context5[\"catch\"](0);\n            return _context5.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context5.t0));\n\n          case 14:\n          case \"end\":\n            return _context5.stop();\n        }\n      }\n    }, _callee5, null, [[0, 11]]);\n  }));\n  return _deleteAd.apply(this, arguments);\n}\n\n//# sourceURL=webpack://backend/./src/modules/advertsements/advertsement.controller.js?");
-
-/***/ }),
-
-/***/ "./src/modules/advertsements/advertsement.model.js":
-/*!*********************************************************!*\
-  !*** ./src/modules/advertsements/advertsement.model.js ***!
-  \*********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/defineProperty */ \"@babel/runtime/helpers/defineProperty\");\n/* harmony import */ var _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var slug__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! slug */ \"slug\");\n/* harmony import */ var slug__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(slug__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var mongoose_unique_validator__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! mongoose-unique-validator */ \"mongoose-unique-validator\");\n/* harmony import */ var mongoose_unique_validator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(mongoose_unique_validator__WEBPACK_IMPORTED_MODULE_3__);\n\n\nfunction ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }\n\nfunction _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _babel_runtime_helpers_defineProperty__WEBPACK_IMPORTED_MODULE_0___default()(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }\n\n\n\n\nvar AdSchema = new mongoose__WEBPACK_IMPORTED_MODULE_1__.Schema({\n  title: {\n    type: String,\n    trim: true,\n    required: [true, 'Title   is required!'],\n    minlength: [3, 'Title   need to be longer!'],\n    unique: true\n  },\n  text: {\n    type: String,\n    trim: true,\n    required: [true, 'Text   is required!'],\n    minlength: [10, 'Text   need to be longer!']\n  },\n  user: {\n    type: mongoose__WEBPACK_IMPORTED_MODULE_1__.Schema.Types.ObjectId,\n    ref: 'Sponsor'\n  },\n  fileURL: {\n    type: String,\n    trim: true,\n    required: [true, 'File is required!']\n  },\n  startDate: {\n    type: Date,\n    trim: true,\n    required: [true, 'Start Date is required!']\n  },\n  endDate: {\n    type: Date,\n    trim: true,\n    required: [true, 'End Date is required!']\n  },\n  startHour: {\n    type: Date,\n    trim: true,\n    required: [false, 'Start Hour is required!']\n  },\n  tags: {\n    type: String,\n    trim: true,\n    required: [false, 'Tags Hour is required!']\n  },\n  value: {\n    type: Number,\n    trim: true,\n    required: [true, 'Value is required!']\n  },\n  slug: {\n    type: String,\n    trim: true,\n    lowercase: true\n  }\n}, {\n  timestamps: true\n});\nAdSchema.plugin((mongoose_unique_validator__WEBPACK_IMPORTED_MODULE_3___default()), {\n  message: '{VALUE} already taken!'\n});\nAdSchema.pre('validate', function (next) {\n  this._slugify();\n\n  next();\n});\nAdSchema.methods = {\n  _slugify: function _slugify() {\n    this.slug = slug__WEBPACK_IMPORTED_MODULE_2___default()(this.title);\n  }\n};\nAdSchema.statics = {\n  createAds: function createAds(args, user) {\n    return this.create(_objectSpread(_objectSpread({}, args), {}, {\n      user: user\n    }));\n  },\n  list: function list() {\n    var _ref = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : {},\n        _ref$skip = _ref.skip,\n        skip = _ref$skip === void 0 ? 0 : _ref$skip,\n        _ref$limit = _ref.limit,\n        limit = _ref$limit === void 0 ? 5 : _ref$limit;\n\n    return this.find().sort({\n      createdAt: -1\n    }).skip(skip).limit(limit).populate('sponsor');\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mongoose__WEBPACK_IMPORTED_MODULE_1___default().model('Advertsement', AdSchema));\n\n//# sourceURL=webpack://backend/./src/modules/advertsements/advertsement.model.js?");
+exports.default = Object.assign({}, defaultConfig, envConfig(process.env.NODE_ENV));
 
 /***/ }),
-
-/***/ "./src/modules/advertsements/advertsement.routes.js":
-/*!**********************************************************!*\
-  !*** ./src/modules/advertsements/advertsement.routes.js ***!
-  \**********************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! express-validation */ \"express-validation\");\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(express_validation__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _advertsement_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./advertsement.controller */ \"./src/modules/advertsements/advertsement.controller.js\");\n/* harmony import */ var _services_auth_services__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/auth.services */ \"./src/services/auth.services.js\");\n/* harmony import */ var _advertsement_validation__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./advertsement.validation */ \"./src/modules/advertsements/advertsement.validation.js\");\n\n\n\n\n\nvar routes = new express__WEBPACK_IMPORTED_MODULE_0__.Router();\nroutes.post('/', _services_auth_services__WEBPACK_IMPORTED_MODULE_3__.authJwt, express_validation__WEBPACK_IMPORTED_MODULE_1___default()(_advertsement_validation__WEBPACK_IMPORTED_MODULE_4__[\"default\"].createAds), _advertsement_controller__WEBPACK_IMPORTED_MODULE_2__.createAds);\nroutes.patch('/:id', _services_auth_services__WEBPACK_IMPORTED_MODULE_3__.authJwt, express_validation__WEBPACK_IMPORTED_MODULE_1___default()(_advertsement_validation__WEBPACK_IMPORTED_MODULE_4__[\"default\"].updateAd), _advertsement_controller__WEBPACK_IMPORTED_MODULE_2__.updateAd);\nroutes[\"delete\"]('/:id', _services_auth_services__WEBPACK_IMPORTED_MODULE_3__.authJwt, _advertsement_controller__WEBPACK_IMPORTED_MODULE_2__.deleteAd);\nroutes.get('/:id', _advertsement_controller__WEBPACK_IMPORTED_MODULE_2__.getAdById);\nroutes.get('/', _advertsement_controller__WEBPACK_IMPORTED_MODULE_2__.getAdsList);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);\n\n//# sourceURL=webpack://backend/./src/modules/advertsements/advertsement.routes.js?");
-
-/***/ }),
-
-/***/ "./src/modules/advertsements/advertsement.validation.js":
-/*!**************************************************************!*\
-  !*** ./src/modules/advertsements/advertsement.validation.js ***!
-  \**************************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"passwordReg\": () => (/* binding */ passwordReg)\n/* harmony export */ });\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! joi */ \"joi\");\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(joi__WEBPACK_IMPORTED_MODULE_0__);\n\nvar passwordReg = /(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  createAds: {\n    body: {\n      user: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      title: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n      text: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n      fileURL: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n      startDate: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n      endDate: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n      startHour: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      tags: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      value: joi__WEBPACK_IMPORTED_MODULE_0___default().number().required(),\n      slug: joi__WEBPACK_IMPORTED_MODULE_0___default().string()\n    }\n  },\n  updateAd: {\n    body: {\n      user: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      title: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      text: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      fileURL: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      startDate: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      endDate: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      startHour: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      tags: joi__WEBPACK_IMPORTED_MODULE_0___default().string(),\n      value: joi__WEBPACK_IMPORTED_MODULE_0___default().number(),\n      slug: joi__WEBPACK_IMPORTED_MODULE_0___default().string()\n    }\n  }\n});\n\n//# sourceURL=webpack://backend/./src/modules/advertsements/advertsement.validation.js?");
-
-/***/ }),
-
-/***/ "./src/modules/index.js":
-/*!******************************!*\
-  !*** ./src/modules/index.js ***!
-  \******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var _streamers_streamer_routes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./streamers/streamer.routes */ \"./src/modules/streamers/streamer.routes.js\");\n/* harmony import */ var _sponsors_sponsor_routes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./sponsors/sponsor.routes */ \"./src/modules/sponsors/sponsor.routes.js\");\n/* harmony import */ var _administrators_administrator_routes__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./administrators/administrator.routes */ \"./src/modules/administrators/administrator.routes.js\");\n/* harmony import */ var _advertsements_advertsement_routes__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./advertsements/advertsement.routes */ \"./src/modules/advertsements/advertsement.routes.js\");\n\n\n\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (function (app) {\n  app.use('/api/v1/streamers', _streamers_streamer_routes__WEBPACK_IMPORTED_MODULE_0__[\"default\"]);\n  app.use('/api/v1/sponsors', _sponsors_sponsor_routes__WEBPACK_IMPORTED_MODULE_1__[\"default\"]);\n  app.use('/api/v1/adminstrators', _administrators_administrator_routes__WEBPACK_IMPORTED_MODULE_2__[\"default\"]);\n  app.use('/api/v1/sponsors/ads', _advertsements_advertsement_routes__WEBPACK_IMPORTED_MODULE_3__[\"default\"]);\n});\n\n//# sourceURL=webpack://backend/./src/modules/index.js?");
-
-/***/ }),
-
-/***/ "./src/modules/sponsors/sponsor.controller.js":
-/*!****************************************************!*\
-  !*** ./src/modules/sponsors/sponsor.controller.js ***!
-  \****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"login\": () => (/* binding */ login),\n/* harmony export */   \"signUp\": () => (/* binding */ signUp)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\");\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _sponsor_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sponsor.model */ \"./src/modules/sponsors/sponsor.model.js\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! http-status */ \"http-status\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(http_status__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nfunction signUp(_x, _x2) {\n  return _signUp.apply(this, arguments);\n}\n\nfunction _signUp() {\n  _signUp = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(req, res) {\n    var user;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.prev = 0;\n            _context.next = 3;\n            return _sponsor_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].create(req.body);\n\n          case 3:\n            user = _context.sent;\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().CREATED)).json(user));\n\n          case 7:\n            _context.prev = 7;\n            _context.t0 = _context[\"catch\"](0);\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context.t0));\n\n          case 10:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, null, [[0, 7]]);\n  }));\n  return _signUp.apply(this, arguments);\n}\n\nfunction login(req, res, next) {\n  res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().OK)).json(req.user);\n  return next();\n}\n\n//# sourceURL=webpack://backend/./src/modules/sponsors/sponsor.controller.js?");
-
-/***/ }),
-
-/***/ "./src/modules/sponsors/sponsor.model.js":
-/*!***********************************************!*\
-  !*** ./src/modules/sponsors/sponsor.model.js ***!
-  \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! validator */ \"validator\");\n/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _sponsor_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sponsor.validations */ \"./src/modules/sponsors/sponsor.validations.js\");\n/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jsonwebtoken */ \"jsonwebtoken\");\n/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _config_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/constants */ \"./src/config/constants.js\");\n\n\n\n\n\nvar SponsorSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0__.Schema({\n  type: {\n    type: String,\n    required: [true, 'Type is required!'],\n    trim: true,\n    unique: false\n  },\n  email: {\n    type: String,\n    unique: true,\n    required: [true, 'Email is required!'],\n    trim: true,\n    validate: {\n      validator: function validator(email) {\n        return validator__WEBPACK_IMPORTED_MODULE_1___default().isEmail(email);\n      },\n      message: '{VALUE} is not a valid email!'\n    }\n  },\n  firstName: {\n    type: String,\n    required: [true, 'FirstName is required!'],\n    trim: true\n  },\n  lastName: {\n    type: String,\n    required: [true, 'LastName is required!'],\n    trim: true\n  },\n  userName: {\n    type: String,\n    required: [true, 'UserName is required!'],\n    trim: true,\n    unique: true\n  },\n  password: {\n    type: String,\n    required: [true, 'Password is required!'],\n    trim: true,\n    minlength: [8, 'Password need to be longer!'],\n    validate: {\n      validator: function validator(password) {\n        return _sponsor_validations__WEBPACK_IMPORTED_MODULE_2__.passwordReg.test(password);\n      },\n      message: '{VALUE} is not a valid password!'\n    }\n  },\n  ads: {\n    type: String,\n    required: [false, 'You need to set up a ads Link'],\n    trim: true,\n    unique: false\n  },\n  cpf: {\n    type: String,\n    required: [false, 'You need to set up a CPF to your account'],\n    trim: true,\n    unique: true\n  },\n  tags: {\n    type: String,\n    required: [true, 'You need to set up a CPF to your account'],\n    trim: true,\n    unique: false\n  },\n  cnpj: {\n    type: String,\n    required: [false, 'You need to set up a CNPJ to your account'],\n    trim: true,\n    unique: true\n  }\n});\nSponsorSchema.pre('save', function (next) {\n  if (this.isModified('password')) {\n    this.password = this._hashPassword(this.password);\n  }\n\n  return next();\n});\nSponsorSchema.methods = {\n  _hashPassword: function _hashPassword(password) {\n    return hashSync(password);\n  },\n  authenticateUser: function authenticateUser(password) {\n    return compareSync(password, this.password);\n  }\n};\nSponsorSchema.methods = {\n  createToken: function createToken() {\n    return jsonwebtoken__WEBPACK_IMPORTED_MODULE_3___default().sign({\n      _id: this._id\n    }, _config_constants__WEBPACK_IMPORTED_MODULE_4__[\"default\"].JWT_SECRET);\n  },\n  toJSON: function toJSON() {\n    return {\n      _id: this._id,\n      userName: this.userName,\n      token: \"JWT \".concat(this.createToken())\n    };\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mongoose__WEBPACK_IMPORTED_MODULE_0___default().model('Sponsor', SponsorSchema));\n\n//# sourceURL=webpack://backend/./src/modules/sponsors/sponsor.model.js?");
-
-/***/ }),
-
-/***/ "./src/modules/sponsors/sponsor.routes.js":
-/*!************************************************!*\
-  !*** ./src/modules/sponsors/sponsor.routes.js ***!
-  \************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! express-validation */ \"express-validation\");\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(express_validation__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _sponsor_controller__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./sponsor.controller */ \"./src/modules/sponsors/sponsor.controller.js\");\n/* harmony import */ var _sponsor_validations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./sponsor.validations */ \"./src/modules/sponsors/sponsor.validations.js\");\n\n\n\n\nvar routes = new express__WEBPACK_IMPORTED_MODULE_0__.Router();\nroutes.post('/signup', express_validation__WEBPACK_IMPORTED_MODULE_1___default()(_sponsor_validations__WEBPACK_IMPORTED_MODULE_3__[\"default\"].signup), _sponsor_controller__WEBPACK_IMPORTED_MODULE_2__.signUp);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);\n\n//# sourceURL=webpack://backend/./src/modules/sponsors/sponsor.routes.js?");
-
-/***/ }),
-
-/***/ "./src/modules/sponsors/sponsor.validations.js":
-/*!*****************************************************!*\
-  !*** ./src/modules/sponsors/sponsor.validations.js ***!
-  \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"passwordReg\": () => (/* binding */ passwordReg)\n/* harmony export */ });\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! joi */ \"joi\");\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(joi__WEBPACK_IMPORTED_MODULE_0__);\n\nvar passwordReg = /(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  signup: {\n    type: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    email: joi__WEBPACK_IMPORTED_MODULE_0___default().string().email().required(),\n    password: joi__WEBPACK_IMPORTED_MODULE_0___default().string().regex(passwordReg).required(),\n    firstName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    lastName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    userName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    ads: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    cpf: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    tags: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    cnpj: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required()\n  }\n});\n\n//# sourceURL=webpack://backend/./src/modules/sponsors/sponsor.validations.js?");
-
-/***/ }),
-
-/***/ "./src/modules/streamers/streamer.controller.js":
-/*!******************************************************!*\
-  !*** ./src/modules/streamers/streamer.controller.js ***!
-  \******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"login\": () => (/* binding */ login),\n/* harmony export */   \"signUp\": () => (/* binding */ signUp)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\");\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _streamer_model__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./streamer.model */ \"./src/modules/streamers/streamer.model.js\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! http-status */ \"http-status\");\n/* harmony import */ var http_status__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(http_status__WEBPACK_IMPORTED_MODULE_3__);\n\n\n\n\nfunction signUp(_x, _x2) {\n  return _signUp.apply(this, arguments);\n}\n\nfunction _signUp() {\n  _signUp = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(req, res) {\n    var user;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.prev = 0;\n            _context.next = 3;\n            return _streamer_model__WEBPACK_IMPORTED_MODULE_2__[\"default\"].create(req.body);\n\n          case 3:\n            user = _context.sent;\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().CREATED)).json(user));\n\n          case 7:\n            _context.prev = 7;\n            _context.t0 = _context[\"catch\"](0);\n            return _context.abrupt(\"return\", res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().BAD_REQUEST)).json(_context.t0));\n\n          case 10:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, null, [[0, 7]]);\n  }));\n  return _signUp.apply(this, arguments);\n}\n\nfunction login(req, res, next) {\n  res.status((http_status__WEBPACK_IMPORTED_MODULE_3___default().OK)).json(req.user.toAuthJSON());\n  return next();\n}\n\n//# sourceURL=webpack://backend/./src/modules/streamers/streamer.controller.js?");
-
-/***/ }),
-
-/***/ "./src/modules/streamers/streamer.model.js":
-/*!*************************************************!*\
-  !*** ./src/modules/streamers/streamer.model.js ***!
-  \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! mongoose */ \"mongoose\");\n/* harmony import */ var mongoose__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(mongoose__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! validator */ \"validator\");\n/* harmony import */ var validator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(validator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _streamer_validations__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./streamer.validations */ \"./src/modules/streamers/streamer.validations.js\");\n/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! jsonwebtoken */ \"jsonwebtoken\");\n/* harmony import */ var jsonwebtoken__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(jsonwebtoken__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _config_constants__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../config/constants */ \"./src/config/constants.js\");\n\n\n\n\n\nvar StreamerSchema = new mongoose__WEBPACK_IMPORTED_MODULE_0__.Schema({\n  type: {\n    type: String,\n    required: [true, 'Type is required!'],\n    trim: true,\n    unique: false\n  },\n  email: {\n    type: String,\n    unique: true,\n    required: [true, 'Email is required!'],\n    trim: true,\n    validate: {\n      validator: function validator(email) {\n        return validator__WEBPACK_IMPORTED_MODULE_1___default().isEmail(email);\n      },\n      message: '{VALUE} is not a valid email!'\n    }\n  },\n  firstName: {\n    type: String,\n    required: [true, 'FirstName is required!'],\n    trim: true\n  },\n  lastName: {\n    type: String,\n    required: [true, 'LastName is required!'],\n    trim: true\n  },\n  userName: {\n    type: String,\n    required: [true, 'UserName is required!'],\n    trim: true,\n    unique: true\n  },\n  password: {\n    type: String,\n    required: [true, 'Password is required!'],\n    trim: true,\n    minlength: [8, 'Password need to be longer!'],\n    validate: {\n      validator: function validator(password) {\n        return _streamer_validations__WEBPACK_IMPORTED_MODULE_2__.passwordReg.test(password);\n      },\n      message: '{VALUE} is not a valid password!'\n    }\n  },\n  links: {\n    type: String,\n    required: [true, 'You need to set up a Stream Link'],\n    trim: true,\n    unique: false\n  },\n  cpf: {\n    type: String,\n    required: [true, 'You need to set up a CPF to your account'],\n    trim: true,\n    unique: true\n  },\n  tags: {\n    type: String,\n    required: [true, 'You need to set up a CPF to your account'],\n    trim: true,\n    unique: false\n  }\n});\nStreamerSchema.pre('save', function (next) {\n  if (this.isModified('password')) {\n    this.password = this._hashPassword(this.password);\n  }\n\n  return next();\n});\nStreamerSchema.methods = {\n  _hashPassword: function _hashPassword(password) {\n    return hashSync(password);\n  },\n  authenticateUser: function authenticateUser(password) {\n    return compareSync(password, this.password);\n  }\n};\nStreamerSchema.methods = {\n  createToken: function createToken() {\n    return jsonwebtoken__WEBPACK_IMPORTED_MODULE_3___default().sign({\n      _id: this._id\n    }, _config_constants__WEBPACK_IMPORTED_MODULE_4__[\"default\"].JWT_SECRET);\n  },\n  toJSON: function toJSON() {\n    return {\n      _id: this._id,\n      userName: this.userName\n    };\n  }\n};\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (mongoose__WEBPACK_IMPORTED_MODULE_0___default().model('Streamer', StreamerSchema));\n\n//# sourceURL=webpack://backend/./src/modules/streamers/streamer.model.js?");
-
-/***/ }),
-
-/***/ "./src/modules/streamers/streamer.routes.js":
-/*!**************************************************!*\
-  !*** ./src/modules/streamers/streamer.routes.js ***!
-  \**************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! express */ \"express\");\n/* harmony import */ var express__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(express__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _streamer_controller__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./streamer.controller */ \"./src/modules/streamers/streamer.controller.js\");\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! express-validation */ \"express-validation\");\n/* harmony import */ var express_validation__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(express_validation__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var _streamer_validations__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./streamer.validations */ \"./src/modules/streamers/streamer.validations.js\");\n/* harmony import */ var _services_auth_services__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/auth.services */ \"./src/services/auth.services.js\");\n\n\n\n\n\nvar routes = new express__WEBPACK_IMPORTED_MODULE_0__.Router();\nroutes.post('/signup', express_validation__WEBPACK_IMPORTED_MODULE_2___default()(_streamer_validations__WEBPACK_IMPORTED_MODULE_3__[\"default\"].signup), _streamer_controller__WEBPACK_IMPORTED_MODULE_1__.signUp);\nroutes.post('/login', _services_auth_services__WEBPACK_IMPORTED_MODULE_4__.authLocal, _streamer_controller__WEBPACK_IMPORTED_MODULE_1__.login);\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (routes);\n\n//# sourceURL=webpack://backend/./src/modules/streamers/streamer.routes.js?");
-
-/***/ }),
-
-/***/ "./src/modules/streamers/streamer.validations.js":
-/*!*******************************************************!*\
-  !*** ./src/modules/streamers/streamer.validations.js ***!
-  \*******************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__),\n/* harmony export */   \"passwordReg\": () => (/* binding */ passwordReg)\n/* harmony export */ });\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! joi */ \"joi\");\n/* harmony import */ var joi__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(joi__WEBPACK_IMPORTED_MODULE_0__);\n\nvar passwordReg = /(?=.*\\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({\n  signup: {\n    type: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    email: joi__WEBPACK_IMPORTED_MODULE_0___default().string().email().required(),\n    password: joi__WEBPACK_IMPORTED_MODULE_0___default().string().regex(passwordReg).required(),\n    firstName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    lastName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    userName: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    links: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    cpf: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required(),\n    tags: joi__WEBPACK_IMPORTED_MODULE_0___default().string().required()\n  }\n});\n\n//# sourceURL=webpack://backend/./src/modules/streamers/streamer.validations.js?");
-
-/***/ }),
-
-/***/ "./src/services/auth.services.js":
-/*!***************************************!*\
-  !*** ./src/services/auth.services.js ***!
-  \***************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
-
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"authJwt\": () => (/* binding */ authJwt),\n/* harmony export */   \"authLocal\": () => (/* binding */ authLocal)\n/* harmony export */ });\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/helpers/asyncToGenerator */ \"@babel/runtime/helpers/asyncToGenerator\");\n/* harmony import */ var _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @babel/runtime/regenerator */ \"@babel/runtime/regenerator\");\n/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var passport__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! passport */ \"passport\");\n/* harmony import */ var passport__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(passport__WEBPACK_IMPORTED_MODULE_2__);\n/* harmony import */ var passport_local__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! passport-local */ \"passport-local\");\n/* harmony import */ var passport_local__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(passport_local__WEBPACK_IMPORTED_MODULE_3__);\n/* harmony import */ var _modules_streamers_streamer_model__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../modules/streamers/streamer.model */ \"./src/modules/streamers/streamer.model.js\");\n/* harmony import */ var _modules_sponsors_sponsor_model__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../modules/sponsors/sponsor.model */ \"./src/modules/sponsors/sponsor.model.js\");\n/* harmony import */ var _modules_administrators_administrator_model__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../modules/administrators/administrator.model */ \"./src/modules/administrators/administrator.model.js\");\n/* harmony import */ var passport_jwt__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! passport-jwt */ \"passport-jwt\");\n/* harmony import */ var passport_jwt__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(passport_jwt__WEBPACK_IMPORTED_MODULE_7__);\n/* harmony import */ var _config_constants__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../config/constants */ \"./src/config/constants.js\");\n\n\n\n\n\n\n\n\n\nvar localOpts = {\n  usernameField: 'email'\n};\nvar jwtOpts = {\n  jwtFromRequest: passport_jwt__WEBPACK_IMPORTED_MODULE_7__.ExtractJwt.fromAuthHeaderWithScheme('authorization'),\n  secretOrKey: _config_constants__WEBPACK_IMPORTED_MODULE_8__[\"default\"].JWT_SECRET\n};\nvar localStrategy = new (passport_local__WEBPACK_IMPORTED_MODULE_3___default())(localOpts, /*#__PURE__*/function () {\n  var _ref = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee(email, password, done) {\n    var streamer, sponsor, administrator, user;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee$(_context) {\n      while (1) {\n        switch (_context.prev = _context.next) {\n          case 0:\n            _context.prev = 0;\n            _context.next = 3;\n            return User.findOne({\n              email: email\n            });\n\n          case 3:\n            streamer = _context.sent;\n            _context.next = 6;\n            return User.findOne({\n              email: email\n            });\n\n          case 6:\n            sponsor = _context.sent;\n            _context.next = 9;\n            return User.findOne({\n              email: email\n            });\n\n          case 9:\n            administrator = _context.sent;\n            user = !_modules_streamers_streamer_model__WEBPACK_IMPORTED_MODULE_4__[\"default\"] ? streamer : _modules_administrators_administrator_model__WEBPACK_IMPORTED_MODULE_6__[\"default\"] ? administrator : _modules_sponsors_sponsor_model__WEBPACK_IMPORTED_MODULE_5__[\"default\"] ? sponsor : undefined;\n\n            if (user) {\n              _context.next = 15;\n              break;\n            }\n\n            return _context.abrupt(\"return\", done(null, false));\n\n          case 15:\n            if (user.authenticateUser(password)) {\n              _context.next = 17;\n              break;\n            }\n\n            return _context.abrupt(\"return\", done(null, false));\n\n          case 17:\n            return _context.abrupt(\"return\", done(null, user));\n\n          case 20:\n            _context.prev = 20;\n            _context.t0 = _context[\"catch\"](0);\n            return _context.abrupt(\"return\", done(_context.t0, false));\n\n          case 23:\n          case \"end\":\n            return _context.stop();\n        }\n      }\n    }, _callee, null, [[0, 20]]);\n  }));\n\n  return function (_x, _x2, _x3) {\n    return _ref.apply(this, arguments);\n  };\n}());\nvar jwtStrategy = new passport_jwt__WEBPACK_IMPORTED_MODULE_7__.Strategy(jwtOpts, /*#__PURE__*/function () {\n  var _ref2 = _babel_runtime_helpers_asyncToGenerator__WEBPACK_IMPORTED_MODULE_0___default()( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().mark(function _callee2(payload, done) {\n    var streamer, sponsor, administrator, user;\n    return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_1___default().wrap(function _callee2$(_context2) {\n      while (1) {\n        switch (_context2.prev = _context2.next) {\n          case 0:\n            _context2.prev = 0;\n            _context2.next = 3;\n            return User.findOne({\n              email: email\n            });\n\n          case 3:\n            streamer = _context2.sent;\n            _context2.next = 6;\n            return User.findOne({\n              email: email\n            });\n\n          case 6:\n            sponsor = _context2.sent;\n            _context2.next = 9;\n            return User.findOne({\n              email: email\n            });\n\n          case 9:\n            administrator = _context2.sent;\n            user = !_modules_streamers_streamer_model__WEBPACK_IMPORTED_MODULE_4__[\"default\"] ? streamer : _modules_administrators_administrator_model__WEBPACK_IMPORTED_MODULE_6__[\"default\"] ? administrator : _modules_sponsors_sponsor_model__WEBPACK_IMPORTED_MODULE_5__[\"default\"] ? sponsor : undefined;\n\n            if (user) {\n              _context2.next = 13;\n              break;\n            }\n\n            return _context2.abrupt(\"return\", done(null, false));\n\n          case 13:\n            return _context2.abrupt(\"return\", done(null, user));\n\n          case 16:\n            _context2.prev = 16;\n            _context2.t0 = _context2[\"catch\"](0);\n            return _context2.abrupt(\"return\", done(_context2.t0, false));\n\n          case 19:\n          case \"end\":\n            return _context2.stop();\n        }\n      }\n    }, _callee2, null, [[0, 16]]);\n  }));\n\n  return function (_x4, _x5) {\n    return _ref2.apply(this, arguments);\n  };\n}());\npassport__WEBPACK_IMPORTED_MODULE_2___default().use(localStrategy);\npassport__WEBPACK_IMPORTED_MODULE_2___default().use(jwtStrategy);\nvar authLocal = passport__WEBPACK_IMPORTED_MODULE_2___default().authenticate('local', {\n  session: false\n});\nvar authJwt = passport__WEBPACK_IMPORTED_MODULE_2___default().authenticate('jwt', {\n  session: false\n});\n\n//# sourceURL=webpack://backend/./src/services/auth.services.js?");
-
-/***/ }),
-
-/***/ "@babel/runtime/helpers/asyncToGenerator":
-/*!**********************************************************!*\
-  !*** external "@babel/runtime/helpers/asyncToGenerator" ***!
-  \**********************************************************/
-/***/ ((module) => {
-
-module.exports = require("@babel/runtime/helpers/asyncToGenerator");
-
-/***/ }),
-
-/***/ "@babel/runtime/helpers/defineProperty":
-/*!********************************************************!*\
-  !*** external "@babel/runtime/helpers/defineProperty" ***!
-  \********************************************************/
-/***/ ((module) => {
-
-module.exports = require("@babel/runtime/helpers/defineProperty");
-
-/***/ }),
-
-/***/ "@babel/runtime/regenerator":
-/*!*********************************************!*\
-  !*** external "@babel/runtime/regenerator" ***!
-  \*********************************************/
-/***/ ((module) => {
-
-module.exports = require("@babel/runtime/regenerator");
-
-/***/ }),
-
-/***/ "body-parser":
-/*!******************************!*\
-  !*** external "body-parser" ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = require("body-parser");
-
-/***/ }),
-
-/***/ "compression":
-/*!******************************!*\
-  !*** external "compression" ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = require("compression");
-
-/***/ }),
-
-/***/ "express":
-/*!**************************!*\
-  !*** external "express" ***!
-  \**************************/
-/***/ ((module) => {
+/* 1 */
+/***/ (function(module, exports) {
 
 module.exports = require("express");
 
 /***/ }),
-
-/***/ "express-validation":
-/*!*************************************!*\
-  !*** external "express-validation" ***!
-  \*************************************/
-/***/ ((module) => {
-
-module.exports = require("express-validation");
-
-/***/ }),
-
-/***/ "helmet":
-/*!*************************!*\
-  !*** external "helmet" ***!
-  \*************************/
-/***/ ((module) => {
-
-module.exports = require("helmet");
-
-/***/ }),
-
-/***/ "http-status":
-/*!******************************!*\
-  !*** external "http-status" ***!
-  \******************************/
-/***/ ((module) => {
-
-module.exports = require("http-status");
-
-/***/ }),
-
-/***/ "joi":
-/*!**********************!*\
-  !*** external "joi" ***!
-  \**********************/
-/***/ ((module) => {
-
-module.exports = require("joi");
-
-/***/ }),
-
-/***/ "jsonwebtoken":
-/*!*******************************!*\
-  !*** external "jsonwebtoken" ***!
-  \*******************************/
-/***/ ((module) => {
-
-module.exports = require("jsonwebtoken");
-
-/***/ }),
-
-/***/ "mongoose":
-/*!***************************!*\
-  !*** external "mongoose" ***!
-  \***************************/
-/***/ ((module) => {
+/* 2 */
+/***/ (function(module, exports) {
 
 module.exports = require("mongoose");
 
 /***/ }),
+/* 3 */
+/***/ (function(module, exports) {
 
-/***/ "mongoose-unique-validator":
-/*!********************************************!*\
-  !*** external "mongoose-unique-validator" ***!
-  \********************************************/
-/***/ ((module) => {
+module.exports = require("express-validation");
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports) {
+
+module.exports = require("http-status");
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("joi");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+module.exports = require("bcrypt-nodejs");
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports) {
+
+module.exports = require("jsonwebtoken");
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports) {
+
+module.exports = require("validator");
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mongoose = __webpack_require__(2);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _validator = __webpack_require__(8);
+
+var _validator2 = _interopRequireDefault(_validator);
+
+var _jsonwebtoken = __webpack_require__(7);
+
+var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+
+var _administrator = __webpack_require__(10);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _bcryptNodejs = __webpack_require__(6);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const AdministratorSchema = new _mongoose.Schema({
+    type: {
+        type: String,
+        required: [true, 'Type is required!'],
+        trim: true,
+        unique: false
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: [true, 'Email is required!'],
+        trim: true,
+        validate: {
+            validator(email) {
+                return _validator2.default.isEmail(email);
+            },
+            message: '{VALUE} is not a valid email!'
+        }
+    },
+    firstName: {
+        type: String,
+        required: [true, 'FirstName is required!'],
+        trim: true
+    },
+    lastName: {
+        type: String,
+        required: [true, 'LastName is required!'],
+        trim: true
+    },
+    userName: {
+        type: String,
+        required: [true, 'UserName is required!'],
+        trim: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: [true, 'Password is required!'],
+        trim: true,
+        minlength: [8, 'Password need to be longer!'],
+        validate: {
+            validator(password) {
+                return _administrator.passwordReg.test(password);
+            },
+            message: '{VALUE} is not a valid password!'
+        }
+    }
+});
+AdministratorSchema.pre('save', function (next) {
+    if (this.isModified('password')) {
+        this.password = this._hashPassword(this.password);
+    }
+    return next();
+});
+AdministratorSchema.methods = {
+
+    createToken() {
+        return _jsonwebtoken2.default.sign({
+            _id: this._id
+        }, _constants2.default.JWT_SECRET);
+    },
+    toJSON() {
+        return {
+            _id: this._id,
+            userName: this.userName,
+            token: `JWT ${this.createToken()}`
+        };
+    }
+};
+AdministratorSchema.methods = {
+    _hashPassword(password) {
+        return (0, _bcryptNodejs.hashSync)(password);
+    },
+    authenticateUser(password) {
+        return (0, _bcryptNodejs.compareSync)(password, this.password);
+    },
+    createToken() {
+        return _jsonwebtoken2.default.sign({
+            _id: this._id
+        }, _constants2.default.JWT_SECRET);
+    },
+    toAuthJSON() {
+        return {
+            _id: this._id,
+            userName: this.userName,
+            token: `JWT ${this.createToken()}`
+        };
+    },
+    toJSON() {
+        return {
+            _id: this._id,
+            userName: this.userName
+        };
+    }
+};
+exports.default = _mongoose2.default.model('Administrator', AdministratorSchema);
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.passwordReg = undefined;
+
+var _joi = __webpack_require__(5);
+
+var _joi2 = _interopRequireDefault(_joi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const passwordReg = exports.passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+exports.default = {
+    signup: {
+        type: _joi2.default.string().required(),
+        email: _joi2.default.string().email().required(),
+        password: _joi2.default.string().regex(passwordReg).required(),
+        firstName: _joi2.default.string().required(),
+        lastName: _joi2.default.string().required(),
+        userName: _joi2.default.string().required()
+    }
+};
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mongoose = __webpack_require__(2);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _jsonwebtoken = __webpack_require__(7);
+
+var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+
+var _validator = __webpack_require__(8);
+
+var _validator2 = _interopRequireDefault(_validator);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _sponsor = __webpack_require__(12);
+
+var _bcryptNodejs = __webpack_require__(6);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const SponsorSchema = new _mongoose.Schema({
+    type: {
+        type: String,
+        required: [true, 'Type is required!'],
+        trim: true,
+        unique: false
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: [true, 'Email is required!'],
+        trim: true,
+        validate: {
+            validator(email) {
+                return _validator2.default.isEmail(email);
+            },
+            message: '{VALUE} is not a valid email!'
+        }
+    },
+    firstName: {
+        type: String,
+        required: [true, 'FirstName is required!'],
+        trim: true
+    },
+    lastName: {
+        type: String,
+        required: [true, 'LastName is required!'],
+        trim: true
+    },
+    userName: {
+        type: String,
+        required: [true, 'UserName is required!'],
+        trim: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: [true, 'Password is required!'],
+        trim: true,
+        minlength: [8, 'Password need to be longer!'],
+        validate: {
+            validator(password) {
+                return _sponsor.passwordReg.test(password);
+            },
+            message: '{VALUE} is not a valid password!'
+        }
+    },
+    ads: {
+        type: String,
+        required: [false, 'You need to set up a ads Link'],
+        trim: true,
+        unique: false
+    },
+    cpf: {
+        type: String,
+        required: [false, 'You need to set up a CPF to your account'],
+        trim: true,
+        unique: true
+    },
+    tags: {
+        type: String,
+        required: [true, 'You need to set up a CPF to your account'],
+        trim: true,
+        unique: false
+    },
+    cnpj: {
+        type: String,
+        required: [false, 'You need to set up a CNPJ to your account'],
+        trim: true,
+        unique: true
+    }
+});
+SponsorSchema.pre('save', function (next) {
+    if (this.isModified('password')) {
+        this.password = this._hashPassword(this.password);
+    }
+    return next();
+});
+SponsorSchema.methods = {
+    _hashPassword(password) {
+        return (0, _bcryptNodejs.hashSync)(password);
+    },
+    authenticateUser(password) {
+        return (0, _bcryptNodejs.compareSync)(password, this.password);
+    },
+    createToken() {
+        return _jsonwebtoken2.default.sign({
+            _id: this._id
+        }, _constants2.default.JWT_SECRET);
+    },
+    toAuthJSON() {
+        return {
+            _id: this._id,
+            userName: this.userName,
+            token: `JWT ${this.createToken()}`
+        };
+    },
+    toJSON() {
+        return {
+            _id: this._id,
+            userName: this.userName
+        };
+    }
+};
+
+exports.default = _mongoose2.default.model('Sponsor', SponsorSchema);
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+   value: true
+});
+exports.passwordReg = undefined;
+
+var _joi = __webpack_require__(5);
+
+var _joi2 = _interopRequireDefault(_joi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const passwordReg = exports.passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+exports.default = {
+   signup: {
+      type: _joi2.default.string().required(),
+      email: _joi2.default.string().email().required(),
+      password: _joi2.default.string().regex(passwordReg).required(),
+      firstName: _joi2.default.string().required(),
+      lastName: _joi2.default.string().required(),
+      userName: _joi2.default.string().required(),
+      ads: _joi2.default.string().required(),
+      cpf: _joi2.default.string().required(),
+      tags: _joi2.default.string().required(),
+      cnpj: _joi2.default.string().required()
+   }
+};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mongoose = __webpack_require__(2);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _validator = __webpack_require__(8);
+
+var _validator2 = _interopRequireDefault(_validator);
+
+var _streamer = __webpack_require__(14);
+
+var _jsonwebtoken = __webpack_require__(7);
+
+var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+var _mongooseUniqueValidator = __webpack_require__(16);
+
+var _mongooseUniqueValidator2 = _interopRequireDefault(_mongooseUniqueValidator);
+
+var _bcryptNodejs = __webpack_require__(6);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const StreamerSchema = new _mongoose.Schema({
+    type: {
+        type: String,
+        required: [true, 'Type is required!'],
+        trim: true,
+        unique: false
+    },
+    email: {
+        type: String,
+        unique: true,
+        required: [true, 'Email is required!'],
+        trim: true,
+        validate: {
+            validator(email) {
+                return _validator2.default.isEmail(email);
+            },
+            message: '{VALUE} is not a valid email!'
+        }
+    },
+    firstName: {
+        type: String,
+        required: [true, 'FirstName is required!'],
+        trim: true
+    },
+    lastName: {
+        type: String,
+        required: [true, 'LastName is required!'],
+        trim: true
+    },
+    userName: {
+        type: String,
+        required: [true, 'UserName is required!'],
+        trim: true,
+        unique: true
+    },
+    password: {
+        type: String,
+        required: [true, 'Password is required!'],
+        trim: true,
+        minlength: [8, 'Password need to be longer!'],
+        validate: {
+            validator(password) {
+                return _streamer.passwordReg.test(password);
+            },
+            message: '{VALUE} is not a valid password!'
+        }
+    },
+    links: {
+        type: String,
+        required: [true, 'You need to set up a Stream Link'],
+        trim: true,
+        unique: false
+    },
+    cpf: {
+        type: String,
+        required: [true, 'You need to set up a CPF to your account'],
+        trim: true,
+        unique: true
+    },
+    tags: {
+        type: String,
+        required: [true, 'You need to set up a CPF to your account'],
+        trim: true,
+        unique: false
+    }
+});
+StreamerSchema.pre('save', function (next) {
+    if (this.isModified('password')) {
+        this.password = this._hashPassword(this.password);
+    }
+    return next();
+});
+StreamerSchema.plugin(_mongooseUniqueValidator2.default, {
+    message: '{VALUE} already taken!'
+});
+
+StreamerSchema.methods = {
+    _hashPassword(password) {
+        return (0, _bcryptNodejs.hashSync)(password);
+    },
+    authenticateUser(password) {
+        return (0, _bcryptNodejs.compareSync)(password, this.password);
+    }
+};
+StreamerSchema.methods = {
+    _hashPassword(password) {
+        return (0, _bcryptNodejs.hashSync)(password);
+    },
+    authenticateUser(password) {
+        return (0, _bcryptNodejs.compareSync)(password, this.password);
+    },
+    createToken() {
+        return _jsonwebtoken2.default.sign({
+            _id: this._id
+        }, _constants2.default.JWT_SECRET);
+    },
+    toAuthJSON() {
+        return {
+            _id: this._id,
+            userName: this.userName,
+            token: `JWT ${this.createToken()}`
+        };
+    },
+    toJSON() {
+        return {
+            _id: this._id,
+            userName: this.userName
+        };
+    }
+};
+
+exports.default = _mongoose2.default.model('Streamers', StreamerSchema);
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.passwordReg = undefined;
+
+var _joi = __webpack_require__(5);
+
+var _joi2 = _interopRequireDefault(_joi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const passwordReg = exports.passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+exports.default = {
+    signup: {
+        type: _joi2.default.string().required(),
+        email: _joi2.default.string().email().required(),
+        password: _joi2.default.string().regex(passwordReg).required(),
+        firstName: _joi2.default.string().required(),
+        lastName: _joi2.default.string().required(),
+        userName: _joi2.default.string().required(),
+        links: _joi2.default.string().required(),
+        cpf: _joi2.default.string().required(),
+        tags: _joi2.default.string().required()
+    }
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.authJwt = exports.authLocal = undefined;
+
+var _passport = __webpack_require__(17);
+
+var _passport2 = _interopRequireDefault(_passport);
+
+var _passportLocal = __webpack_require__(37);
+
+var _passportLocal2 = _interopRequireDefault(_passportLocal);
+
+var _passportJwt = __webpack_require__(36);
+
+var _streamer = __webpack_require__(13);
+
+var _streamer2 = _interopRequireDefault(_streamer);
+
+var _sponsor = __webpack_require__(11);
+
+var _sponsor2 = _interopRequireDefault(_sponsor);
+
+var _administrator = __webpack_require__(9);
+
+var _administrator2 = _interopRequireDefault(_administrator);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const localOpts = {
+  usernameField: 'email'
+};
+
+const localStrategy = new _passportLocal2.default(localOpts, async (email, password, done) => {
+  try {
+    let found = false;
+    const streamer = await _streamer2.default.findOne({ email });
+    const sponsor = await _sponsor2.default.findOne({ email });
+    const administrator = await _administrator2.default.findOne({ email });
+    [streamer, sponsor, administrator].forEach(item => {
+      if (!item) {
+        found = false;
+      } else {
+        found = true;
+      }
+      if (found) {
+        if (!item.authenticateUser(password)) {
+          return done(null, false);
+        } else {
+          return done(null, item);
+        }
+      }
+    });
+    return done(null, false);
+  } catch (e) {
+    return done(e, false);
+  }
+});
+
+const jwtOpts = {
+  jwtFromRequest: _passportJwt.ExtractJwt.fromAuthHeader('authorization'),
+  secretOrKey: _constants2.default.JWT_SECRET
+};
+
+const jwtStrategy = new _passportJwt.Strategy(jwtOpts, async (payload, done) => {
+  try {
+    let found = false;
+    const streamer = await _streamer2.default.findById(payload.id);
+    const sponsor = await _sponsor2.default.findById(payload.id);
+    const administrator = await _administrator2.default.findById(payload.id);
+    [streamer, sponsor, administrator].forEach(item => {
+      if (!item) found = false;else return done(null, item);
+    });
+    return done(null, false);
+  } catch (e) {
+    return done(e, false);
+  }
+});
+
+_passport2.default.use(localStrategy);
+_passport2.default.use(jwtStrategy);
+
+const authLocal = exports.authLocal = _passport2.default.authenticate('local', { session: false });
+const authJwt = exports.authJwt = _passport2.default.authenticate('jwt', { session: false });
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports) {
 
 module.exports = require("mongoose-unique-validator");
 
 /***/ }),
-
-/***/ "morgan":
-/*!*************************!*\
-  !*** external "morgan" ***!
-  \*************************/
-/***/ ((module) => {
-
-module.exports = require("morgan");
-
-/***/ }),
-
-/***/ "passport":
-/*!***************************!*\
-  !*** external "passport" ***!
-  \***************************/
-/***/ ((module) => {
+/* 17 */
+/***/ (function(module, exports) {
 
 module.exports = require("passport");
 
 /***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
 
-/***/ "passport-jwt":
-/*!*******************************!*\
-  !*** external "passport-jwt" ***!
-  \*******************************/
-/***/ ((module) => {
+"use strict";
+
+
+var _mongoose = __webpack_require__(2);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_mongoose2.default.Promise = global.Promise;
+
+try {
+  _mongoose2.default.connect(_constants2.default.MONGO_URL);
+} catch (err) {
+  _mongoose2.default.createConnection(_constants2.default.MONGO_URL);
+}
+
+_mongoose2.default.connection.once('open', () => console.log('MongoDB Running')).on('error', e => {
+  throw e;
+});
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _morgan = __webpack_require__(35);
+
+var _morgan2 = _interopRequireDefault(_morgan);
+
+var _bodyParser = __webpack_require__(32);
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+var _compression = __webpack_require__(33);
+
+var _compression2 = _interopRequireDefault(_compression);
+
+var _helmet = __webpack_require__(34);
+
+var _helmet2 = _interopRequireDefault(_helmet);
+
+var _passport = __webpack_require__(17);
+
+var _passport2 = _interopRequireDefault(_passport);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = process.env.NODE_ENV === 'production';
+
+exports.default = app => {
+  if (isProd) {
+    app.use((0, _compression2.default)());
+    app.use((0, _helmet2.default)());
+  }
+
+  app.use(_bodyParser2.default.json());
+  app.use(_bodyParser2.default.urlencoded({ extended: true }));
+  app.use(_passport2.default.initialize());
+
+  if (isDev) {
+    app.use((0, _morgan2.default)('dev'));
+  }
+};
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _streamer = __webpack_require__(31);
+
+var _streamer2 = _interopRequireDefault(_streamer);
+
+var _sponsor = __webpack_require__(29);
+
+var _sponsor2 = _interopRequireDefault(_sponsor);
+
+var _administrator = __webpack_require__(23);
+
+var _administrator2 = _interopRequireDefault(_administrator);
+
+var _advertsement = __webpack_require__(26);
+
+var _advertsement2 = _interopRequireDefault(_advertsement);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = app => {
+  app.use('/api/v1/streamers', _streamer2.default);
+  app.use('/api/v1/sponsors', _sponsor2.default);
+  app.use('/api/v1/adminstrators', _administrator2.default);
+  app.use('/api/v1/sponsors/ads', _advertsement2.default);
+};
+
+/***/ }),
+/* 21 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _express = __webpack_require__(1);
+
+var _express2 = _interopRequireDefault(_express);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+__webpack_require__(18);
+
+var _middlewares = __webpack_require__(19);
+
+var _middlewares2 = _interopRequireDefault(_middlewares);
+
+var _modules = __webpack_require__(20);
+
+var _modules2 = _interopRequireDefault(_modules);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const app = (0, _express2.default)(); /* eslint-disable no-console */
+
+(0, _middlewares2.default)(app);
+(0, _modules2.default)(app);
+
+app.listen(_constants2.default.PORT, err => {
+  if (err) {
+    throw err;
+  } else {
+    console.log(`
+      Server running on port: ${_constants2.default.PORT}
+      ---
+    `);
+  }
+});
+
+/***/ }),
+/* 22 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.signUp = signUp;
+exports.login = login;
+
+var _administrator = __webpack_require__(9);
+
+var _administrator2 = _interopRequireDefault(_administrator);
+
+var _httpStatus = __webpack_require__(4);
+
+var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+async function signUp(req, res) {
+    try {
+        const user = await _administrator2.default.create(req.body);
+        return res.status(_httpStatus2.default.CREATED).json(user);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+function login(req, res, next) {
+    res.status(_httpStatus2.default.OK).json(req.user);
+    return next();
+}
+
+/***/ }),
+/* 23 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _express = __webpack_require__(1);
+
+var _administrator = __webpack_require__(22);
+
+var administratorController = _interopRequireWildcard(_administrator);
+
+var _expressValidation = __webpack_require__(3);
+
+var _expressValidation2 = _interopRequireDefault(_expressValidation);
+
+var _administrator2 = __webpack_require__(10);
+
+var _administrator3 = _interopRequireDefault(_administrator2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+const routes = new _express.Router();
+
+routes.post('/signup', (0, _expressValidation2.default)(_administrator3.default.signup), administratorController.signUp);
+exports.default = routes;
+
+/***/ }),
+/* 24 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.createAds = createAds;
+exports.getAdById = getAdById;
+exports.getAdsList = getAdsList;
+exports.updateAd = updateAd;
+exports.deleteAd = deleteAd;
+
+var _advertsement = __webpack_require__(25);
+
+var _advertsement2 = _interopRequireDefault(_advertsement);
+
+var _httpStatus = __webpack_require__(4);
+
+var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+async function createAds(req, res) {
+    try {
+        const Ad = await _advertsement2.default.createAds(req.body, req.user._id);
+        return res.status(_httpStatus2.default.CREATED).json(Ad.toAuthJSON());
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+
+async function getAdById(req, res) {
+    try {
+        const Ad = await _advertsement2.default.findById(req.params.id);
+        return res.status(_httpStatus2.default.OK).json(Ad.toAuthJSON());
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+async function getAdsList(req, res) {
+    const limit = parseInt(req.query.limit, 0);
+    const skip = parseInt(req.query.skip, 0);
+    try {
+        const Ads = await _advertsement2.default.list({ limit, skip });
+        return res.status(_httpStatus2.default.OK).json(Ads.toAuthJSON());
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+async function updateAd(req, res) {
+    try {
+        const Ad = await _advertsement2.default.findById(req.params.id);
+        if (!Ad.user.equals(req.user._id)) {
+            return res.sendStatus(_httpStatus2.default.UNAUTHORIZED);
+        }
+
+        Object.keys(req.body).forEach(key => {
+            Ad[key] = req.body[key];
+        });
+
+        return res.status(_httpStatus2.default.OK).json((await Ad.save()));
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+async function deleteAd(req, res) {
+    try {
+        const Ad = await _advertsement2.default.findById(req.params.id);
+
+        if (!Ad.user.equals(req.user._id)) {
+            return res.sendStatus(_httpStatus2.default.UNAUTHORIZED);
+        }
+
+        await Ad.remove();
+        return res.sendStatus(_httpStatus2.default.OK);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+
+/***/ }),
+/* 25 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mongoose = __webpack_require__(2);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _slug = __webpack_require__(38);
+
+var _slug2 = _interopRequireDefault(_slug);
+
+var _mongooseUniqueValidator = __webpack_require__(16);
+
+var _mongooseUniqueValidator2 = _interopRequireDefault(_mongooseUniqueValidator);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const AdSchema = new _mongoose.Schema({
+    title: {
+        type: String,
+        trim: true,
+        required: [true, 'Title   is required!'],
+        minlength: [3, 'Title   need to be longer!'],
+        unique: true
+    },
+    text: {
+        type: String,
+        trim: true,
+        required: [true, 'Text   is required!'],
+        minlength: [10, 'Text   need to be longer!']
+    },
+    user: {
+        type: _mongoose.Schema.Types.ObjectId,
+        ref: 'Sponsor'
+    },
+    fileURL: {
+        type: String,
+        trim: true,
+        required: [true, 'File is required!']
+    },
+    startDate: {
+        type: Date,
+        trim: true,
+        required: [true, 'Start Date is required!']
+    },
+    endDate: {
+        type: Date,
+        trim: true,
+        required: [true, 'End Date is required!']
+    },
+    startHour: {
+        type: Date,
+        trim: true,
+        required: [false, 'Start Hour is required!']
+    },
+    tags: {
+        type: String,
+        trim: true,
+        required: [false, 'Tags Hour is required!']
+    },
+    value: {
+        type: Number,
+        trim: true,
+        required: [true, 'Value is required!']
+    },
+    slug: {
+        type: String,
+        trim: true,
+        lowercase: true
+    }
+}, { timestamps: true });
+
+AdSchema.plugin(_mongooseUniqueValidator2.default, {
+    message: '{VALUE} already taken!'
+});
+
+AdSchema.pre('validate', function (next) {
+    this._slugify();
+
+    next();
+});
+
+AdSchema.methods = {
+    _slugify() {
+        this.slug = (0, _slug2.default)(this.title);
+    }
+};
+AdSchema.statics = {
+    createAds(args, user) {
+        return this.create(Object.assign({}, args, {
+            user
+        }));
+    },
+    list({ skip = 0, limit = 5 } = {}) {
+        return this.find().sort({ createdAt: -1 }).skip(skip).limit(limit).populate('sponsor');
+    }
+};
+
+exports.default = _mongoose2.default.model('Advertsement', AdSchema);
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _express = __webpack_require__(1);
+
+var _expressValidation = __webpack_require__(3);
+
+var _expressValidation2 = _interopRequireDefault(_expressValidation);
+
+var _advertsement = __webpack_require__(24);
+
+var adController = _interopRequireWildcard(_advertsement);
+
+var _auth = __webpack_require__(15);
+
+var _advertsement2 = __webpack_require__(27);
+
+var _advertsement3 = _interopRequireDefault(_advertsement2);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const routes = new _express.Router();
+routes.post('/', _auth.authJwt, (0, _expressValidation2.default)(_advertsement3.default.createAds), adController.createAds);
+routes.patch('/:id', _auth.authJwt, (0, _expressValidation2.default)(_advertsement3.default.updateAd), adController.updateAd);
+routes.delete('/:id', _auth.authJwt, adController.deleteAd);
+routes.get('/:id', adController.getAdById);
+routes.get('/', adController.getAdsList);
+exports.default = routes;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.passwordReg = undefined;
+
+var _joi = __webpack_require__(5);
+
+var _joi2 = _interopRequireDefault(_joi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const passwordReg = exports.passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+exports.default = {
+    createAds: {
+        body: {
+            user: _joi2.default.string(),
+            title: _joi2.default.string().required(),
+            text: _joi2.default.string().required(),
+            fileURL: _joi2.default.string().required(),
+            startDate: _joi2.default.string().required(),
+            endDate: _joi2.default.string().required(),
+            startHour: _joi2.default.string(),
+            tags: _joi2.default.string(),
+            value: _joi2.default.number().required(),
+            slug: _joi2.default.string()
+        }
+    },
+    updateAd: {
+        body: {
+            user: _joi2.default.string(),
+            title: _joi2.default.string(),
+            text: _joi2.default.string(),
+            fileURL: _joi2.default.string(),
+            startDate: _joi2.default.string(),
+            endDate: _joi2.default.string(),
+            startHour: _joi2.default.string(),
+            tags: _joi2.default.string(),
+            value: _joi2.default.number(),
+            slug: _joi2.default.string()
+        }
+    }
+};
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.signUp = signUp;
+exports.login = login;
+
+var _sponsor = __webpack_require__(11);
+
+var _sponsor2 = _interopRequireDefault(_sponsor);
+
+var _httpStatus = __webpack_require__(4);
+
+var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+async function signUp(req, res) {
+    try {
+        const user = await _sponsor2.default.create(req.body);
+        return res.status(_httpStatus2.default.CREATED).json(user);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+
+function login(req, res, next) {
+    res.status(_httpStatus2.default.OK).json(req.user);
+    return next();
+}
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _express = __webpack_require__(1);
+
+var _expressValidation = __webpack_require__(3);
+
+var _expressValidation2 = _interopRequireDefault(_expressValidation);
+
+var _sponsor = __webpack_require__(28);
+
+var sponsorController = _interopRequireWildcard(_sponsor);
+
+var _sponsor2 = __webpack_require__(12);
+
+var _sponsor3 = _interopRequireDefault(_sponsor2);
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const routes = new _express.Router();
+
+routes.post('/signup', (0, _expressValidation2.default)(_sponsor3.default.signup), sponsorController.signUp);
+exports.default = routes;
+
+/***/ }),
+/* 30 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.signUp = signUp;
+exports.login = login;
+
+var _httpStatus = __webpack_require__(4);
+
+var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+var _streamer = __webpack_require__(13);
+
+var _streamer2 = _interopRequireDefault(_streamer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+async function signUp(req, res) {
+    try {
+        const user = await _streamer2.default.create(req.body);
+        return res.status(_httpStatus2.default.CREATED).json(user.toAuthJSON());
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+function login(req, res, next) {
+    res.status(_httpStatus2.default.OK).json(req.user.toAuthJSON());
+    return next();
+}
+
+/***/ }),
+/* 31 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _express = __webpack_require__(1);
+
+var _streamer = __webpack_require__(30);
+
+var streamerController = _interopRequireWildcard(_streamer);
+
+var _expressValidation = __webpack_require__(3);
+
+var _expressValidation2 = _interopRequireDefault(_expressValidation);
+
+var _streamer2 = __webpack_require__(14);
+
+var _streamer3 = _interopRequireDefault(_streamer2);
+
+var _auth = __webpack_require__(15);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+const routes = new _express.Router();
+
+routes.post('/signup', (0, _expressValidation2.default)(_streamer3.default.signup), streamerController.signUp);
+routes.post('/login', _auth.authLocal, streamerController.login);
+
+exports.default = routes;
+
+/***/ }),
+/* 32 */
+/***/ (function(module, exports) {
+
+module.exports = require("body-parser");
+
+/***/ }),
+/* 33 */
+/***/ (function(module, exports) {
+
+module.exports = require("compression");
+
+/***/ }),
+/* 34 */
+/***/ (function(module, exports) {
+
+module.exports = require("helmet");
+
+/***/ }),
+/* 35 */
+/***/ (function(module, exports) {
+
+module.exports = require("morgan");
+
+/***/ }),
+/* 36 */
+/***/ (function(module, exports) {
 
 module.exports = require("passport-jwt");
 
 /***/ }),
-
-/***/ "passport-local":
-/*!*********************************!*\
-  !*** external "passport-local" ***!
-  \*********************************/
-/***/ ((module) => {
+/* 37 */
+/***/ (function(module, exports) {
 
 module.exports = require("passport-local");
 
 /***/ }),
-
-/***/ "slug":
-/*!***********************!*\
-  !*** external "slug" ***!
-  \***********************/
-/***/ ((module) => {
+/* 38 */
+/***/ (function(module, exports) {
 
 module.exports = require("slug");
 
-/***/ }),
-
-/***/ "validator":
-/*!****************************!*\
-  !*** external "validator" ***!
-  \****************************/
-/***/ ((module) => {
-
-module.exports = require("validator");
-
 /***/ })
-
-/******/ 	});
-/************************************************************************/
-/******/ 	// The module cache
-/******/ 	var __webpack_module_cache__ = {};
-/******/ 	
-/******/ 	// The require function
-/******/ 	function __webpack_require__(moduleId) {
-/******/ 		// Check if module is in cache
-/******/ 		var cachedModule = __webpack_module_cache__[moduleId];
-/******/ 		if (cachedModule !== undefined) {
-/******/ 			return cachedModule.exports;
-/******/ 		}
-/******/ 		// Create a new module (and put it into the cache)
-/******/ 		var module = __webpack_module_cache__[moduleId] = {
-/******/ 			// no module.id needed
-/******/ 			// no module.loaded needed
-/******/ 			exports: {}
-/******/ 		};
-/******/ 	
-/******/ 		// Execute the module function
-/******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
-/******/ 	
-/******/ 		// Return the exports of the module
-/******/ 		return module.exports;
-/******/ 	}
-/******/ 	
-/************************************************************************/
-/******/ 	/* webpack/runtime/compat get default export */
-/******/ 	(() => {
-/******/ 		// getDefaultExport function for compatibility with non-harmony modules
-/******/ 		__webpack_require__.n = (module) => {
-/******/ 			var getter = module && module.__esModule ?
-/******/ 				() => (module['default']) :
-/******/ 				() => (module);
-/******/ 			__webpack_require__.d(getter, { a: getter });
-/******/ 			return getter;
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/define property getters */
-/******/ 	(() => {
-/******/ 		// define getter functions for harmony exports
-/******/ 		__webpack_require__.d = (exports, definition) => {
-/******/ 			for(var key in definition) {
-/******/ 				if(__webpack_require__.o(definition, key) && !__webpack_require__.o(exports, key)) {
-/******/ 					Object.defineProperty(exports, key, { enumerable: true, get: definition[key] });
-/******/ 				}
-/******/ 			}
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/hasOwnProperty shorthand */
-/******/ 	(() => {
-/******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
-/******/ 	})();
-/******/ 	
-/******/ 	/* webpack/runtime/make namespace object */
-/******/ 	(() => {
-/******/ 		// define __esModule on exports
-/******/ 		__webpack_require__.r = (exports) => {
-/******/ 			if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
-/******/ 				Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
-/******/ 			}
-/******/ 			Object.defineProperty(exports, '__esModule', { value: true });
-/******/ 		};
-/******/ 	})();
-/******/ 	
-/************************************************************************/
-/******/ 	
-/******/ 	// startup
-/******/ 	// Load entry module and return exports
-/******/ 	// This entry module can't be inlined because the eval devtool is used.
-/******/ 	var __webpack_exports__ = __webpack_require__("./src/index.js");
-/******/ 	module.exports = __webpack_exports__;
-/******/ 	
-/******/ })()
-;
+/******/ ]);
