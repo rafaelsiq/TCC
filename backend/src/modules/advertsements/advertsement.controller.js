@@ -4,7 +4,7 @@ import HTTPStatus from 'http-status';
 export async function createAds(req, res) {
     try {
         const Ad = await Advertsement.createAds(req.body, req.user._id);
-        return res.status(HTTPStatus.CREATED).json(Ad);
+        return res.status(HTTPStatus.CREATED).json(Ad.toAuthJSON());
     } catch (e) {
         return res.status(HTTPStatus.BAD_REQUEST).json(e);
     }
@@ -13,7 +13,7 @@ export async function createAds(req, res) {
 export async function getAdById(req, res) {
     try {
         const Ad = await Advertsement.findById(req.params.id);
-        return res.status(HTTPStatus.OK).json(Ad);
+        return res.status(HTTPStatus.OK).json(Ad.toAuthJSON());
     } catch (e) {
         return res.status(HTTPStatus.BAD_REQUEST).json(e);
     }
@@ -23,7 +23,7 @@ export async function getAdsList(req, res) {
     const skip = parseInt(req.query.skip, 0);
     try {
         const Ads = await Advertsement.list({ limit, skip });
-        return res.status(HTTPStatus.OK).json(Ads);
+        return res.status(HTTPStatus.OK).json(Ads.toAuthJSON());
     } catch (e) {
         return res.status(HTTPStatus.BAD_REQUEST).json(e);
     }

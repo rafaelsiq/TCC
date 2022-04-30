@@ -1,6 +1,7 @@
 import mongoose, { Schema } from 'mongoose';
 import slug from 'slug';
 import uniqueValidator from 'mongoose-unique-validator';
+
 const AdSchema = new Schema({
     title: {
         type: String,

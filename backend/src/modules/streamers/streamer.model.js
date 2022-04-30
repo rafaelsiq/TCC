@@ -3,6 +3,8 @@ import validator from 'validator';
 import { passwordReg } from './streamer.validations';
 import jwt from 'jsonwebtoken';
 import constants from '../../config/constants';
+import uniqueValidator from 'mongoose-unique-validator';
+import { hashSync, compareSync } from 'bcrypt-nodejs';
 
 const StreamerSchema = new Schema({
     type: {
@@ -76,29 +78,46 @@ StreamerSchema.pre('save', function (next) {
     }
     return next();
 });
+StreamerSchema.plugin(uniqueValidator, {
+    message: '{VALUE} already taken!',
+});
+
 StreamerSchema.methods = {
     _hashPassword(password) {
         return hashSync(password);
     },
     authenticateUser(password) {
-        return compareSync(password, this.password);
+        return compareSync  (password, this.password);
     },
 };
 StreamerSchema.methods = {
-
+    _hashPassword(password) {
+      return hashSync(password);
+    },
+    authenticateUser(password) {
+      return compareSync(password, this.password);
+    },
     createToken() {
-        return jwt.sign(
-            {
-                _id: this._id,
-            },
-            constants.JWT_SECRET,
-        );
+      return jwt.sign(
+        {
+          _id: this._id,
+        },
+        constants.JWT_SECRET,
+      );
+    },
+    toAuthJSON() {
+      return {
+        _id: this._id,
+        userName: this.userName,
+        token: `JWT ${this.createToken()}`,
+      };
     },
     toJSON() {
-        return {
-            _id: this._id,
-            userName: this.userName,
-        };
-    },
-};
-export default mongoose.model('Streamer', StreamerSchema);
+      return {
+        _id: this._id,
+        userName: this.userName,
+      };
+    }
+  };
+
+export default mongoose.model('Streamers', StreamerSchema);
