@@ -16,22 +16,20 @@ const localStrategy = new LocalStrategy(
   localOpts,
   async (email, password, done) => {
     try {
-      let found = false;
       const streamer = await Streamer.findOne({ email });
       const sponsor = await Sponsor.findOne({ email });
       const administrator = await Administrator.findOne({ email });
+      let user = null;
       [streamer, sponsor, administrator].forEach(item => {
-        if (!item) {
-          found = false
-        } else {
-          found = true
-        }
-        if (found) {
-          if (!item.authenticateUser(password)) { return done(null, false) }
-          else { return done(null, item) }
+        if (item != null) {
+          user = item;
         }
       })
-      return done(null, false)
+      if (!user) {
+        return done(null, false)
+      } else
+        if (!user.authenticateUser(password)) { return done(null, false) }
+        else { return done(null, user) }
     } catch (e) {
       return done(e, false);
     }
@@ -45,17 +43,16 @@ const jwtOpts = {
 
 const jwtStrategy = new JWTStrategy(jwtOpts, async (payload, done) => {
   try {
-    let found = false;
     const streamer = await Streamer.findById(payload.id);
     const sponsor = await Sponsor.findById(payload.id);
     const administrator = await Administrator.findById(payload.id);
+    let user = null;
     [streamer, sponsor, administrator].forEach(item => {
-      if (!item)
-        found = false;
-      else
-        return done(null, item);
+      if (item != null)
+        user = item;
     })
-    return done(null, false);
+    if (!user) { return done(null, false) }
+    else { return done(null, user) }
   } catch (e) {
     return done(e, false);
   }

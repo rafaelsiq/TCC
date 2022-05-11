@@ -1,4 +1,5 @@
 {
+    "baseURL":"http://localhost:3000/",
     "loginLabel":"Login",
     "singUpLabel":"Sing Up",
     "userNameLabel":"UserName",

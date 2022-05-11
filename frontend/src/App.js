@@ -1,9 +1,16 @@
 import './App.css';
-import Router  from './global/RouterFile/Routes';
+import Router from './global/Routers/Routes';
+import React from 'react';
+import GlobalContext from './contexts/index'
+
 
 function App() {
   return (
-    <Router className="App"  />
+
+    <GlobalContext>
+      <Router className="App" />
+    </GlobalContext>
+
   );
 }
 

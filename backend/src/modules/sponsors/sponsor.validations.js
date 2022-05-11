@@ -8,9 +8,9 @@ import Joi from 'joi';
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
         userName: Joi.string().required(),
-        ads: Joi.string().required(),
-        cpf: Joi.string().required(),
-        tags: Joi.string().required(),
-        cnpj: Joi.string().required(),
+        ads: Joi.string(),
+        cpf: Joi.string(),
+        tags: Joi.string(),
+        cnpj: Joi.string(),
      },
  };
