@@ -68,7 +68,7 @@ const SponsorSchema = new Schema({
     },
     tags:{
         type: String,
-        required: [true, 'You need to set up a CPF to your account'],
+        required: [false, 'You need to set up a CPF to your account'],
         trim: true,
         unique: false,
     },

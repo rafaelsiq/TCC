@@ -1,7 +1,14 @@
 import Button from '../../atoms/button/button';
 import './home-header.css';
-import routers from '../../../global/Routes.json'
-function homeHeader() {
+import routers from '../../../global/Routers/routers.json'
+import React from 'react';
+import homePage from '../../../constants/homePage.json'
+import { useContext } from "react";
+import UserContext from "../../../contexts/user";
+
+function HomeHeader() {
+  const state = useContext(UserContext).state
+
   return (
     <div className="home-header">
       <div id='left'>
@@ -9,7 +16,7 @@ function homeHeader() {
           label='Home'
           type='header'
           style={{
-            "font-size": "20px"
+            fontSize: "20px"
           }}
           to={routers.home}
         ></Button>
@@ -19,7 +26,7 @@ function homeHeader() {
           label='Downloads'
           type='header'
           style={{
-            "font-size": "20px"
+            fontSize: "20px"
           }}
           to={routers.download}
         ></Button>
@@ -27,7 +34,7 @@ function homeHeader() {
           label='Reports'
           type='header'
           style={{
-            "font-size": "20px"
+            fontSize: "20px"
           }}
           to={routers.reports}
         ></Button>
@@ -35,21 +42,21 @@ function homeHeader() {
           label='Menu'
           type='header'
           style={{
-            "font-size": "20px"
+            fontSize: "20px"
           }}
           to={routers.menu}
         ></Button>
         <Button
-          label='Log Out'
+          label={!state.id ? homePage.login : homePage.logout}
           type='header'
           style={{
-            "font-size": "20px"
+            fontSize: "20px"
           }}
-          to={routers.logout}
+          to={!state.id ? routers.login : routers.logout} 
         ></Button>
       </div>
     </div>
   );
 }
 
-export default homeHeader;
+export default HomeHeader;

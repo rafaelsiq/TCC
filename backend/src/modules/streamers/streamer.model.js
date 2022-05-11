@@ -55,19 +55,19 @@ const StreamerSchema = new Schema({
     },
     links: {
         type: String,
-        required: [true, 'You need to set up a Stream Link'],
+        required: [false, 'You need to set up a Stream Link'],
         trim: true,
         unique: false,
     },
     cpf: {
         type: String,
-        required: [true, 'You need to set up a CPF to your account'],
+        required: [false, 'You need to set up a CPF to your account'],
         trim: true,
-        unique: true,
+        unique: false,
     },
     tags: {
         type: String,
-        required: [true, 'You need to set up a CPF to your account'],
+        required: [false, 'You need to set up a CPF to your account'],
         trim: true,
         unique: false,
     }

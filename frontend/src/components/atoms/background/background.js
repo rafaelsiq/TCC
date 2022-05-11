@@ -4,13 +4,9 @@ import React from 'react';
 import EmptyContent from '../../organisms/emptyContent/emptyContent';
 
 
-function Background({ Header, Content, Footer }) {
-  if(!Header)
-    Header = EmptyContent
+function Background({Content}) {
   if(!Content)
     Content = EmptyContent
-  if(!Footer)
-    Footer = EmptyContent
     
   return (
     <div id='background'
@@ -22,9 +18,7 @@ function Background({ Header, Content, Footer }) {
         height: '100%',
 
       }}>
-      <Header />
       <Content />
-      <Footer />
     </div>)
 }
 export default Background;

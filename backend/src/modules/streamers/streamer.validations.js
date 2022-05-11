@@ -9,8 +9,8 @@ export default {
         firstName: Joi.string().required(),
         lastName: Joi.string().required(),
         userName: Joi.string().required(),
-        links: Joi.string().required(),
-        cpf: Joi.string().required(),
-        tags: Joi.string().required(),
+        links: Joi.string(),
+        cpf: Joi.string(),
+        tags: Joi.string(),
     },
 };

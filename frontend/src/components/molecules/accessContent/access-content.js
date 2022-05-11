@@ -1,6 +1,6 @@
 import Button from "../../atoms/button/button"
 import initialStrings from '../../../constants/initialPage.json'
-import routers from '../../../global/Routes.json'
+import routers from '../../../global/Routers/routers.json'
 import './access-content.css'
 function AccessContent() {
     return (
