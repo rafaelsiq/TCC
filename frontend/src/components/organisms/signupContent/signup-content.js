@@ -22,7 +22,7 @@ function SignUpContent() {
     function handleGoToLogin() {
         setState({
             ...state,
-            loginpage: true
+            loginpage: true,
         })
     }
     function handleSignUpButtonClick() {
@@ -55,8 +55,11 @@ function SignUpContent() {
             ...state,
             name: name,
             id: id,
-            token: token
+            token: token,
+            userLoggedOrNot:'logout'
         })
+        localStorage.setItem('token',token)
+        window.location.href = '/'
     }
     async function handleAccessValidation(user) {
         if (user.type === 'Streamers')
@@ -66,7 +69,7 @@ function SignUpContent() {
                     setSignUpErrorDisplay(false)
                 })
                 .catch(function (error) {
-                    setErrorMessage(error)
+                    setErrorMessage(error.response.data.message)
                     setSignUpErrorDisplay(true)
                 })
         else
@@ -76,7 +79,7 @@ function SignUpContent() {
                     setSignUpErrorDisplay(false)
                 })
                 .catch(function (error) {
-                    setErrorMessage(error)
+                    setErrorMessage(error.response.data.message)
                     setSignUpErrorDisplay(true)
                 })
     }

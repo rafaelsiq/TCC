@@ -4,7 +4,7 @@ import './home-footer.css'
 
 function homeFooter() {
     return (
-        <div id='homefooter' style={{display: 'flex', 'justify-content': 'space-between'}}>
+        <div id='homefooter' style={{display: 'flex', 'justifyContent': 'space-between'}}>
             <Image {...{ src: homeLeft,style:{'overflow': 'hidden'}  }} ></Image>
         </div>
     )

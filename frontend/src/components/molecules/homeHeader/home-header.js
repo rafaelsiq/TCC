@@ -1,59 +1,97 @@
-import Button from '../../atoms/button/button';
 import './home-header.css';
 import routers from '../../../global/Routers/routers.json'
-import React from 'react';
-import homePage from '../../../constants/homePage.json'
-import { useContext } from "react";
-import UserContext from "../../../contexts/user";
+import React, { useContext, useEffect } from 'react';
+import UserContext from '../../../contexts/user';
+import { Button } from '@mui/material';
+
 
 function HomeHeader() {
   const state = useContext(UserContext).state
+  const setState = useContext(UserContext).setState
+
+  const handleLogOut = () => {
+    setState({
+      ...state,
+      name: '',
+      token: '',
+      id: '',
+      loginpage: false,
+    })
+    localStorage.removeItem('token')
+  }
+  const HandleOnLoad = () => {
+    useEffect(() => {
+      if (localStorage.getItem('token') !== null && state.userLoggedOrNot !== 'logout') {
+        setState({
+          ...state,
+          userLoggedOrNot: 'logout'
+        })
+      }
+    })
+  }
+
 
   return (
-    <div className="home-header">
+    <div className="home-header"
+      onLoad={HandleOnLoad()}
+      variant="outlined"
+    >
       <div id='left'>
         <Button
-          label='Home'
+          children='Home'
           type='header'
           style={{
-            fontSize: "20px"
+            fontSize: "16px"
           }}
-          to={routers.home}
+          href={routers.home}
         ></Button>
       </div>
       <div id='right'>
         <Button
-          label='Downloads'
+          children='Downloads'
           type='header'
           style={{
-            fontSize: "20px"
+            fontSize: "16px"
           }}
-          to={routers.download}
+          href={routers.download}
         ></Button>
         <Button
-          label='Reports'
+          children='Reports'
           type='header'
           style={{
-            fontSize: "20px"
+            fontSize: "16px"
           }}
-          to={routers.reports}
+          href={routers.reports}
         ></Button>
         <Button
-          label='Menu'
+          children='Menu'
           type='header'
           style={{
-            fontSize: "20px"
+            fontSize: "16px"
           }}
-          to={routers.menu}
+          href={routers.menu}
         ></Button>
-        <Button
-          label={!state.id ? homePage.login : homePage.logout}
+
+        {state.userLoggedOrNot === 'login' && <Button
+          children={state.userLoggedOrNot}
           type='header'
           style={{
-            fontSize: "20px"
+            fontSize: "16px"
           }}
-          to={!state.id ? routers.login : routers.logout} 
+          href={"/" + state.userLoggedOrNot}
         ></Button>
+        }
+        {state.userLoggedOrNot === 'logout' && <Button
+          children={state.userLoggedOrNot}
+          type='header'
+          style={{
+            fontSize: "16px"
+          }}
+          onClick={handleLogOut}
+          href='/'
+        ></Button>
+        }
+
       </div>
     </div>
   );

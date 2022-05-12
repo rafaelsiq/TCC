@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper } from '@mui/material';
+import { Paper, Typography } from '@mui/material';
 import LoginContent from "../../organisms/loginContent/login-content";
 import HomeHeader from '../../molecules/homeHeader/home-header';
 import { useContext } from "react";
