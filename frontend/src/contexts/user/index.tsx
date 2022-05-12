@@ -4,7 +4,7 @@ type UserType = {
     token: string,
     name: string,
     loginpage:boolean,
-    redirect: boolean
+    userLoggedOrNot:string
 }
 
 type PropsUserContext = {
@@ -18,7 +18,7 @@ const DEFAULT_VALUE = {
         token: '',
         name: '',
         loginpage:true,
-        redirect:false
+        userLoggedOrNot:'login'
     },
     setState: () => {},
 };

@@ -18,23 +18,28 @@ function LoginContent() {
             ...state,
             name: name,
             id: id,
-            token: token
-        })
+            token: token,
+            userLoggedOrNot:'logout'
+            })
+        window.location.href = '/'
     }
-
     function handleGoToSignUp() {
         setState({
             ...state,
-            loginpage: false
+            loginpage: false,
         })
     }
     function handleGoToHomePage() {
         setState({
             ...state,
-            redirect: true
+            redirect: true,
         })
     }
     function accessAttempt() {
+        setState({
+            ...state,
+            userLoggedOrNot:'logout'
+        })
         AcessValidation(userEmail, password)
     }
 
@@ -45,6 +50,9 @@ function LoginContent() {
         })
             .then(function (response) {
                  handleLogin(response.data.userName, response.data._id, response.data.token)
+                 console.log(localStorage.getItem('token'))
+                 console.log(response.data)
+                 localStorage.setItem('token',response.data.token)
                  setLoginErrorDisplay(false)
                  handleGoToHomePage()
             })
