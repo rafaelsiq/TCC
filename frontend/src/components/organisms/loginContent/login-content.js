@@ -2,6 +2,7 @@ import api from '../../../requesters/login/login';
 import React, { useState, useContext } from 'react';
 import { Card, TextField, Button, Typography } from '@mui/material';
 import UserContext from '../../../contexts/user';
+import { useEffect } from 'react';
 
 
 function LoginContent() {
@@ -9,57 +10,60 @@ function LoginContent() {
     const [password, setPassword] = useState('');
     const [loginErrorDisplay, setLoginErrorDisplay] = useState(false);
     const [errorLoginMessage, setErrorLoginMessage] = useState('Login Incorreto');
+    const [logged, setLogged] = useState(false)
+    const state = useContext(UserContext).state;
+    const setState = useContext(UserContext).setState;
 
-    const state = useContext(UserContext).state
-    const setState = useContext(UserContext).setState
-
-    function handleLogin(name,id,token) {
-        setState({
-            ...state,
-            name: name,
-            id: id,
-            token: token,
-            userLoggedOrNot:'logout'
+    useEffect(() => {
+        if (logged) {
+            setState({
+                ...state,
+                userLoggedOrNot: 'logout',
+                name: localStorage.getItem('userName'),
+                id: localStorage.getItem('userId'),
+                token: localStorage.getItem('token'),
             })
-        window.location.href = '/'
-    }
+            setLogged(false)
+            window.location.href = '/'
+        }
+    })
+
     function handleGoToSignUp() {
         setState({
             ...state,
             loginpage: false,
         })
     }
-    function handleGoToHomePage() {
-        setState({
-            ...state,
-            redirect: true,
-        })
-    }
-    function accessAttempt() {
-        setState({
-            ...state,
-            userLoggedOrNot:'logout'
-        })
-        AcessValidation(userEmail, password)
-    }
 
+    async function AccessAttempt() {
+        await AcessValidation(userEmail, password)
+            .then(() => {
+                setState({
+                    ...state,
+                    userLoggedOrNot: 'logout',
+                    name: localStorage.getItem('userName'),
+                    id: localStorage.getItem('userId'),
+                    token: localStorage.getItem('token'),
+                })
+            })
+    }
     async function AcessValidation(userName, password) {
-        await api.post('api/v1/streamers/login', {
+        await api.post('api/v1/users/login', {
             "email": userName,
             "password": password
         })
             .then(function (response) {
-                 handleLogin(response.data.userName, response.data._id, response.data.token)
-                 console.log(localStorage.getItem('token'))
-                 console.log(response.data)
-                 localStorage.setItem('token',response.data.token)
-                 setLoginErrorDisplay(false)
-                 handleGoToHomePage()
+                localStorage.setItem('userName', response.data.userName)
+                localStorage.setItem('userId', response.data._id)
+                localStorage.setItem('token', response.data.token)
+                localStorage.setItem('type',response.data.type)
+                setLogged(true)
+                setLoginErrorDisplay(false)
             })
             .catch(function (error) {
-                setErrorLoginMessage(error.response)
+                setErrorLoginMessage(error.response.data.message ? error.response.data.message : error.response.data)
                 setLoginErrorDisplay(true)
-                console.log(error);
+                setLogged(false)
             })
     }
 
@@ -67,7 +71,6 @@ function LoginContent() {
         <div
             style={{
                 display: 'flex',
-                grid: "inherit",
                 justifyContent: "center",
                 marginTop: '10%'
             }}>
@@ -109,7 +112,9 @@ function LoginContent() {
                     <Button
                         variant="outlined"
                         children='Acessar'
-                        onClick={accessAttempt}
+                        onClick={() => {
+                            AccessAttempt();
+                        }}
                     >
                     </Button>
                     <Button

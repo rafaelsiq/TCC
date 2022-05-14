@@ -5,20 +5,8 @@ const OBSConnect = require('./OBS Pack/main');
 let win
 let connection = new OBSConnect();
 async function createWindow () {
-  win = new BrowserWindow({
-    width: 800,
-    height: 600,
-    webPreferences: {
-      nodeIntegration: true
-    }
-  }) 
-  let teste = await connection.GetSceneList();
-  console.log(teste)
-  
-  win.loadFile('./interfaces/pages/index/index.html')
-  win.on('closed', () => {
-    win = nullD
-  })
+  connection.InsertItemScene({type:'website', url:'http://localhost:3001/ad/display'})
+
 }
 
 app.on('ready', createWindow)

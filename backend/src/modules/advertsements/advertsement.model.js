@@ -3,6 +3,11 @@ import slug from 'slug';
 import uniqueValidator from 'mongoose-unique-validator';
 
 const AdSchema = new Schema({
+    sponsor:{
+        type: String,
+        trim: true,
+        required: [true, 'Sponsor   is required!']
+    },
     title: {
         type: String,
         trim: true,

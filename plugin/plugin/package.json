@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "devDependencies": {
+    "@types/obs-studio": "^2.17.0",
     "electron": "^12.0.2",
     "electron-packager": "^15.2.0"
   },

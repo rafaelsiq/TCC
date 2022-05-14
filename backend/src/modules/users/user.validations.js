@@ -12,5 +12,10 @@ export default {
         links: Joi.string(),
         cpf: Joi.string(),
         tags: Joi.string(),
+        ads: Joi.string(),
+        cnpj: Joi.string(),
     },
+    update: {
+        password: Joi.string().regex(passwordReg),
+    }
 };
