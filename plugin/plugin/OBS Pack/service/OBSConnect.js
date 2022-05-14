@@ -30,15 +30,11 @@ class OBSConnect {
     }
 
     InsertItemScene = (item) => {
-        this.Connection()
-            .then(() => {
-                return obs.send('GetVersion')
-            }).then(data => {
-                console.log(data + ' added')
-            }).catch(err => {
-                console.log(err)
+        this.Connection().then(()=>{
+            window.obsstudio.getCurrentScene(function(scene) {
+                console.log(scene)
             })
-
+        })
     }
 }
 module.exports = OBSConnect;

@@ -4,9 +4,12 @@ const devConfig = {
 };
 const testConfig = {
   MONGO_URL: 'mongodb://localhost/tccdatabase-test',
+  JWT_SECRET: 'jtw_secret_kn',
+
 };
 const prodConfig = {
   MONGO_URL: 'mongodb://localhost/tccdatabase-prod',
+  JWT_SECRET: 'jtw_secret_kn',
 };
 
 const defaultConfig = {

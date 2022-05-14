@@ -18,6 +18,9 @@ function HomeHeader() {
       loginpage: false,
     })
     localStorage.removeItem('token')
+    localStorage.removeItem('userName')
+    localStorage.removeItem('userId')
+
   }
   const HandleOnLoad = () => {
     useEffect(() => {
@@ -37,40 +40,40 @@ function HomeHeader() {
       variant="outlined"
     >
       <div id='left'>
-        <Button
+     { window.location.href !== 'http://localhost:3001/' && <Button
           children='Home'
           type='header'
           style={{
             fontSize: "16px"
           }}
-          href={routers.home}
-        ></Button>
+          href={routers.initial}
+        ></Button>}
       </div>
       <div id='right'>
-        <Button
+       { localStorage.getItem('userId') && <Button
           children='Downloads'
           type='header'
           style={{
             fontSize: "16px"
           }}
           href={routers.download}
-        ></Button>
-        <Button
+        ></Button>}
+        { localStorage.getItem('userId') && <Button
           children='Reports'
           type='header'
           style={{
             fontSize: "16px"
           }}
           href={routers.reports}
-        ></Button>
-        <Button
+        ></Button> }
+        { localStorage.getItem('userId') && <Button
           children='Menu'
           type='header'
           style={{
             fontSize: "16px"
           }}
           href={routers.menu}
-        ></Button>
+        ></Button> }
 
         {state.userLoggedOrNot === 'login' && <Button
           children={state.userLoggedOrNot}

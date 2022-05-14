@@ -1,9 +1,7 @@
 import passport from 'passport';
 import LocalStrategy from 'passport-local';
 import { Strategy as JWTStrategy, ExtractJwt } from 'passport-jwt';
-import Streamer from '../modules/streamers/streamer.model';
-import Sponsor from '../modules/sponsors/sponsor.model';
-import Administrator from '../modules/administrators/administrator.model';
+import User from '../modules/users/user.model';
 
 
 import constants from '../config/constants';
@@ -16,19 +14,11 @@ const localStrategy = new LocalStrategy(
   localOpts,
   async (email, password, done) => {
     try {
-      const streamer = await Streamer.findOne({ email });
-      const sponsor = await Sponsor.findOne({ email });
-      const administrator = await Administrator.findOne({ email });
-      let user = null;
-      [streamer, sponsor, administrator].forEach(item => {
-        if (item != null) {
-          user = item;
-        }
-      })
+      const user = await User.findOne({ email });
       if (!user) {
         return done(null, false)
       } else
-        if (!user.authenticateUser(password)) { return done(null, false) }
+        if (!user.authenticateUser(password)) { return done(null, {status:'error'}) }
         else { return done(null, user) }
     } catch (e) {
       return done(e, false);
@@ -43,14 +33,7 @@ const jwtOpts = {
 
 const jwtStrategy = new JWTStrategy(jwtOpts, async (payload, done) => {
   try {
-    const streamer = await Streamer.findById(payload.id);
-    const sponsor = await Sponsor.findById(payload.id);
-    const administrator = await Administrator.findById(payload.id);
-    let user = null;
-    [streamer, sponsor, administrator].forEach(item => {
-      if (item != null)
-        user = item;
-    })
+    const user = await User.findById(payload.id);
     if (!user) { return done(null, false) }
     else { return done(null, user) }
   } catch (e) {

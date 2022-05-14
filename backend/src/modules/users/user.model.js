@@ -1,13 +1,12 @@
-import mongoose, {Schema} from 'mongoose';
-import jwt from 'jsonwebtoken';
+import mongoose, { Schema } from 'mongoose';
 import validator from 'validator';
+import { passwordReg } from './user.validations';
+import jwt from 'jsonwebtoken';
 import constants from '../../config/constants';
-
-import {passwordReg} from './sponsor.validations';
+import uniqueValidator from 'mongoose-unique-validator';
 import { hashSync, compareSync } from 'bcrypt-nodejs';
 
-
-const SponsorSchema = new Schema({
+const UserSchema = new Schema({
     type: {
         type: String,
         required: [true, 'Type is required!'],
@@ -54,9 +53,9 @@ const SponsorSchema = new Schema({
             message: '{VALUE} is not a valid password!',
         },
     },
-    ads: {
+    links: {
         type: String,
-        required: [false, 'You need to set up a ads Link'],
+        required: [false, 'You need to set up a Stream Link'],
         trim: true,
         unique: false,
     },
@@ -64,55 +63,81 @@ const SponsorSchema = new Schema({
         type: String,
         required: [false, 'You need to set up a CPF to your account'],
         trim: true,
-        unique: true,
+        unique: false,
     },
-    tags:{
+    tags: {
         type: String,
         required: [false, 'You need to set up a CPF to your account'],
         trim: true,
         unique: false,
-    },
+    }, 
+    ads: {
+        type: String,
+        required: [false, 'You need to set up a ads Link'],
+        trim: true,
+        unique: false,
+    },  
     cnpj: {
         type: String,
         required: [false, 'You need to set up a CNPJ to your account'],
         trim: true,
         unique: true,
     },
+    pix:{
+        type: String,
+        required: [false, 'You need to set up a CNPJ to your account'],
+    }
 });
-SponsorSchema.pre('save', function(next) {
+UserSchema.pre('save', function (next) {
     if (this.isModified('password')) {
         this.password = this._hashPassword(this.password);
     }
     return next();
 });
-SponsorSchema.methods = {
+UserSchema.plugin(uniqueValidator, {
+    message: '{VALUE} already taken!',
+});
+
+UserSchema.methods = {
     _hashPassword(password) {
-      return hashSync(password);
+        return hashSync(password);
     },
     authenticateUser(password) {
-      return compareSync(password, this.password);
+        return compareSync(password, this.password);
+    },
+};
+
+UserSchema.methods = {
+    _hashPassword(password) {
+        return hashSync(password);
+    },
+    authenticateUser(password) {
+        return compareSync(password, this.password);
     },
     createToken() {
-      return jwt.sign(
-        {
-          _id: this._id,
-        },
-        constants.JWT_SECRET,
-      );
+        return jwt.sign(
+            {
+                _id: this._id,
+            },
+            constants.JWT_SECRET,
+        );
     },
     toAuthJSON() {
-      return {
-        _id: this._id,
-        userName: this.userName,
-        token: `JWT ${this.createToken()}`,
-      };
+        return {
+            _id: this._id,
+            userName: this.userName,
+            name: this.name,
+            type: this.type,
+            token: `JWT ${this.createToken()}`,
+        };
     },
     toJSON() {
-      return {
-        _id: this._id,
-        userName: this.userName,
-      };
+        return {
+            _id: this._id,
+            userName: this.userName,
+            name: this.name,
+        };
     }
-  };
+};
 
-export default mongoose.model('Sponsor', SponsorSchema);
+export default mongoose.model('Users', UserSchema);

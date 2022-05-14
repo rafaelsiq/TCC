@@ -1,6 +1,5 @@
 import Header from '../../molecules/homeHeader/home-header'
 import Content from '../../organisms/HomeContent/home-content'
-import Footer from '../../molecules/homeFooter/home-footer'
 
 function HomeTemplate() {
 
@@ -13,7 +12,6 @@ function HomeTemplate() {
         }}>
             <Header />
             <Content />
-            <Footer />
         </div>
     );
 }

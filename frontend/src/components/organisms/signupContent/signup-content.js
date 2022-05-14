@@ -2,6 +2,7 @@ import api from '../../../requesters/login/login';
 import React, { useState, useContext } from 'react';
 import { Card, TextField, Button, Typography, Switch, FormGroup, FormControlLabel } from '@mui/material'
 import UserContext from '../../../contexts/user';
+import { useEffect } from 'react';
 
 
 function SignUpContent() {
@@ -14,10 +15,23 @@ function SignUpContent() {
     const [lastName, setLastName] = useState('');
     const [errorMessage, setErrorMessage] = useState('Login Incorreto');
     const [signUpErrorDisplay, setSignUpErrorDisplay] = useState(false);
+    const [logged, setLogged] = useState(false)
 
     const state = useContext(UserContext).state;
     const setState = useContext(UserContext).setState;
 
+    useEffect(() => {
+        if (logged) {
+            setState({
+                ...state,
+                userLoggedOrNot: 'logout',
+                name: localStorage.getItem('userName'),
+                id: localStorage.getItem('userId'),
+                token: localStorage.getItem('token'),
+            })
+            setLogged(false)
+        }
+    })
 
     function handleGoToLogin() {
         setState({
@@ -25,7 +39,7 @@ function SignUpContent() {
             loginpage: true,
         })
     }
-    function handleSignUpButtonClick() {
+    async function handleSignUpButtonClick() {
         const fields = ['userName', 'firstName', 'lastName', 'userEmailTextField', 'passwordTwoTextField', 'passwordOneTextField']
         fields.forEach(items => {
             if (!document.getElementById(items).value) {
@@ -33,7 +47,6 @@ function SignUpContent() {
                 setSignUpErrorDisplay(true)
             }
         })
-
         if (document.getElementById('passwordTwoTextField').value !== document.getElementById('passwordOneTextField').value) {
             setErrorMessage("Os valores nos campos de senha e confirmação de senham divergem")
             setSignUpErrorDisplay(true)
@@ -46,42 +59,37 @@ function SignUpContent() {
             "lastName": lastName,
             "email": userEmail,
             "cpf": userEmail
-            }
+        }
         if (!signUpErrorDisplay)
-            handleAccessValidation(user)
+            await handleAccessValidation(user).then(
+                () => {
+                    setLogged(true);
+                    window.location.href = '/'
+                })
     }
-    function handleLogin(name, id, token) {
+    function handleLogin(name, id, token,type) {
         setState({
             ...state,
             name: name,
             id: id,
             token: token,
-            userLoggedOrNot:'logout'
+            userLoggedOrNot: 'logout'
         })
-        localStorage.setItem('token',token)
-        window.location.href = '/'
+        localStorage.setItem('userName', name)
+        localStorage.setItem('userId', id)
+        localStorage.setItem('token', token)
+        localStorage.setItem('type',type)
     }
     async function handleAccessValidation(user) {
-        if (user.type === 'Streamers')
-            await api.post('api/v1/streamers/signup', user)
-                .then(function (response) {
-                    handleLogin(response.data.userName, response.data._id, response.data.token)
-                    setSignUpErrorDisplay(false)
-                })
-                .catch(function (error) {
-                    setErrorMessage(error.response.data.message)
-                    setSignUpErrorDisplay(true)
-                })
-        else
-            await api.post('api/v1/sponsors/signup', user)
-                .then(function (response) {
-                    handleLogin(response.data.userName, response.data._id, response.data.token)
-                    setSignUpErrorDisplay(false)
-                })
-                .catch(function (error) {
-                    setErrorMessage(error.response.data.message)
-                    setSignUpErrorDisplay(true)
-                })
+        await api.post('api/v1/users/signup', user)
+            .then(function (response) {
+                handleLogin(response.data.userName, response.data._id, response.data.token, user.type)
+                setSignUpErrorDisplay(false)
+            })
+            .catch(function (error) {
+                setErrorMessage(error.response.data.message)
+                setSignUpErrorDisplay(true)
+            })
     }
     return (
         <div

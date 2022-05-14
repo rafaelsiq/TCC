@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Typography } from '@mui/material';
+import { Paper } from '@mui/material';
 import LoginContent from "../../organisms/loginContent/login-content";
 import HomeHeader from '../../molecules/homeHeader/home-header';
 import { useContext } from "react";
@@ -11,12 +11,13 @@ function LoginTemplate() {
     const state = useContext(UserContext).state
 
     return (
-        <Paper
+        <Paper 
             elevation={0}
             style={{
                 paddingLeft:'5%',
                 paddingRight:'5%',
-                paddingTop:'10px'
+                paddingTop:'10px',
+                background: 'none'
             }}
         >
             <HomeHeader></HomeHeader>

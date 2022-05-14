@@ -8,5 +8,21 @@ function Input({title}) {
       </div>
     );
 }
+function InputStyle({title, style, value, id}) {
+  return (
+    <div id="input"
+    style={{
+      textAlign:'end'
+    }}>
+       <TextField 
+       id={id} 
+       label={title}  
+       style={style} 
+       defaultValue={value}
+       variant="outlined" />
+    </div>
+  );
+}
 
+export {InputStyle};
 export default Input;
