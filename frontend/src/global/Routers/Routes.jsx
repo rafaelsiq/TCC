@@ -6,6 +6,7 @@ import Login from '../../pages/login/login';
 import Menu from "../../pages/menu/menu";
 import routers from './routers.json';
 import { Navigate } from 'react-router-dom';
+import Ad from "../../pages/ad/ad";
 
 const Router = () => {
     return (
@@ -15,6 +16,7 @@ const Router = () => {
                 <Route path={routers.login} element={<Login />} />
                 <Route path='/ad/display/embed' element={<AdDisplay token={window}/>}/>
                 <Route path='/Menu' element={localStorage.getItem('userId') ? <Menu/> : <Navigate to="/" /> }/>
+                <Route path='/ads' element={localStorage.getItem('userId') && localStorage.getItem('type') === 'Sponsors' ? <Ad/> : <Navigate to="/" /> }/> 
             </Routes>
         </BrowserRouter>
     ) 

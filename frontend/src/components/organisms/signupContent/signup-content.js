@@ -1,4 +1,4 @@
-import api from '../../../requesters/login/login';
+import api, {SingUpUser} from '../../../requesters/services/services';
 import React, { useState, useContext } from 'react';
 import { Card, TextField, Button, Typography, Switch, FormGroup, FormControlLabel } from '@mui/material'
 import UserContext from '../../../contexts/user';
@@ -16,22 +16,8 @@ function SignUpContent() {
     const [errorMessage, setErrorMessage] = useState('Login Incorreto');
     const [signUpErrorDisplay, setSignUpErrorDisplay] = useState(false);
     const [logged, setLogged] = useState(false)
-
     const state = useContext(UserContext).state;
     const setState = useContext(UserContext).setState;
-
-    useEffect(() => {
-        if (logged) {
-            setState({
-                ...state,
-                userLoggedOrNot: 'logout',
-                name: localStorage.getItem('userName'),
-                id: localStorage.getItem('userId'),
-                token: localStorage.getItem('token'),
-            })
-            setLogged(false)
-        }
-    })
 
     function handleGoToLogin() {
         setState({
@@ -81,7 +67,7 @@ function SignUpContent() {
         localStorage.setItem('type',type)
     }
     async function handleAccessValidation(user) {
-        await api.post('api/v1/users/signup', user)
+        await SingUpUser(user)
             .then(function (response) {
                 handleLogin(response.data.userName, response.data._id, response.data.token, user.type)
                 setSignUpErrorDisplay(false)
@@ -91,6 +77,20 @@ function SignUpContent() {
                 setSignUpErrorDisplay(true)
             })
     }
+
+    useEffect(() => {
+        if (logged) {
+            setState({
+                ...state,
+                userLoggedOrNot: 'logout',
+                name: localStorage.getItem('userName'),
+                id: localStorage.getItem('userId'),
+                token: localStorage.getItem('token'),
+            })
+            setLogged(false)
+        }
+    })
+    
     return (
         <div
             style={{

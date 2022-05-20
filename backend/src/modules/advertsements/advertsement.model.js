@@ -12,18 +12,12 @@ const AdSchema = new Schema({
         type: String,
         trim: true,
         required: [true, 'Title   is required!'],
-        minlength: [3, 'Title   need to be longer!'],
-        unique: true,
+        unique:false
     },
     text: {
         type: String,
         trim: true,
         required: [true, 'Text   is required!'],
-        minlength: [10, 'Text   need to be longer!'],
-    },
-    user: {
-        type: Schema.Types.ObjectId,
-        ref: 'Sponsor',
     },
     fileURL: {
         type: String,
@@ -31,35 +25,24 @@ const AdSchema = new Schema({
         required: [true, 'File is required!'],
     },
     startDate: {
-        type: Date,
+        type: String,
         trim: true,
         required: [true, 'Start Date is required!'],
     },
     endDate: {
-        type: Date,
+        type: String,
         trim: true,
         required: [true, 'End Date is required!'],
     },
-    startHour: {
-        type: Date,
-        trim: true,
-        required: [false, 'Start Hour is required!'],
-    },
-    tags: {
-        type: String,
-        trim: true,
-        required: [false, 'Tags Hour is required!'],
-    },
     value: {
-        type: Number,
+        type: String,
         trim: true,
         required: [true, 'Value is required!'],
     },
-    slug: {
+    status:{
         type: String,
-        trim: true,
-        lowercase: true,
-    },
+        required:[false, 'asdasd']
+    }
 }, { timestamps: true });
 
 AdSchema.plugin(uniqueValidator, {

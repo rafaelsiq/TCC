@@ -1,4 +1,4 @@
-import api from '../../../requesters/login/login';
+import { LoginUser } from '../../../requesters/services/services';
 import React, { useState, useContext } from 'react';
 import { Card, TextField, Button, Typography } from '@mui/material';
 import UserContext from '../../../contexts/user';
@@ -48,7 +48,7 @@ function LoginContent() {
             })
     }
     async function AcessValidation(userName, password) {
-        await api.post('api/v1/users/login', {
+        await LoginUser({
             "email": userName,
             "password": password
         })
@@ -56,7 +56,7 @@ function LoginContent() {
                 localStorage.setItem('userName', response.data.userName)
                 localStorage.setItem('userId', response.data._id)
                 localStorage.setItem('token', response.data.token)
-                localStorage.setItem('type',response.data.type)
+                localStorage.setItem('type', response.data.type)
                 setLogged(true)
                 setLoginErrorDisplay(false)
             })
