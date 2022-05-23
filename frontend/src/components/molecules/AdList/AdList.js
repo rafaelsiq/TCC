@@ -1,51 +1,42 @@
 import React from "react";
 import { useState, useContext } from "react";
 import AdListContent from "../AdListContent/AdListContent";
-import {FindAllAds} from '../../../requesters/services/services'
+import { FindAllAds } from '../../../requesters/services/services'
 import { useEffect } from "react";
 import AdContext from '../../../contexts/advertisement/index'
-
+import { adNormalizer } from '../../../normalizers/index'
 export default function AdList() {
     const [isEmpty, setIsEmpty] = useState(true);
     const [isOnLoad, setIsOnLoad] = useState(true);
     const state = useContext(AdContext).state;
     const setState = useContext(AdContext).setState;
 
-    const adNormalizer = (data) => {
-        return {
-            id: data._id,
-            title: data.title,
-            status: data.status,
-            value: data.value,
-            url:data.fileURL,
-            name:data.title
-        }
-    }
     const searchAllAds = async () => {
         let newAdList = [];
-        await FindAllAds(localStorage.getItem('userId')).then(
+         await FindAllAds(localStorage.getItem('userId')).then(
             (response) => {
+                console.log(response)
                 response.data.forEach((item) => {
                     if (!state.AdList.includes(adNormalizer(item)))
-                        newAdList.push(adNormalizer(item))    
+                        newAdList.push(adNormalizer(item))
                 })
-             }).then(()=>{
-                 if(newAdList.length > 0)
+            }).then(() => {
+                if (newAdList.length > 0)
                     setIsEmpty(false)
-                 setState({
+                setState({
                     ...state,
                     AdList: newAdList
                 })
-             })
+            })
     }
-    
+
     useEffect(() => {
         if (isOnLoad) {
             setIsOnLoad(false)
             searchAllAds()
         }
     })
-    
+
     return (<div style={{
         background: 'white',
         width: '100%',
@@ -66,7 +57,7 @@ export default function AdList() {
             style={{
                 justifyContent: 'center',
                 width: '80%',
-                margin:'100px'
+                margin: '100px'
             }}>
             < div style={{
                 width: '100%',

@@ -2,20 +2,55 @@
 import React from "react";
 import { useState } from "react";
 import { useEffect } from "react";
+import { FindAdToDisplay } from '../../requesters/services/services';
 
-function AdDisplay({ windows }) {
-  const image = 'https://raw.githubusercontent.com/rafaelsiq/TCC/main/frontend/src/constants/files/geral-background.png'
+function AdDisplay({ token }) {
+  const [switcher, setSwitcher] = useState('start') // pode ser start, display, empty
+  const timer = {
+    start: 10000,
+    empty: 60000,
+    display: 10000,
+  } 
+  const userId = token.toString().replace('/ad/display/embed/', '')
+  function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+  const [adDisplayed, setadDisplayed] = useState('a');
 
-  const [dimensao, setDimensao] = useState('')
+  useEffect(() => {
+    document.getElementById('background').style = {
+      backgroundColor: 'transparent'
+    }
 
-  useEffect(()=>{
-    return setDimensao(window.screen);
-  },[])
+    sleep(timer[switcher]).then(() => {
+      if (switcher === 'start') {
+        setSwitcher('display')
+      }
+      else if(switcher === 'display'){
+        FindAdToDisplay(userId).then((response) => {
+          setadDisplayed(response.data.ad);
+        })
+        setSwitcher('empty')
+      }
+      else{
+        setSwitcher('display')
+      }
+    })
+
+  })
 
   return (
-    <div style={{ width: '100%', color: 'white' }}>
-      <img src={image} alt='adasda' />
-      <p>{dimensao.toString()}</p>
+    <div style={{ display: 'grid', width: '100%', height: '100%', color: 'white' }}>
+      {switcher === 'display' && <>
+        <img style={{ width: '100%' }} src={adDisplayed.fileURL} alt={adDisplayed.title}></img>
+        <p style={{ fontSize: '30px' }}>{adDisplayed.text}</p>
+      </>}
+      {switcher === 'start' && <div style={{ width: '100%', height: '100%', border: '1px solid white', paddingTop: '29%', display: "absolute", textAlign: 'center', justifyContent: 'center' }}>
+        <p style={{ fontSize: '40px' }}>Sua Ad será Carregada em breve</p>
+      </div>}
+      {switcher === 'empty' && <div style={{ width: '100%', height: '100%' }}>
+        <p ></p>
+      </div>}
     </div>
   );
 }

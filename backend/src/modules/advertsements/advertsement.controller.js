@@ -35,7 +35,6 @@ export async function validateUser(req, res, next) {
 }
 export async function createAd(req, res) {
     try {
-        console.log(req.body)
         const status = req.body.status ? req.body.status : 'Parado';
         const ad = {
             ...req.body,
@@ -51,7 +50,7 @@ export async function createAd(req, res) {
          return res.status(HTTPStatus.BAD_REQUEST).json(e);
     }
 }
-export async function getUserById(req, res) {
+export async function getAdById(req, res) {
     try {
         const Ad = await Advertsement.findOne({_id:req.params.id});
         return res.status(HTTPStatus.OK).json(Ad);
@@ -59,10 +58,9 @@ export async function getUserById(req, res) {
         return res.status(HTTPStatus.BAD_REQUEST).json(e);
     }
 }
-export async function getUsersList(req, res) {
+export async function getAdsList(req, res) {
     try {
         const Ads = await Advertsement.find({sponsor:req.params.id});
-
         return res.status(HTTPStatus.OK).json(Ads);
     } catch (e) {
         return res.status(HTTPStatus.BAD_REQUEST).json(e);

@@ -4,7 +4,7 @@ import uniqueValidator from 'mongoose-unique-validator';
 
 const AdSchema = new Schema({
     sponsor:{
-        type: String,
+        type:String,
         trim: true,
         required: [true, 'Sponsor   is required!']
     },
@@ -12,7 +12,6 @@ const AdSchema = new Schema({
         type: String,
         trim: true,
         required: [true, 'Title   is required!'],
-        unique:false
     },
     text: {
         type: String,

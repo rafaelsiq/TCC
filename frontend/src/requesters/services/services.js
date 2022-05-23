@@ -11,9 +11,12 @@ export function SwitchAdStatus(adId, newState) {
     return api.patch('/api/v1/users/ads/' + adId, { status: newState })
 }
 export function FindAllAds(userId) {
-    return api.get('/api/v1/users/ads/all/')
+    return api.get('/api/v1/users/ads/all/'+userId)
 }
-export function CreateAd(Ad) {
+export function FindAdToDisplay(userId) {
+    return api.get('/api/v1/users/ads/all/display/'+userId)
+}
+export async function CreateAd(Ad) {
     return api.post('/api/v1/users/ads/', Ad)
 }
 export async function UpdateAdImage(adId,url){
@@ -24,6 +27,15 @@ export function SingUpUser(user){
 }
 export function LoginUser(user){
     return api.post('api/v1/users/login', user)
+}
+export function SponsorRequestReport(){
+    return api.get('api/v1/users/ads/report/sponsor/'+localStorage.getItem('userId'))
+}
+export function StreamerRequestReport(){
+    return api.get('api/v1/users/ads/report/streamer/'+localStorage.getItem('userId'))
+}
+export function getAdById(adId){
+    return api.get('api/v1/users/ads/'+adId)
 }
 
 export default api;

@@ -64,7 +64,7 @@ module.exports =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 14);
+/******/ 	return __webpack_require__(__webpack_require__.s = 15);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -112,121 +112,22 @@ exports.default = Object.assign({}, defaultConfig, envConfig(process.env.NODE_EN
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("express");
+module.exports = require("http-status");
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("http-status");
+module.exports = require("mongoose");
 
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("jsonwebtoken");
+module.exports = require("express");
 
 /***/ }),
 /* 4 */
-/***/ (function(module, exports) {
-
-module.exports = require("mongoose");
-
-/***/ }),
-/* 5 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.updateById = updateById;
-exports.deleteAd = deleteAd;
-exports.validateUser = validateUser;
-exports.createAd = createAd;
-exports.getUserById = getUserById;
-exports.getUsersList = getUsersList;
-
-var _advertsement = __webpack_require__(15);
-
-var _advertsement2 = _interopRequireDefault(_advertsement);
-
-var _httpStatus = __webpack_require__(2);
-
-var _httpStatus2 = _interopRequireDefault(_httpStatus);
-
-var _constants = __webpack_require__(0);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const jwt = __webpack_require__(3);
-
-async function updateById(req, res, next) {
-    const userId = req.params.id;
-    const user = await _advertsement2.default.findByIdAndUpdate(userId, Object.assign({}, req.body));
-    res.status(_httpStatus2.default.OK).json(user);
-    return next();
-}
-async function deleteAd(req, res) {
-    try {
-        const userId = req.url.toString().split('userId=')[1];
-        const Sp = await _advertsement2.default.findById(userId);
-        await Sp.remove();
-        return res.sendStatus(_httpStatus2.default.OK);
-    } catch (e) {
-        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
-    }
-}
-async function validateUser(req, res, next) {
-    jwt.verify(req.headers['authorization'], _constants2.default.JWT_SECRET, (err, decoded) => {
-        if (err) {
-            return res.json({ status: "error", message: err.message, data: null });
-        } else {
-            req.body.userId = decoded.id; //eslint-disable-line no-param-reassign
-            return next();
-        }
-    });
-}
-async function createAd(req, res) {
-    try {
-        console.log(req.body);
-        const status = req.body.status ? req.body.status : 'Parado';
-        const ad = Object.assign({}, req.body, {
-            sponsor: req.body.adUserId,
-            startDate: new Date(req.body.startDate),
-            endDate: new Date(req.body.endDate),
-            status
-        });
-        const user = await _advertsement2.default.create(ad);
-        return res.status(_httpStatus2.default.CREATED).json(user);
-    } catch (e) {
-        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
-    }
-}
-async function getUserById(req, res) {
-    try {
-        const Ad = await _advertsement2.default.findOne({ _id: req.params.id });
-        return res.status(_httpStatus2.default.OK).json(Ad);
-    } catch (e) {
-        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
-    }
-}
-async function getUsersList(req, res) {
-    try {
-        const Ads = await _advertsement2.default.find({ sponsor: req.params.id });
-
-        return res.status(_httpStatus2.default.OK).json(Ads);
-    } catch (e) {
-        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
-    }
-}
-
-/***/ }),
-/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -236,17 +137,17 @@ Object.defineProperty(exports, "__esModule", {
     value: true
 });
 
-var _mongoose = __webpack_require__(4);
+var _mongoose = __webpack_require__(2);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _validator = __webpack_require__(30);
+var _validator = __webpack_require__(32);
 
 var _validator2 = _interopRequireDefault(_validator);
 
-var _user = __webpack_require__(7);
+var _user = __webpack_require__(8);
 
-var _jsonwebtoken = __webpack_require__(3);
+var _jsonwebtoken = __webpack_require__(5);
 
 var _jsonwebtoken2 = _interopRequireDefault(_jsonwebtoken);
 
@@ -254,11 +155,11 @@ var _constants = __webpack_require__(0);
 
 var _constants2 = _interopRequireDefault(_constants);
 
-var _mongooseUniqueValidator = __webpack_require__(9);
+var _mongooseUniqueValidator = __webpack_require__(10);
 
 var _mongooseUniqueValidator2 = _interopRequireDefault(_mongooseUniqueValidator);
 
-var _bcryptNodejs = __webpack_require__(8);
+var _bcryptNodejs = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -396,6 +297,103 @@ UserSchema.methods = {
 exports.default = _mongoose2.default.model('Users', UserSchema);
 
 /***/ }),
+/* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("jsonwebtoken");
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.updateById = updateById;
+exports.deleteAd = deleteAd;
+exports.validateUser = validateUser;
+exports.createAd = createAd;
+exports.getAdById = getAdById;
+exports.getAdsList = getAdsList;
+
+var _advertsement = __webpack_require__(7);
+
+var _advertsement2 = _interopRequireDefault(_advertsement);
+
+var _httpStatus = __webpack_require__(1);
+
+var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const jwt = __webpack_require__(5);
+
+async function updateById(req, res, next) {
+    const userId = req.params.id;
+    const user = await _advertsement2.default.findByIdAndUpdate(userId, Object.assign({}, req.body));
+    res.status(_httpStatus2.default.OK).json(user);
+    return next();
+}
+async function deleteAd(req, res) {
+    try {
+        const userId = req.url.toString().split('userId=')[1];
+        const Sp = await _advertsement2.default.findById(userId);
+        await Sp.remove();
+        return res.sendStatus(_httpStatus2.default.OK);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+async function validateUser(req, res, next) {
+    jwt.verify(req.headers['authorization'], _constants2.default.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.json({ status: "error", message: err.message, data: null });
+        } else {
+            req.body.userId = decoded.id; //eslint-disable-line no-param-reassign
+            return next();
+        }
+    });
+}
+async function createAd(req, res) {
+    try {
+        const status = req.body.status ? req.body.status : 'Parado';
+        const ad = Object.assign({}, req.body, {
+            sponsor: req.body.adUserId,
+            startDate: new Date(req.body.startDate),
+            endDate: new Date(req.body.endDate),
+            status
+        });
+        const user = await _advertsement2.default.create(ad);
+        return res.status(_httpStatus2.default.CREATED).json(user);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+async function getAdById(req, res) {
+    try {
+        const Ad = await _advertsement2.default.findOne({ _id: req.params.id });
+        return res.status(_httpStatus2.default.OK).json(Ad);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+async function getAdsList(req, res) {
+    try {
+        const Ads = await _advertsement2.default.find({ sponsor: req.params.id });
+        return res.status(_httpStatus2.default.OK).json(Ads);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e);
+    }
+}
+
+/***/ }),
 /* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -405,234 +403,16 @@ exports.default = _mongoose2.default.model('Users', UserSchema);
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
-exports.passwordReg = undefined;
 
-var _joi = __webpack_require__(25);
-
-var _joi2 = _interopRequireDefault(_joi);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const passwordReg = exports.passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
-exports.default = {
-    signup: {
-        type: _joi2.default.string().required(),
-        email: _joi2.default.string().email().required(),
-        password: _joi2.default.string().regex(passwordReg).required(),
-        firstName: _joi2.default.string().required(),
-        lastName: _joi2.default.string().required(),
-        userName: _joi2.default.string().required(),
-        links: _joi2.default.string(),
-        cpf: _joi2.default.string(),
-        tags: _joi2.default.string(),
-        ads: _joi2.default.string(),
-        cnpj: _joi2.default.string()
-    },
-    update: {
-        password: _joi2.default.string().regex(passwordReg)
-    }
-};
-
-/***/ }),
-/* 8 */
-/***/ (function(module, exports) {
-
-module.exports = require("bcrypt-nodejs");
-
-/***/ }),
-/* 9 */
-/***/ (function(module, exports) {
-
-module.exports = require("mongoose-unique-validator");
-
-/***/ }),
-/* 10 */
-/***/ (function(module, exports) {
-
-module.exports = require("passport");
-
-/***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _mongoose = __webpack_require__(4);
+var _mongoose = __webpack_require__(2);
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
-var _constants = __webpack_require__(0);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-_mongoose2.default.Promise = global.Promise;
-
-try {
-  _mongoose2.default.connect(_constants2.default.MONGO_URL);
-} catch (err) {
-  _mongoose2.default.createConnection(_constants2.default.MONGO_URL);
-}
-
-_mongoose2.default.connection.once('open', () => console.log('MongoDB Running')).on('error', e => {
-  throw e;
-});
-
-/***/ }),
-/* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _morgan = __webpack_require__(26);
-
-var _morgan2 = _interopRequireDefault(_morgan);
-
-var _bodyParser = __webpack_require__(20);
-
-var _bodyParser2 = _interopRequireDefault(_bodyParser);
-
-var _compression = __webpack_require__(21);
-
-var _compression2 = _interopRequireDefault(_compression);
-
-var _helmet = __webpack_require__(24);
-
-var _helmet2 = _interopRequireDefault(_helmet);
-
-var _passport = __webpack_require__(10);
-
-var _passport2 = _interopRequireDefault(_passport);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const isDev = process.env.NODE_ENV === 'development';
-const isProd = process.env.NODE_ENV === 'production';
-
-exports.default = app => {
-  if (isProd) {
-    app.use((0, _compression2.default)());
-    app.use((0, _helmet2.default)());
-  }
-
-  app.use(_bodyParser2.default.json());
-  app.use(_bodyParser2.default.urlencoded({ extended: true }));
-  app.use(_passport2.default.initialize());
-
-  if (isDev) {
-    app.use((0, _morgan2.default)('dev'));
-  }
-};
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _user = __webpack_require__(18);
-
-var _user2 = _interopRequireDefault(_user);
-
-var _advertsement = __webpack_require__(16);
-
-var _advertsement2 = _interopRequireDefault(_advertsement);
-
-var _httpStatus = __webpack_require__(2);
-
-var _httpStatus2 = _interopRequireDefault(_httpStatus);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const cors = __webpack_require__(22);
-
-exports.default = app => {
-  const corsOptions = {
-    origin: 'http://localhost:3001',
-    credentials: true,
-    optionSuccessStatus: _httpStatus2.default.OK
-  };
-
-  app.use(cors(corsOptions));
-
-  app.use('/api/v1/users', _user2.default);
-  app.use('/api/v1/sponsors/ads', _advertsement2.default);
-};
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _express = __webpack_require__(1);
-
-var _express2 = _interopRequireDefault(_express);
-
-var _constants = __webpack_require__(0);
-
-var _constants2 = _interopRequireDefault(_constants);
-
-__webpack_require__(11);
-
-var _middlewares = __webpack_require__(12);
-
-var _middlewares2 = _interopRequireDefault(_middlewares);
-
-var _modules = __webpack_require__(13);
-
-var _modules2 = _interopRequireDefault(_modules);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-const app = (0, _express2.default)();
-(0, _middlewares2.default)(app);
-(0, _modules2.default)(app);
-
-app.listen(_constants2.default.PORT, err => {
-  if (err) {
-    throw err;
-  } else {
-    console.log(`
-      Server running on port: ${_constants2.default.PORT}
-      ---
-    `);
-  }
-});
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _mongoose = __webpack_require__(4);
-
-var _mongoose2 = _interopRequireDefault(_mongoose);
-
-var _slug = __webpack_require__(29);
+var _slug = __webpack_require__(31);
 
 var _slug2 = _interopRequireDefault(_slug);
 
-var _mongooseUniqueValidator = __webpack_require__(9);
+var _mongooseUniqueValidator = __webpack_require__(10);
 
 var _mongooseUniqueValidator2 = _interopRequireDefault(_mongooseUniqueValidator);
 
@@ -647,8 +427,7 @@ const AdSchema = new _mongoose.Schema({
     title: {
         type: String,
         trim: true,
-        required: [true, 'Title   is required!'],
-        unique: false
+        required: [true, 'Title   is required!']
     },
     text: {
         type: String,
@@ -710,6 +489,224 @@ AdSchema.statics = {
 exports.default = _mongoose2.default.model('Advertsement', AdSchema);
 
 /***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.passwordReg = undefined;
+
+var _joi = __webpack_require__(27);
+
+var _joi2 = _interopRequireDefault(_joi);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const passwordReg = exports.passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
+exports.default = {
+    signup: {
+        type: _joi2.default.string().required(),
+        email: _joi2.default.string().email().required(),
+        password: _joi2.default.string().regex(passwordReg).required(),
+        firstName: _joi2.default.string().required(),
+        lastName: _joi2.default.string().required(),
+        userName: _joi2.default.string().required(),
+        links: _joi2.default.string(),
+        cpf: _joi2.default.string(),
+        tags: _joi2.default.string(),
+        ads: _joi2.default.string(),
+        cnpj: _joi2.default.string()
+    },
+    update: {
+        password: _joi2.default.string().regex(passwordReg)
+    }
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports) {
+
+module.exports = require("bcrypt-nodejs");
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports) {
+
+module.exports = require("mongoose-unique-validator");
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports) {
+
+module.exports = require("passport");
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _mongoose = __webpack_require__(2);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+_mongoose2.default.Promise = global.Promise;
+
+try {
+  _mongoose2.default.connect(_constants2.default.MONGO_URL);
+} catch (err) {
+  _mongoose2.default.createConnection(_constants2.default.MONGO_URL);
+}
+
+_mongoose2.default.connection.once('open', () => console.log('MongoDB Running')).on('error', e => {
+  throw e;
+});
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _morgan = __webpack_require__(28);
+
+var _morgan2 = _interopRequireDefault(_morgan);
+
+var _bodyParser = __webpack_require__(22);
+
+var _bodyParser2 = _interopRequireDefault(_bodyParser);
+
+var _compression = __webpack_require__(23);
+
+var _compression2 = _interopRequireDefault(_compression);
+
+var _helmet = __webpack_require__(26);
+
+var _helmet2 = _interopRequireDefault(_helmet);
+
+var _passport = __webpack_require__(11);
+
+var _passport2 = _interopRequireDefault(_passport);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const isDev = process.env.NODE_ENV === 'development';
+const isProd = process.env.NODE_ENV === 'production';
+
+exports.default = app => {
+  if (isProd) {
+    app.use((0, _compression2.default)());
+    app.use((0, _helmet2.default)());
+  }
+
+  app.use(_bodyParser2.default.json());
+  app.use(_bodyParser2.default.urlencoded({ extended: true }));
+  app.use(_passport2.default.initialize());
+
+  if (isDev) {
+    app.use((0, _morgan2.default)('dev'));
+  }
+};
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _user = __webpack_require__(20);
+
+var _user2 = _interopRequireDefault(_user);
+
+var _advertsement = __webpack_require__(16);
+
+var _advertsement2 = _interopRequireDefault(_advertsement);
+
+var _httpStatus = __webpack_require__(1);
+
+var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const cors = __webpack_require__(24);
+
+exports.default = app => {
+  const corsOptions = {
+    origin: 'http://localhost:3001',
+    credentials: true,
+    optionSuccessStatus: _httpStatus2.default.OK
+  };
+
+  app.use(cors(corsOptions));
+
+  app.use('/api/v1/users', _user2.default);
+  app.use('/api/v1/sponsors/ads', _advertsement2.default);
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+var _express = __webpack_require__(3);
+
+var _express2 = _interopRequireDefault(_express);
+
+var _constants = __webpack_require__(0);
+
+var _constants2 = _interopRequireDefault(_constants);
+
+__webpack_require__(12);
+
+var _middlewares = __webpack_require__(13);
+
+var _middlewares2 = _interopRequireDefault(_middlewares);
+
+var _modules = __webpack_require__(14);
+
+var _modules2 = _interopRequireDefault(_modules);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const app = (0, _express2.default)();
+(0, _middlewares2.default)(app);
+(0, _modules2.default)(app);
+
+app.listen(_constants2.default.PORT, err => {
+  if (err) {
+    throw err;
+  } else {
+    console.log(`
+      Server running on port: ${_constants2.default.PORT}
+      ---
+    `);
+  }
+});
+
+/***/ }),
 /* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -720,9 +717,9 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _express = __webpack_require__(1);
+var _express = __webpack_require__(3);
 
-var _advertsement = __webpack_require__(5);
+var _advertsement = __webpack_require__(6);
 
 var adController = _interopRequireWildcard(_advertsement);
 
@@ -746,6 +743,191 @@ exports.default = routes;
 Object.defineProperty(exports, "__esModule", {
     value: true
 });
+exports.getAdToUserDisplay = getAdToUserDisplay;
+exports.getSponsorReport = getSponsorReport;
+exports.getStreamerReport = getStreamerReport;
+
+var _live = __webpack_require__(18);
+
+var _live2 = _interopRequireDefault(_live);
+
+var _httpStatus = __webpack_require__(1);
+
+var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+var _advertsement = __webpack_require__(7);
+
+var _advertsement2 = _interopRequireDefault(_advertsement);
+
+var _user = __webpack_require__(4);
+
+var _user2 = _interopRequireDefault(_user);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+async function getAdToUserDisplay(req, res) {
+    let adList;
+    let min;
+    let max;
+    let aux;
+    let adDisplay;
+    let user;
+    let currentLive;
+    let status = 'Parado';
+    try {
+        user = await _user2.default.findById(req.params.id);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json({ 'message': 'user invalid' });
+    }
+    try {
+        adList = await _advertsement2.default.find({});
+        while (status === 'Parado') {
+            min = Math.ceil(0);
+            max = Math.floor(adList.length);
+            aux = Math.floor(Math.random() * (max - min)) + min;
+            adDisplay = await adList[aux];
+            if (adDisplay.status !== 'Parado') {
+                if (validateDate(adDisplay.startDate, adDisplay.endDate)) status = 'Online';
+            }
+        }
+
+        currentLive = {
+            sponsorId: adDisplay.sponsor,
+            adName: adDisplay.title,
+            streamerId: user._id,
+            adId: adDisplay.id
+        };
+        await _live2.default.create(currentLive);
+    } catch (e) {
+        return res.status(_httpStatus2.default.BAD_REQUEST).json(e.response);
+    }
+
+    return res.status(_httpStatus2.default.OK).json({
+        'live': currentLive,
+        'ad': adDisplay
+    });
+}
+async function validateDate(startDate, endDate) {
+    const date = new Date(Date.now());
+    if (new Date(startDate) >= date && new Date(endDate) <= date) return true;
+    return false;
+}
+async function getStreamer(streamerId) {
+    const userList = await _user2.default.find({});
+    userList.forEach(element => {
+        if (element.id === streamerId) return element;
+    });
+}
+async function getSponsor(streamerId) {
+    const userList = await _user2.default.find({});
+    userList.forEach(element => {
+        if (element.id === streamerId) return element;
+    });
+}
+async function getAd(adId) {
+    const listAd = await _advertsement2.default.find({});
+    listAd.forEach(element => {
+        if (element.id === adId) return element;
+    });
+}
+async function liveLister(liveList, userId) {
+    const livesSponsor = [];
+
+    liveList.forEach(item => {
+        if (item.sponsorId === userId) {
+            livesSponsor.push({
+                live: item
+            });
+        }
+    });
+    return livesSponsor;
+}
+async function getSponsorReport(req, res) {
+    const liveList = await _live2.default.find({});
+    const userId = req.params.id;
+
+    liveLister(liveList, userId).then(response => {
+        return res.status(_httpStatus2.default.OK).json(response);
+    });
+}
+async function getStreamerReport(req, res) {
+    const liveList = await _live2.default.find({});
+    const userId = req.params.id;
+    const livesStreamer = [];
+    let sponsor = [];
+    let ad = [];
+    liveList.forEach(item => {
+        if (item.streamerId === userId) {
+            getSponsor(item.streamerId).then(response => {
+                sponsor = response;
+            }).then(() => {
+                console.log(item.adId);
+                getAd(item.adId).then(response => {
+                    ad = response;
+                }).then(() => {
+                    livesStreamer.push({
+                        ad,
+                        sponsor,
+                        live: item
+                    });
+                });
+            });
+        }
+    });
+    res.status(_httpStatus2.default.OK).json(livesStreamer);
+}
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _mongoose = __webpack_require__(2);
+
+var _mongoose2 = _interopRequireDefault(_mongoose);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+const LiveSchema = new _mongoose.Schema({
+    sponsorId: {
+        type: String
+    },
+    streamerId: {
+        type: String
+    },
+    adId: {
+        type: String
+    },
+    adName: {
+        type: String
+    }
+}, { timestamps: true });
+
+LiveSchema.statics = {
+    createLives(args, live) {
+        return this.create(Object.assign({}, args, {
+            live
+        }));
+    }
+};
+exports.default = _mongoose2.default.model('Live', LiveSchema);
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
 exports.signUp = signUp;
 exports.login = login;
 exports.updateById = updateById;
@@ -754,11 +936,11 @@ exports.getUsersList = getUsersList;
 exports.deleteUser = deleteUser;
 exports.validateUser = validateUser;
 
-var _httpStatus = __webpack_require__(2);
+var _httpStatus = __webpack_require__(1);
 
 var _httpStatus2 = _interopRequireDefault(_httpStatus);
 
-var _user = __webpack_require__(6);
+var _user = __webpack_require__(4);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -766,11 +948,11 @@ var _constants = __webpack_require__(0);
 
 var _constants2 = _interopRequireDefault(_constants);
 
-var _bcryptNodejs = __webpack_require__(8);
+var _bcryptNodejs = __webpack_require__(9);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-const jwt = __webpack_require__(3);
+const jwt = __webpack_require__(5);
 
 async function signUp(req, res) {
     try {
@@ -834,7 +1016,7 @@ async function validateUser(req, res, next) {
 }
 
 /***/ }),
-/* 18 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -844,25 +1026,29 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _expressValidation = __webpack_require__(23);
+var _expressValidation = __webpack_require__(25);
 
 var _expressValidation2 = _interopRequireDefault(_expressValidation);
 
-var _express = __webpack_require__(1);
+var _express = __webpack_require__(3);
 
-var _user = __webpack_require__(17);
+var _user = __webpack_require__(19);
 
 var userController = _interopRequireWildcard(_user);
 
-var _user2 = __webpack_require__(7);
+var _user2 = __webpack_require__(8);
 
 var _user3 = _interopRequireDefault(_user2);
 
-var _auth = __webpack_require__(19);
+var _auth = __webpack_require__(21);
 
-var _advertsement = __webpack_require__(5);
+var _advertsement = __webpack_require__(6);
 
 var advertisementController = _interopRequireWildcard(_advertsement);
+
+var _live = __webpack_require__(17);
+
+var liveController = _interopRequireWildcard(_live);
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
@@ -878,13 +1064,16 @@ routes.get('/', userController.getUsersList); //ok
 
 routes.post('/ads/', userController.validateUser, advertisementController.createAd);
 routes.patch('/ads/:id', userController.validateUser, advertisementController.updateById);
-routes.get('/ads/all/:id', advertisementController.getUsersList);
-routes.get('/ads/:id', advertisementController.getUserById);
+routes.get('/ads/:id', userController.validateUser, advertisementController.getAdById);
+routes.get('/ads/all/:id', advertisementController.getAdsList);
+routes.get('/ads/all/display/:id', liveController.getAdToUserDisplay);
+routes.get('/ads/report/sponsor/:id', userController.validateUser, liveController.getSponsorReport);
+routes.get('/ads/report/streamer/:id', userController.validateUser, liveController.getStreamerReport);
 
 exports.default = routes;
 
 /***/ }),
-/* 19 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -895,17 +1084,17 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.authJwt = exports.authLocal = undefined;
 
-var _passport = __webpack_require__(10);
+var _passport = __webpack_require__(11);
 
 var _passport2 = _interopRequireDefault(_passport);
 
-var _passportLocal = __webpack_require__(28);
+var _passportLocal = __webpack_require__(30);
 
 var _passportLocal2 = _interopRequireDefault(_passportLocal);
 
-var _passportJwt = __webpack_require__(27);
+var _passportJwt = __webpack_require__(29);
 
-var _user = __webpack_require__(6);
+var _user = __webpack_require__(4);
 
 var _user2 = _interopRequireDefault(_user);
 
@@ -959,67 +1148,67 @@ const authLocal = exports.authLocal = _passport2.default.authenticate('local', {
 const authJwt = exports.authJwt = _passport2.default.authenticate('jwt', { session: false });
 
 /***/ }),
-/* 20 */
+/* 22 */
 /***/ (function(module, exports) {
 
 module.exports = require("body-parser");
 
 /***/ }),
-/* 21 */
+/* 23 */
 /***/ (function(module, exports) {
 
 module.exports = require("compression");
 
 /***/ }),
-/* 22 */
+/* 24 */
 /***/ (function(module, exports) {
 
 module.exports = require("cors");
 
 /***/ }),
-/* 23 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("express-validation");
 
 /***/ }),
-/* 24 */
+/* 26 */
 /***/ (function(module, exports) {
 
 module.exports = require("helmet");
 
 /***/ }),
-/* 25 */
+/* 27 */
 /***/ (function(module, exports) {
 
 module.exports = require("joi");
 
 /***/ }),
-/* 26 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = require("morgan");
 
 /***/ }),
-/* 27 */
+/* 29 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport-jwt");
 
 /***/ }),
-/* 28 */
+/* 30 */
 /***/ (function(module, exports) {
 
 module.exports = require("passport-local");
 
 /***/ }),
-/* 29 */
+/* 31 */
 /***/ (function(module, exports) {
 
 module.exports = require("slug");
 
 /***/ }),
-/* 30 */
+/* 32 */
 /***/ (function(module, exports) {
 
 module.exports = require("validator");

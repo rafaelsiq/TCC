@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useContext } from "react";
 import AdContext from '../../../contexts/advertisement/index'
+import { FindAllAds } from "../../../requesters/services/services";
 
 export default function AdListContent() { 
     const state = useContext(AdContext).state;
@@ -16,6 +17,18 @@ export default function AdListContent() {
                 })
             }
         })
+    }
+    const allAds = (adId) =>{
+        let ad = ''
+        FindAllAds(localStorage.getItem('userId')).
+        then((response)=>{
+            response.data.forEach(item =>{
+                if(item._id === adId)
+                    ad = item
+            })
+            return ad
+        })
+        
     }
     return (
         <>

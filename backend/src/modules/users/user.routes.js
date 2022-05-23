@@ -4,6 +4,7 @@ import * as userController from './user.controller';
 import userValidations from './user.validations';
 import { authLocal } from '../../services/auth.services';
 import * as advertisementController from '../advertsements/advertsement.controller';
+import * as liveController from '../lives/live.controller';
 
 const routes = new Router();
 
@@ -15,8 +16,10 @@ routes.get('/', userController.getUsersList) //ok
 
 routes.post('/ads/', userController.validateUser, advertisementController.createAd)
 routes.patch('/ads/:id',userController.validateUser,advertisementController.updateById)
-routes.get('/ads/all/:id', advertisementController.getUsersList)
-routes.get('/ads/:id', advertisementController.getUserById)
-
+routes.get('/ads/:id',userController.validateUser,advertisementController.getAdById)
+routes.get('/ads/all/:id', advertisementController.getAdsList)
+routes.get('/ads/all/display/:id', liveController.getAdToUserDisplay )
+routes.get('/ads/report/sponsor/:id',userController.validateUser, liveController.getSponsorReport )
+routes.get('/ads/report/streamer/:id',userController.validateUser, liveController.getStreamerReport )
 
 export default routes;
