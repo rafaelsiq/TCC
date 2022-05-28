@@ -347,9 +347,7 @@ const jwt = __webpack_require__(5);
 
 async function updateById(req, res, next) {
     const userId = req.params.id;
-    console.log(userId, "<==userID");
     const user = await _advertsement2.default.findByIdAndUpdate(userId, Object.assign({}, req.body));
-    console.log(user);
     res.status(_httpStatus2.default.OK).json(user);
     return next();
 }

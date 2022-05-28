@@ -13,7 +13,6 @@ const GlobalContext: React.SFC = ({ children }) => {
           <div id='background'
             style={{
               backgroundImage: `url("https://raw.githubusercontent.com/rafaelsiq/TCC/main/frontend/src/constants/files/geral-background.png")`,
-  //              backgroundRepeat: 'no-repeat',
               position: 'absolute',
               width: '100%',
               height: '100%',

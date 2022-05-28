@@ -15,7 +15,7 @@ const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={routers.initial} element={<Initial />} />
+                <Route path={routers.initial} element={!!localStorage.getItem('token') ? <Home /> : <Initial />} />
                 <Route path={routers.home} element={<Home />} />
                 <Route path={routers.login} element={<Login />} />
                 <Route path='/ad/display/embed/:id' element={<AdDisplay token={window.location.pathname} />} />
