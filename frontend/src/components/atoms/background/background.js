@@ -1,4 +1,4 @@
-import backImage from '../../../constants/files/geral-background.png'
+import backImage from '../../../constants/files/geral-background.png';
 import './background.css'
 import React from 'react';
 import EmptyContent from '../../organisms/emptyContent/emptyContent';

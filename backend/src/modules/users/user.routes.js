@@ -21,5 +21,6 @@ routes.get('/ads/all/:id', advertisementController.getAdsList)
 routes.get('/ads/all/display/:id', liveController.getAdToUserDisplay )
 routes.get('/ads/report/sponsor/:id',userController.validateUser, liveController.getSponsorReport )
 routes.get('/ads/report/streamer/:id',userController.validateUser, liveController.getStreamerReport )
+routes.get('/:id',userController.validateUser, userController.getUserById )
 
 export default routes;

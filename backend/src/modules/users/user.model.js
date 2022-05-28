@@ -10,7 +10,6 @@ const UserSchema = new Schema({
     type: {
         type: String,
         required: [true, 'Type is required!'],
-        trim: true,
         unique: false,
     },
     email: {
@@ -130,12 +129,23 @@ UserSchema.methods = {
             type: this.type,
             token: `JWT ${this.createToken()}`,
         };
+    }, 
+    toAuthJSONFull(){
+        return {
+            _id: this._id,
+            userName: this.userName,
+            token: `JWT ${this.createToken()}`,
+        };
     },
     toJSON() {
         return {
             _id: this._id,
             userName: this.userName,
-            name: this.name,
+            firstName: this.firstName,
+            type: this.type,
+            cpf: this.cpf,
+            cnpj:this.cnpj,
+            lastName: this.lastName,
         };
     }
 };

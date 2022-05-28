@@ -16,11 +16,11 @@ export function FindAllAds(userId) {
 export function FindAdToDisplay(userId) {
     return api.get('/api/v1/users/ads/all/display/'+userId)
 }
-export async function CreateAd(Ad) {
+export  function CreateAd(Ad) {
     return api.post('/api/v1/users/ads/', Ad)
 }
-export async function UpdateAdImage(adId,url){
-    await api.patch('/api/v1/users/ads/' + adId, { fileURL: url})
+export function UpdateAdImage(adId,url){
+    return api.patch('/api/v1/users/ads/' + adId, { fileURL: url})
 }
 export function SingUpUser(user){
     return api.post('api/v1/users/signup', user)
@@ -37,5 +37,7 @@ export function StreamerRequestReport(){
 export function getAdById(adId){
     return api.get('api/v1/users/ads/'+adId)
 }
-
+export function getUserById(userId){
+    return api.get('api/v1/users/'+userId)
+}
 export default api;

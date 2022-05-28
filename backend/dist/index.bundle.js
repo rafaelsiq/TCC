@@ -167,7 +167,6 @@ const UserSchema = new _mongoose.Schema({
     type: {
         type: String,
         required: [true, 'Type is required!'],
-        trim: true,
         unique: false
     },
     email: {
@@ -285,11 +284,22 @@ UserSchema.methods = {
             token: `JWT ${this.createToken()}`
         };
     },
+    toAuthJSONFull() {
+        return {
+            _id: this._id,
+            userName: this.userName,
+            token: `JWT ${this.createToken()}`
+        };
+    },
     toJSON() {
         return {
             _id: this._id,
             userName: this.userName,
-            name: this.name
+            firstName: this.firstName,
+            type: this.type,
+            cpf: this.cpf,
+            cnpj: this.cnpj,
+            lastName: this.lastName
         };
     }
 };
@@ -319,13 +329,13 @@ exports.createAd = createAd;
 exports.getAdById = getAdById;
 exports.getAdsList = getAdsList;
 
-var _advertsement = __webpack_require__(7);
-
-var _advertsement2 = _interopRequireDefault(_advertsement);
-
 var _httpStatus = __webpack_require__(1);
 
 var _httpStatus2 = _interopRequireDefault(_httpStatus);
+
+var _advertsement = __webpack_require__(7);
+
+var _advertsement2 = _interopRequireDefault(_advertsement);
 
 var _constants = __webpack_require__(0);
 
@@ -337,7 +347,9 @@ const jwt = __webpack_require__(5);
 
 async function updateById(req, res, next) {
     const userId = req.params.id;
+    console.log(userId, "<==userID");
     const user = await _advertsement2.default.findByIdAndUpdate(userId, Object.assign({}, req.body));
+    console.log(user);
     res.status(_httpStatus2.default.OK).json(user);
     return next();
 }
@@ -509,12 +521,12 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 const passwordReg = exports.passwordReg = /(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}/;
 exports.default = {
     signup: {
-        type: _joi2.default.string().required(),
-        email: _joi2.default.string().email().required(),
+        type: _joi2.default.string(),
+        email: _joi2.default.string().email(),
         password: _joi2.default.string().regex(passwordReg).required(),
-        firstName: _joi2.default.string().required(),
-        lastName: _joi2.default.string().required(),
-        userName: _joi2.default.string().required(),
+        firstName: _joi2.default.string(),
+        lastName: _joi2.default.string(),
+        userName: _joi2.default.string(),
         links: _joi2.default.string(),
         cpf: _joi2.default.string(),
         tags: _joi2.default.string(),
@@ -782,6 +794,7 @@ async function getAdToUserDisplay(req, res) {
     try {
         adList = await _advertsement2.default.find({});
         while (status === 'Parado') {
+
             min = Math.ceil(0);
             max = Math.floor(adList.length);
             aux = Math.floor(Math.random() * (max - min)) + min;
@@ -798,39 +811,21 @@ async function getAdToUserDisplay(req, res) {
             adId: adDisplay.id
         };
         await _live2.default.create(currentLive);
+
+        return res.status(_httpStatus2.default.OK).json({
+            'live': currentLive,
+            'ad': adDisplay
+        });
     } catch (e) {
         return res.status(_httpStatus2.default.BAD_REQUEST).json(e.response);
     }
-
-    return res.status(_httpStatus2.default.OK).json({
-        'live': currentLive,
-        'ad': adDisplay
-    });
 }
 async function validateDate(startDate, endDate) {
     const date = new Date(Date.now());
     if (new Date(startDate) >= date && new Date(endDate) <= date) return true;
     return false;
 }
-async function getStreamer(streamerId) {
-    const userList = await _user2.default.find({});
-    userList.forEach(element => {
-        if (element.id === streamerId) return element;
-    });
-}
-async function getSponsor(streamerId) {
-    const userList = await _user2.default.find({});
-    userList.forEach(element => {
-        if (element.id === streamerId) return element;
-    });
-}
-async function getAd(adId) {
-    const listAd = await _advertsement2.default.find({});
-    listAd.forEach(element => {
-        if (element.id === adId) return element;
-    });
-}
-async function liveLister(liveList, userId) {
+async function liveListerSponsor(liveList, userId) {
     const livesSponsor = [];
 
     liveList.forEach(item => {
@@ -842,39 +837,33 @@ async function liveLister(liveList, userId) {
     });
     return livesSponsor;
 }
+async function liveListerStreamer(liveList, userId) {
+    const livesSponsor = [];
+
+    liveList.forEach(item => {
+        if (item.streamerId === userId) {
+            livesSponsor.push({
+                live: item
+            });
+        }
+    });
+    return livesSponsor;
+}
 async function getSponsorReport(req, res) {
     const liveList = await _live2.default.find({});
     const userId = req.params.id;
 
-    liveLister(liveList, userId).then(response => {
+    liveListerSponsor(liveList, userId).then(response => {
         return res.status(_httpStatus2.default.OK).json(response);
     });
 }
 async function getStreamerReport(req, res) {
     const liveList = await _live2.default.find({});
     const userId = req.params.id;
-    const livesStreamer = [];
-    let sponsor = [];
-    let ad = [];
-    liveList.forEach(item => {
-        if (item.streamerId === userId) {
-            getSponsor(item.streamerId).then(response => {
-                sponsor = response;
-            }).then(() => {
-                console.log(item.adId);
-                getAd(item.adId).then(response => {
-                    ad = response;
-                }).then(() => {
-                    livesStreamer.push({
-                        ad,
-                        sponsor,
-                        live: item
-                    });
-                });
-            });
-        }
+
+    liveListerStreamer(liveList, userId).then(response => {
+        return res.status(_httpStatus2.default.OK).json(response);
     });
-    res.status(_httpStatus2.default.OK).json(livesStreamer);
 }
 
 /***/ }),
@@ -1069,6 +1058,7 @@ routes.get('/ads/all/:id', advertisementController.getAdsList);
 routes.get('/ads/all/display/:id', liveController.getAdToUserDisplay);
 routes.get('/ads/report/sponsor/:id', userController.validateUser, liveController.getSponsorReport);
 routes.get('/ads/report/streamer/:id', userController.validateUser, liveController.getStreamerReport);
+routes.get('/:id', userController.validateUser, userController.getUserById);
 
 exports.default = routes;
 

@@ -1,7 +1,7 @@
-import Live from './live.model';
+import LiveModel from './live.model';
 import HTTPStatus from 'http-status';
 import advertsementModel from '../advertsements/advertsement.model';
-import User from '../users/user.model';
+import UserModel from '../users/user.model';
 
 export async function getAdToUserDisplay(req, res) {
     let adList;
@@ -13,13 +13,14 @@ export async function getAdToUserDisplay(req, res) {
     let currentLive;
     let status = 'Parado';
     try {
-        user = await User.findById(req.params.id);
+        user = await UserModel.findById(req.params.id);
     } catch (e) {
         return res.status(HTTPStatus.BAD_REQUEST).json({ 'message': 'user invalid' })
     }
     try {
         adList = await advertsementModel.find({})
         while (status === 'Parado') {
+
             min = Math.ceil(0);
             max = Math.floor(adList.length);
             aux = Math.floor(Math.random() * (max - min)) + min;
@@ -36,16 +37,16 @@ export async function getAdToUserDisplay(req, res) {
             streamerId: user._id,
             adId: adDisplay.id
         }
-        await Live.create(currentLive)
+        await LiveModel.create(currentLive)
+
+        return res.status(HTTPStatus.OK).json({
+            'live': currentLive,
+            'ad': adDisplay
+        })
     }
     catch (e) {
         return res.status(HTTPStatus.BAD_REQUEST).json(e.response)
     }
-
-    return res.status(HTTPStatus.OK).json({
-        'live': currentLive,
-        'ad': adDisplay
-    })
 }
 async function validateDate(startDate, endDate) {
     const date = new Date(Date.now());
@@ -53,29 +54,7 @@ async function validateDate(startDate, endDate) {
         return true
     return false
 }
-async function getStreamer(streamerId) {
-    const userList = await User.find({})
-    userList.forEach(element => {
-        if (element.id === streamerId)
-            return element
-    });
-}
-async function getSponsor(streamerId) {
-    const userList = await User.find({})
-    userList.forEach(element => {
-        if (element.id === streamerId)
-            return element
-    });
-
-}
-async function getAd(adId) {
-    const listAd = await advertsementModel.find({})
-    listAd.forEach(element => {
-        if (element.id === adId)
-            return element
-    })
-}
-async function liveLister(liveList, userId) {
+async function liveListerSponsor(liveList, userId) {
     const livesSponsor = [];
 
     liveList.forEach((item) => {
@@ -87,40 +66,32 @@ async function liveLister(liveList, userId) {
     })
     return livesSponsor;
 }
+async function liveListerStreamer(liveList, userId) {
+    const livesSponsor = [];
+
+    liveList.forEach((item) => {
+        if (item.streamerId === userId) {
+            livesSponsor.push({
+                live: item,
+            })
+        }
+    })
+    return livesSponsor;
+}
 export async function getSponsorReport(req, res) {
-    const liveList = await Live.find({});
+    const liveList = await LiveModel.find({});
     const userId = req.params.id;
 
-    liveLister(liveList, userId).then((response) => {
+    liveListerSponsor(liveList, userId).then((response) => {
         return res.status(HTTPStatus.OK).json(response)
     })
 
 }
 export async function getStreamerReport(req, res) {
-    const liveList = await Live.find({});
+    const liveList = await LiveModel.find({});
     const userId = req.params.id;
-    const livesStreamer = [];
-    let sponsor = [];
-    let ad = [];
-    liveList.forEach(item => {
-        if (item.streamerId === userId) {
-            getSponsor(item.streamerId).then(response => {
-                sponsor = response;
-            })
-                .then(() => {
-                    console.log(item.adId)
-                    getAd(item.adId).then(response => {
-                        ad = response;
-                    }).then(() => {
-                        livesStreamer.push({
-                            ad,
-                            sponsor,
-                            live: item,
-                        })
-                    });
-                });
 
-        }
+    liveListerStreamer(liveList, userId).then((response) => {
+        return res.status(HTTPStatus.OK).json(response)
     })
-    res.status(HTTPStatus.OK).json(livesStreamer)
 }

@@ -24,7 +24,8 @@ function LoginContent() {
                 token: localStorage.getItem('token'),
             })
             setLogged(false)
-            window.location.href = '/'
+            if(!loginErrorDisplay)
+                window.location.href = '/'
         }
     })
 

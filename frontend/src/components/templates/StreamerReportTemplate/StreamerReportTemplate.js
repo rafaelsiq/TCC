@@ -3,15 +3,14 @@ import HomeHeader from '../../molecules/homeHeader/home-header';
 import Title from '../../atoms/titleDisplay/titleDisplay'
 import { useState } from "react";
 import { useEffect } from "react";
-import { SponsorRequestReport } from "../../../requesters/services/services";
+import { StreamerRequestReport } from "../../../requesters/services/services";
 import { Button } from '@mui/material';
 
-function SponsorsReportTemplate() {
+function StreamersReportTemplate() {
     const [listLives, setListLives] = useState([])
-    useEffect(() => { 
-        
+    useEffect(() => {
         if (listLives.length === 0) {
-            SponsorRequestReport().then((response) => {
+            StreamerRequestReport().then((response) => {
                 setListLives(response.data)
             })
         }
@@ -36,7 +35,7 @@ function SponsorsReportTemplate() {
                             paddingTop: '50px'
                         }}>
 
-                            <h1 style={{ width: '100%', textAlign: 'center' }}>Suas propagandas ainda não foram exibidas por nenhum streamer</h1>
+                            <h1 style={{ width: '100%', textAlign: 'center' }}>Você ainda não fez nenhuma exibição de propagandas em suas lives</h1>
                         </div>
                     </>}
 
@@ -91,4 +90,4 @@ function SponsorsReportTemplate() {
     );
 }
 
-export default SponsorsReportTemplate;
+export default StreamersReportTemplate;

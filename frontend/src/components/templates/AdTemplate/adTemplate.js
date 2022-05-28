@@ -16,6 +16,7 @@ import { storage } from '../../../lib/firebase';
 import { ref, getDownloadURL, uploadBytesResumable } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { useEffect } from "react";
+import { useRef } from "react";
 
 function AdTemplate() {
     const state = useContext(AdContext).state;
@@ -67,6 +68,8 @@ function AdTemplate() {
         "status": ""
     })
     const saveAd = async () => {
+        setDisplaySuccessMessage(true)
+        setSuccessMessage('Fazendo upload da imagem! Aguarde...')
         uploadImage()
     }
     const uploadImage = async () => {
@@ -97,18 +100,17 @@ function AdTemplate() {
             try {
                 url = await getDownloadURL(imageRef);
                 aux = false
-                if(url === null)
+                if (url === null)
                     aux = true
             } catch (e) {
                 aux = true;
-                if(url !== null)
+                if (url !== null)
                     localStorage.setItem('adUrl', url)
                 console.log(url)
             }
         } while (aux)
-        console.log(localStorage.setItem('adUrl', url))
-        if(localStorage.getItem('adUrl')!== null)
-        {
+        localStorage.setItem('adUrl', url)
+        if (localStorage.getItem('adUrl') !== null) {
             console.log('start saving')
             console.log(localStorage.getItem('adUrl'))
             seIsSaving({
@@ -116,8 +118,10 @@ function AdTemplate() {
             })
         }
     }
+    const [auxiliar, setAuxiliar] = useState(true)
 
     useEffect(() => {
+
         if (isSaving.isSaving) {
             setNewAd({
                 ...newAd,
@@ -129,50 +133,59 @@ function AdTemplate() {
                 isSaving: false,
                 saved: true,
             })
-
+            setAuxiliar(true)
         }
         else if (isSaving.saved) {
-            seIsSaving({
-                saved: false,
-                isCreating: true
-            })
-            CreateAd({
-                ...newAd,
-                fileURL: localStorage.getItem('adUrl') ? localStorage.getItem('adUrl') : 'fileUrl' ,
-                adUserId: localStorage.getItem('userId') ? localStorage.getItem('userId'): 'adUserId' ,
-                startDate: document.getElementById('startDate').value ? document.getElementById('startDate').value : new Date(),
-                endDate: document.getElementById('endDate').value ? document.getElementById('endDate').value : new Date(),
-                title: document.getElementById('Adtitle').value ? document.getElementById('Adtitle').value : 'title',
-                text: document.getElementById('Adtext').value ? document.getElementById('Adtext').value : 'text',
-                value: document.getElementById('Advalue').value ? document.getElementById('Advalue').value : '100',
-            }).then((response) => {
-                setAdId(response.data._id)
+            let ad = null;
+            console.log(auxiliar)
+            if(auxiliar){
+                criacao()
+                setAuxiliar(false)
+            }
+            async function criacao() {
+                console.log(newAd)
+                ad = (await CreateAd({
+                    ...newAd,
+                    fileURL: 'fileUrl',
+                    adUserId: localStorage.getItem('userId') ? localStorage.getItem('userId') : 'adUserId',
+                    startDate: document.getElementById('startDate').value ? document.getElementById('startDate').value : new Date().toString(),
+                    endDate: document.getElementById('endDate').value ? document.getElementById('endDate').value : new Date().toString(),
+                    title: document.getElementById('Adtitle').value ? document.getElementById('Adtitle').value : 'title',
+                    text: document.getElementById('Adtext').value ? document.getElementById('Adtext').value : 'text',
+                    value: document.getElementById('Advalue').value ? document.getElementById('Advalue').value : '100',
+                })).data
+                console.log({...ad,'>>>>':'>>>>'})
+                setAdId(ad._id)
                 localStorage.setItem('adId', adId)
-            })
+                if (ad !== null) {
+                    seIsSaving({
+                        saved: false,
+                        isCreating: true
+                    })
+                }
+            }
         }
         else if (isSaving.isCreating) {
             console.log('is Creating')
-            let aux = true;
-            do {
-                if (localStorage.getItem('adUrl') !== null) {
-                    console.log('ad url added')
-                    UpdateAdImage(localStorage.getItem('adId'), localStorage.getItem('adUrl')).then(() => {
-                        seIsSaving({
-                            isCreating: false,
-                            created: true
-                        })
-                        localStorage.removeItem('adUrl')
-                        console.log('done is Creating')
+            async function updateImage() {
+                let data = null;                   
+                console.log(localStorage.getItem('adId'))
+                console.log(localStorage.getItem('adUrl'))
+                data = await (UpdateAdImage(adId, localStorage.getItem('adUrl')))
+                console.log({...data, 'daaaata':'dataa'})
+                if (data !== null) {
+                    console.log('done is Creating')
+                    seIsSaving({
+                        isCreating: false,
+                        created: true
                     })
-                    aux = false;
-                } else {
-                    aux = true;
                 }
-            } while (aux)
+            }
+            updateImage()
         }
         else if (isSaving.created) {
             console.log('is created')
-
+            localStorage.removeItem('adUrl')
             setDisplaySuccessMessage(true)
             setSuccessMessage('Ad incluido com sucesso')
             seIsSaving({
@@ -184,8 +197,7 @@ function AdTemplate() {
             console.log('done is created')
             //window.location.href = '/ads'
         }
-
-    },[isSaving.isSaving, isSaving.saved, isSaving.isCreating, isSaving.created, newAd, ad.status, adId])
+    }, [isSaving.isSaving, isSaving.saved, isSaving.isCreating, isSaving.created, newAd, ad.status, adId, auxiliar])
 
     return (<div style={{
         paddingLeft: '5%',

@@ -7,9 +7,9 @@ import { FindAdToDisplay } from '../../requesters/services/services';
 function AdDisplay({ token }) {
   const [switcher, setSwitcher] = useState('start') // pode ser start, display, empty
   const timer = {
-    start: 10000,
-    empty: 60000,
-    display: 10000,
+    start: 20000,
+    empty: 10000,
+    display: 30000,
   } 
   const userId = token.toString().replace('/ad/display/embed/', '')
   function sleep(ms) {
@@ -28,6 +28,7 @@ function AdDisplay({ token }) {
       }
       else if(switcher === 'display'){
         FindAdToDisplay(userId).then((response) => {
+          console.log(response)
           setadDisplayed(response.data.ad);
         })
         setSwitcher('empty')

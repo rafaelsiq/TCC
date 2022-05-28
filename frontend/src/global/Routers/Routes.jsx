@@ -9,6 +9,7 @@ import { Navigate } from 'react-router-dom';
 import Ad from "../../pages/ad/ad";
 import { SponsorReport } from "../../pages/sponsorReport/SponsorReport";
 import { StreamerReport } from "../../pages/streamerReport/StreamerReport";
+import { Download } from "../../pages/download/download";
 
 const Router = () => {
     return (
@@ -16,13 +17,14 @@ const Router = () => {
             <Routes>
                 <Route path={routers.initial} element={<Home />} />
                 <Route path={routers.login} element={<Login />} />
-                <Route path='/ad/display/embed/:id' element={<AdDisplay token={window.location.pathname}/>}/>
-                <Route path='/Menu' element={localStorage.getItem('userId') ? <Menu/> : <Navigate to="/" /> }/>
-                <Route path='/ads' element={localStorage.getItem('userId') && localStorage.getItem('type') === 'Sponsors' ? <Ad/> : <Navigate to="/" /> }/> 
-                <Route path='/ads/id' element={ <AdDisplay/> }/> 
-                <Route path='/Reports' element={ localStorage.getItem('type') ==='Sponsors' ? <SponsorReport/>: <StreamerReport/>} />
+                <Route path='/ad/display/embed/:id' element={<AdDisplay token={window.location.pathname} />} />
+                <Route path='/Menu' element={localStorage.getItem('userId') ? <Menu /> : <Navigate to="/" />} />
+                <Route path='/ads' element={localStorage.getItem('userId') && localStorage.getItem('type') === 'Sponsors' ? <Ad /> : <Navigate to="/" />} />
+                <Route path='/ads/id' element={<AdDisplay />} />
+                <Route path='/Reports' element={localStorage.getItem('type') === 'Sponsors' ? <SponsorReport /> : <StreamerReport />} />
+                <Route path='/download' element={<Download />}></Route>
             </Routes>
         </BrowserRouter>
-    ) 
+    )
 }
 export default Router;

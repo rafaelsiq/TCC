@@ -1,12 +1,14 @@
-import Advertsement from './advertsement.model';
 import HTTPStatus from 'http-status';
+import Advertsement from './advertsement.model';
 import constants from '../../../src/config/constants';
 
 const jwt = require('jsonwebtoken');
 
 export async function updateById(req, res, next) {
     const userId = req.params.id;
+    console.log(userId,"<==userID")
     const user = await Advertsement.findByIdAndUpdate(userId, { ...req.body })
+    console.log(user)
     res.status(HTTPStatus.OK).json(user)
     return next()
 }

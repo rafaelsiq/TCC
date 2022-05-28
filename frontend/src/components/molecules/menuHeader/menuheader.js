@@ -1,19 +1,16 @@
-import { Button } from "@mui/material";
 import React from "react";
 import { useEffect } from "react";
 import { useContext } from "react";
 import { useState } from "react";
 import MenuContext from "../../../contexts/menu";
 import RegisterContent from "../RegisterContent/register";
-import CredentialContent from "../CredentialContent/credential";
-import FinancialContent from "../FinancialContent/financial";
 import { LoginUser } from "../../../requesters/services/services";
 import TitleDisplay from "../../atoms/titleDisplay/titleDisplay";
 
 function MenuHeader() {
     const [configs, setConfigs] = useState('Cadastro')
     const state = useContext(MenuContext).state;
-    const setState = useContext(MenuContext).setState;
+    // const setState = useContext(MenuContext).setState;
 
     const getUser = async () => {
         await LoginUser({
@@ -52,7 +49,7 @@ function MenuHeader() {
             }}>
             <TitleDisplay title="Menu" background={false} />
 
-            <div
+            {/* <div
                 className="bottom_buttons"
                 style={{
                     display: 'flex',
@@ -68,29 +65,14 @@ function MenuHeader() {
                     onClick={async () => { await setState({ ...state, configs: 'Cadastro' }) }}
                 >
                 </Button>
-                <Button
-                    style={{ width: '100%', borderRight: '1px solid black', borderRadius: '0' }}
-                    variant="text"
-                    children="Financeiro"
-                    type='standard'
-                    onClick={async () => { await setState({ ...state, configs: 'Financeiro' }) }}
-                >
-                </Button>
-                <Button
-                    style={{ width: '100%' }}
-                    variant="text"
-                    children="Credenciais"
-                    type='standard'
-                    onClick={async () => { await setState({ ...state, configs: 'Credenciais' }) }}
-                >
-                </Button>
-            </div>
+            </div> */}
 
 
         </div>
         {configs === 'Cadastro' && <RegisterContent />
-        }{configs === 'Financeiro' && <FinancialContent />
-        }{configs === 'Credenciais' && <CredentialContent />}
+     }
+     {/* {configs === 'Financeiro' && <FinancialContent />
+         }{configs === 'Credenciais' && <CredentialContent />} */}
     </>
     );
 }
