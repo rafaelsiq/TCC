@@ -10,12 +10,13 @@ import Ad from "../../pages/ad/ad";
 import { SponsorReport } from "../../pages/sponsorReport/SponsorReport";
 import { StreamerReport } from "../../pages/streamerReport/StreamerReport";
 import { Download } from "../../pages/download/download";
-
+import Initial from '../../pages/initial/initial';
 const Router = () => {
     return (
         <BrowserRouter>
             <Routes>
-                <Route path={routers.initial} element={<Home />} />
+                <Route path={routers.initial} element={<Initial />} />
+                <Route path={routers.home} element={<Home />} />
                 <Route path={routers.login} element={<Login />} />
                 <Route path='/ad/display/embed/:id' element={<AdDisplay token={window.location.pathname} />} />
                 <Route path='/Menu' element={localStorage.getItem('userId') ? <Menu /> : <Navigate to="/" />} />
