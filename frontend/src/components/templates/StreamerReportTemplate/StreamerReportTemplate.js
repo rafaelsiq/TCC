@@ -13,6 +13,7 @@ function StreamersReportTemplate() {
             StreamerRequestReport().then((response) => {
                 setListLives(response.data)
             })
+
         }
     })
     return (
@@ -52,13 +53,13 @@ function StreamersReportTemplate() {
                                 }}>Data de Exibição</h1>
                                 <h1 style={{
                                     marginLeft: '50px'
-                                }}>Ad Id</h1></div>
+                                }}>ID da propaganda exibida</h1></div>
                             {
                                 listLives.map((item) => {
                                     return (
                                         <Button
                                             style={{ width: '100%', fontSize: '5px', }}
-                                            onClick={() => { window.location.href = '/ads' }}
+                                            onClick={() => { window.location.href = '/' }}
                                         >
                                             < li
                                                 id={item.live.adId}

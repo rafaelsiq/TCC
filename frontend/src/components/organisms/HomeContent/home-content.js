@@ -1,7 +1,6 @@
 import homeStrings from '../../../constants/homePage.json'
 import { Button } from '@mui/material';
 import './home-content.css';
-import routers from '../../../global/Routers/routers.json'
 import React from 'react';
 
 function HomeContent() {
@@ -16,9 +15,9 @@ function HomeContent() {
                         'color': 'white'
                     }}
                     variant="outlined"
-                    children="Saiba Mais..."
+                    children={localStorage.getItem('type') === 'Streamers' ? 'Passo a Passo': 'Nova Propaganda'}
                     type='standard'
-                    href={routers.about}
+                    href={localStorage.getItem('type') === 'Streamers' ? '/download': '/ads'}
                 ></Button>
             </div>
         </div>)

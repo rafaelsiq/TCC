@@ -53,7 +53,7 @@ function SponsorsReportTemplate() {
                                 }}>Data de Exibição</h1>
                                 <h1 style={{
                                     marginLeft: '50px'
-                                }}>Ad Id</h1></div>
+                                }}>ID da propaganda Exibida</h1></div>
                             {
                                 listLives.map((item) => {
                                     return (
