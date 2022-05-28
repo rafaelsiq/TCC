@@ -1,5 +1,6 @@
 import './button.css';
 import { Link } from "react-router-dom";
+import React from "react";
 
 function Buttonss({style, type, to, label}) {
   if ('header'.includes(type))

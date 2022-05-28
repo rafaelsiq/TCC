@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { useContext } from "react";
 import MenuContext from "../../../contexts/menu";
-import api from "../../../requesters/login/login";
+import api, { getUserById } from "../../../requesters/services/services";
 import { InputStyle } from "../../atoms/input/input";
 import HelperContent from "../HelperMenuContent/helperContent";
 
@@ -14,6 +14,25 @@ function RegisterContent() {
     const setState = useContext(MenuContext).setState
     const [updateMessage, setUpdateMessage] = useState('')
     const [displayMessage, setDisplayMessage] = useState(false)
+
+    useEffect(() => {
+        console.log(state)
+        if (state.userName === ' ') {
+            getUserById(localStorage.getItem('userId')).then((response) => {
+                document.getElementById('userName').value = response.data.userName
+                document.getElementById('firstName').value = response.data.name
+                document.getElementById('lastName').value = response.data.lastName ? response.data.lastName : ''
+                document.getElementById('link').value = response.data.link ? response.data.link : ''
+                setState({
+                    lastName: response.data.lastName,
+                    name: response.data.name,
+                    cpf: response.data.cpf,
+                    userName: response.data.userName,
+                    link: response.data.link,
+                })
+            })
+        }
+    })
 
     const updateDatas = () => {
         let user = null;
@@ -50,7 +69,7 @@ function RegisterContent() {
 
     }
 
-    return (<>
+    return (<div>
 
         <div style={{
             display: 'flex',
@@ -117,9 +136,9 @@ function RegisterContent() {
                         'color': 'white',
                         'minWidth': '100px'
                     }}
-                    onClick={()=>{
-                        setDisplayMessage(false)
-                    }}
+                        onClick={() => {
+                            setDisplayMessage(false)
+                        }}
                         href='/'
                     >VOLTAR</Button>
                     <Button
@@ -128,7 +147,7 @@ function RegisterContent() {
                             'borderRadius': '6px',
                             'color': 'white',
                             'minWidth': '100px',
-                            'marginLeft':'10px'
+                            'marginLeft': '10px'
                         }}
                         onClick={updateDatas}
                     >SALVAR</Button>
@@ -152,7 +171,7 @@ function RegisterContent() {
 
         </div>
 
-    </>
+    </div>
     );
 }
 

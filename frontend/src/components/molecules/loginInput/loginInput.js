@@ -1,5 +1,8 @@
 import './loginInput.css'
 import Input from '../../atoms/input/input'
+import React from "react";
+
+
 function LoginInput (){
     return (
         <div id="login_input">

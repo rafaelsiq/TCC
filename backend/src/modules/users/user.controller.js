@@ -46,7 +46,6 @@ export async function getUsersList(req, res) {
         const Ads = await User.find({});
         return res.status(HTTPStatus.OK).json(Ads);
     } catch (e) {
-        console.log(e)
         return res.status(HTTPStatus.BAD_REQUEST).json(e);
     }
 }
@@ -61,7 +60,6 @@ export async function deleteUser(req, res) {
     }
 }
 export async function validateUser(req, res, next) {
-    console.log(req.body)
     jwt.verify(
         req.headers['authorization'],
         constants.JWT_SECRET,

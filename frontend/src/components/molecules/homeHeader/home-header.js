@@ -50,7 +50,15 @@ function HomeHeader() {
         ></Button>}
       </div>
       <div id='right'>
-       { localStorage.getItem('userId') && <Button
+      { localStorage.getItem('type') ==='Sponsors' && localStorage.getItem('userId') && <Button
+          children='Ads'
+          type='header'
+          style={{
+            fontSize: "16px"
+          }}
+          href='/ads'
+        ></Button>}
+       { localStorage.getItem('userId') && localStorage.getItem('type') ==='Streamers' && <Button
           children='Downloads'
           type='header'
           style={{

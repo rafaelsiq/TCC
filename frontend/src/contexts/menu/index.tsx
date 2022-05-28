@@ -15,12 +15,12 @@ type PropsMenuContext = {
 
 const DEFAULT_VALUE = {
     state: {
-        configs: 'Cadastro',
-        cpf: '0123456789-44',
-        link: 'https://cavalo.com.com',
-        name: 'Jane',
-        userName: 'JaneDoe3',
-        lastName: 'Doe',
+        configs: ' ',
+        cpf: ' ',
+        link: ' ',
+        name: ' ',
+        userName: ' ',
+        lastName: ' ',
     },
     setState: () => { },
 };

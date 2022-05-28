@@ -8,7 +8,6 @@ function HomeTemplate() {
         style={{
             paddingLeft:'5%',
             paddingRight:'5%',
-            paddingTop:'10px'
         }}>
             <Header />
             <Content />

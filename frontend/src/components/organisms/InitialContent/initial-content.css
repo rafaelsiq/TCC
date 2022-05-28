@@ -13,3 +13,12 @@
     justify-content: center;
     width: 100%;
 }
+img {
+    width: 450px;
+    border-radius: 17px;
+}
+video {
+    width: 450px;
+    border-radius: 17px;
+
+}
